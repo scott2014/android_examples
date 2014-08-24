@@ -1,0 +1,623 @@
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/web/web_qqnews_rep/!svn/ver/18094/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo
+END
+CachePageResult.java
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/web/web_qqnews_rep/!svn/ver/16344/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/CachePageResult.java
+END
+NewsDetail.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/web/web_qqnews_rep/!svn/ver/2108/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/NewsDetail.java
+END
+NewsMsgGroup.java
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/web/web_qqnews_rep/!svn/ver/17534/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/NewsMsgGroup.java
+END
+MsgRet.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/web/web_qqnews_rep/!svn/ver/18210/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/MsgRet.java
+END
+LiveStatus.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/web/web_qqnews_rep/!svn/ver/4927/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/LiveStatus.java
+END
+ListMapData.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/web/web_qqnews_rep/!svn/ver/12817/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/ListMapData.java
+END
+ImgTxtLiveIntro.java
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/web/web_qqnews_rep/!svn/ver/6794/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/ImgTxtLiveIntro.java
+END
+ImgTxtLiveInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/web/web_qqnews_rep/!svn/ver/7722/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/ImgTxtLiveInfo.java
+END
+Channel.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/web/web_qqnews_rep/!svn/ver/2561/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/Channel.java
+END
+MobleQQAccountsInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/web/web_qqnews_rep/!svn/ver/16159/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/MobleQQAccountsInfo.java
+END
+OfflineSimpleNewsDetail.java
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/web/web_qqnews_rep/!svn/ver/16344/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/OfflineSimpleNewsDetail.java
+END
+ExtendedChannels.java
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/web/web_qqnews_rep/!svn/ver/5567/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/ExtendedChannels.java
+END
+SpecialReportImage.java
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/web/web_qqnews_rep/!svn/ver/5346/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/SpecialReportImage.java
+END
+App.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/web/web_qqnews_rep/!svn/ver/2870/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/App.java
+END
+ImageResult.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/web/web_qqnews_rep/!svn/ver/13701/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/ImageResult.java
+END
+NewsVersion.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/web/web_qqnews_rep/!svn/ver/3417/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/NewsVersion.java
+END
+HotChannel.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/web/web_qqnews_rep/!svn/ver/2108/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/HotChannel.java
+END
+RssId.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/web/web_qqnews_rep/!svn/ver/16682/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/RssId.java
+END
+ImgTxtLiveImageIndex.java
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/web/web_qqnews_rep/!svn/ver/7314/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/ImgTxtLiveImageIndex.java
+END
+VoteInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/web/web_qqnews_rep/!svn/ver/7813/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/VoteInfo.java
+END
+FavorItemsByRefresh.java
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/web/web_qqnews_rep/!svn/ver/16640/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/FavorItemsByRefresh.java
+END
+ItemsByRefresh.java
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/web/web_qqnews_rep/!svn/ver/4303/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/ItemsByRefresh.java
+END
+UserInfoFromServerXMLFormat.java
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/web/web_qqnews_rep/!svn/ver/4303/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/UserInfoFromServerXMLFormat.java
+END
+PushConfig.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/web/web_qqnews_rep/!svn/ver/3848/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/PushConfig.java
+END
+BetaApkUser.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/web/web_qqnews_rep/!svn/ver/13534/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/BetaApkUser.java
+END
+Option.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/web/web_qqnews_rep/!svn/ver/6301/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/Option.java
+END
+UserInfoFromServerJsonFormat.java
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/web/web_qqnews_rep/!svn/ver/17544/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/UserInfoFromServerJsonFormat.java
+END
+SinaResponse.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/web/web_qqnews_rep/!svn/ver/7990/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/SinaResponse.java
+END
+ImgTxtLiveSummary.java
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/web/web_qqnews_rep/!svn/ver/6317/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/ImgTxtLiveSummary.java
+END
+OfflineNewslist.java
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/web/web_qqnews_rep/!svn/ver/13976/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/OfflineNewslist.java
+END
+SpecialReport.java
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/web/web_qqnews_rep/!svn/ver/11713/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/SpecialReport.java
+END
+DynamicChannel.java
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/web/web_qqnews_rep/!svn/ver/5567/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/DynamicChannel.java
+END
+HttpResult.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/web/web_qqnews_rep/!svn/ver/2108/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/HttpResult.java
+END
+RemoteConfig.java
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/web/web_qqnews_rep/!svn/ver/13432/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/RemoteConfig.java
+END
+Offline.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/web/web_qqnews_rep/!svn/ver/13976/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/Offline.java
+END
+FullNewsDetail.java
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/web/web_qqnews_rep/!svn/ver/13284/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/FullNewsDetail.java
+END
+RssItemsByRefresh.java
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/web/web_qqnews_rep/!svn/ver/17314/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/RssItemsByRefresh.java
+END
+NewsMsg.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/web/web_qqnews_rep/!svn/ver/17643/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/NewsMsg.java
+END
+OfflineItems.java
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/web/web_qqnews_rep/!svn/ver/14727/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/OfflineItems.java
+END
+Msg.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/web/web_qqnews_rep/!svn/ver/17900/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/Msg.java
+END
+Editor.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/web/web_qqnews_rep/!svn/ver/11068/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/Editor.java
+END
+SyncFavorResultItem.java
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/web/web_qqnews_rep/!svn/ver/16344/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/SyncFavorResultItem.java
+END
+Info.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/web/web_qqnews_rep/!svn/ver/5617/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/Info.java
+END
+PushConn.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/web/web_qqnews_rep/!svn/ver/3788/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/PushConn.java
+END
+ShareQzoneResponse.java
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/web/web_qqnews_rep/!svn/ver/8056/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/ShareQzoneResponse.java
+END
+ImgTxtLiveImage.java
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/web/web_qqnews_rep/!svn/ver/6727/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/ImgTxtLiveImage.java
+END
+ItemsByLoadMore.java
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/web/web_qqnews_rep/!svn/ver/3215/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/ItemsByLoadMore.java
+END
+RssCatListItemSearch.java
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/web/web_qqnews_rep/!svn/ver/18094/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/RssCatListItemSearch.java
+END
+BroadCast.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/web/web_qqnews_rep/!svn/ver/4810/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/BroadCast.java
+END
+Comment.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/web/web_qqnews_rep/!svn/ver/17327/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/Comment.java
+END
+ChannelList.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/web/web_qqnews_rep/!svn/ver/11406/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/ChannelList.java
+END
+HotAppListItem.java
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/web/web_qqnews_rep/!svn/ver/13616/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/HotAppListItem.java
+END
+SyncFavorResult.java
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/web/web_qqnews_rep/!svn/ver/16344/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/SyncFavorResult.java
+END
+RssCatListItem.java
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/web/web_qqnews_rep/!svn/ver/18094/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/RssCatListItem.java
+END
+OfflineChannel.java
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/web/web_qqnews_rep/!svn/ver/15161/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/OfflineChannel.java
+END
+LiveInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/web/web_qqnews_rep/!svn/ver/4927/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/LiveInfo.java
+END
+Pic.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/web/web_qqnews_rep/!svn/ver/15496/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/Pic.java
+END
+WriteBackState.java
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/web/web_qqnews_rep/!svn/ver/4303/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/WriteBackState.java
+END
+AppList.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/web/web_qqnews_rep/!svn/ver/18206/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/AppList.java
+END
+RssFirstSubscriptionList.java
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/web/web_qqnews_rep/!svn/ver/17641/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/RssFirstSubscriptionList.java
+END
+Image.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/web/web_qqnews_rep/!svn/ver/11456/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/Image.java
+END
+RssCatListCat.java
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/web/web_qqnews_rep/!svn/ver/16344/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/RssCatListCat.java
+END
+OfflinePreview.java
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/web/web_qqnews_rep/!svn/ver/14366/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/OfflinePreview.java
+END
+SplashData.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/web/web_qqnews_rep/!svn/ver/4415/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/SplashData.java
+END
+RssItemsByLoadMore.java
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/web/web_qqnews_rep/!svn/ver/17314/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/RssItemsByLoadMore.java
+END
+HotAppList.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/web/web_qqnews_rep/!svn/ver/18206/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/HotAppList.java
+END
+Servers.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/web/web_qqnews_rep/!svn/ver/16344/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/Servers.java
+END
+CommentCountItem.java
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/web/web_qqnews_rep/!svn/ver/13973/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/CommentCountItem.java
+END
+HttpInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/web/web_qqnews_rep/!svn/ver/2108/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/HttpInfo.java
+END
+RssCatList.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/web/web_qqnews_rep/!svn/ver/17602/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/RssCatList.java
+END
+ImgTxtLive.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/web/web_qqnews_rep/!svn/ver/16344/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/ImgTxtLive.java
+END
+RssChannelList.java
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/web/web_qqnews_rep/!svn/ver/17237/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/RssChannelList.java
+END
+RssSubItem.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/web/web_qqnews_rep/!svn/ver/17411/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/RssSubItem.java
+END
+Share.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/web/web_qqnews_rep/!svn/ver/7929/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/Share.java
+END
+VideoValue.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/web/web_qqnews_rep/!svn/ver/13433/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/VideoValue.java
+END
+ActivityViewInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/web/web_qqnews_rep/!svn/ver/12145/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/ActivityViewInfo.java
+END
+IdsAndItems.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/web/web_qqnews_rep/!svn/ver/11295/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/IdsAndItems.java
+END
+SimpleRet.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/web/web_qqnews_rep/!svn/ver/17890/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/SimpleRet.java
+END
+Video.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/web/web_qqnews_rep/!svn/ver/12967/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/Video.java
+END
+Project.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/web/web_qqnews_rep/!svn/ver/5579/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/Project.java
+END
+SinaAccountsInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/web/web_qqnews_rep/!svn/ver/8030/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/SinaAccountsInfo.java
+END
+ShareQQWeiboResponse.java
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/web/web_qqnews_rep/!svn/ver/8054/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/ShareQQWeiboResponse.java
+END
+WXUserInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/web/web_qqnews_rep/!svn/ver/8277/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/WXUserInfo.java
+END
+SimpleNewsDetail.java
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/web/web_qqnews_rep/!svn/ver/17398/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/SimpleNewsDetail.java
+END
+OfflineLib.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/web/web_qqnews_rep/!svn/ver/13976/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/OfflineLib.java
+END
+Content.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/web/web_qqnews_rep/!svn/ver/3074/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/Content.java
+END
+CommentCount.java
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/web/web_qqnews_rep/!svn/ver/13973/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/CommentCount.java
+END
+LiveTime.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/web/web_qqnews_rep/!svn/ver/4927/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/LiveTime.java
+END
+NewsMsgList.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/web/web_qqnews_rep/!svn/ver/16910/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/NewsMsgList.java
+END
+CheckSubscribe.java
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/web/web_qqnews_rep/!svn/ver/18077/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/CheckSubscribe.java
+END
+SubProject.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/web/web_qqnews_rep/!svn/ver/6301/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/SubProject.java
+END
+LocalChannel.java
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/web/web_qqnews_rep/!svn/ver/11406/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/LocalChannel.java
+END
+ImageType.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/web/web_qqnews_rep/!svn/ver/5351/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/ImageType.java
+END
+ChatMsg.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/web/web_qqnews_rep/!svn/ver/18126/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/ChatMsg.java
+END
+ShareWeChatFriendsResponse.java
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/web/web_qqnews_rep/!svn/ver/8275/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/ShareWeChatFriendsResponse.java
+END
+UserInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/web/web_qqnews_rep/!svn/ver/17544/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/UserInfo.java
+END
+RssAuthor.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/web/web_qqnews_rep/!svn/ver/16344/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/RssAuthor.java
+END
+FavorId.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/web/web_qqnews_rep/!svn/ver/16344/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/FavorId.java
+END
+Id.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/web/web_qqnews_rep/!svn/ver/11295/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/Id.java
+END
+FavorItemsByLoadMore.java
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/web/web_qqnews_rep/!svn/ver/16344/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/FavorItemsByLoadMore.java
+END
+ImageInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/web/web_qqnews_rep/!svn/ver/2108/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/ImageInfo.java
+END
+Item.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/web/web_qqnews_rep/!svn/ver/17874/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/Item.java
+END
+CommentList.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/web/web_qqnews_rep/!svn/ver/18116/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/model/pojo/CommentList.java
+END

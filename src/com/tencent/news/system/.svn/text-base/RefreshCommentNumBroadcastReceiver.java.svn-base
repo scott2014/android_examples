@@ -1,0 +1,61 @@
+package com.tencent.news.system;
+
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.webkit.WebView;
+import android.widget.TextView;
+
+import com.tencent.news.config.Constants;
+import com.tencent.news.ui.view.NewsWebView;
+import com.tencent.news.ui.view.WritingCommentView;
+
+public class RefreshCommentNumBroadcastReceiver extends BroadcastReceiver {
+
+	private String mItemId;
+
+	private TextView mTextView;
+
+	private WebView mWebView;
+
+	private WritingCommentView mWritingCommentView;
+
+	public RefreshCommentNumBroadcastReceiver(String id, TextView mTextView, WebView webview, WritingCommentView mWritingCommentView) {
+		this.mItemId = id;
+		this.mTextView = mTextView;
+		this.mWebView = webview;
+		this.mWritingCommentView = mWritingCommentView;
+	}
+
+	@Override
+	public void onReceive(Context context, Intent intent) {
+		if (intent!=null && Constants.REFRESH_COMMENT_NUMBER_ACTION.equals(intent.getAction())) {
+			String recognizeId = intent.getStringExtra(Constants.REFRESH_COMMENT_ITEM_ID);
+			int newestNumber = intent.getIntExtra(Constants.REFRESH_COMMENT_NUMBER, 0);
+			if (this.mItemId!=null && this.mItemId.equals(recognizeId)) {
+				if (mWebView != null) {
+					mWebView.loadUrl("javascript:tna.updateCommentCount('" + newestNumber + "')");
+				}
+				if (mWritingCommentView != null) {
+					mWritingCommentView.setCommentNum(newestNumber);
+					mWritingCommentView.refreshUI();
+				}
+				if (mTextView != null) {
+					mTextView.setText("" + newestNumber);
+				}
+			}
+		}
+	}
+
+	public void setmItemId(String mItemId) {
+		this.mItemId = mItemId;
+	}
+
+	public void setmTextView(TextView mTextView) {
+		this.mTextView = mTextView;
+	}
+
+	public void setmWebView(NewsWebView mWebView) {
+		this.mWebView = mWebView;
+	}
+}

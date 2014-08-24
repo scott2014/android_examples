@@ -1,0 +1,89 @@
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/web/web_qqnews_rep/!svn/ver/18061/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/cache
+END
+NewsItemCache.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/web/web_qqnews_rep/!svn/ver/18248/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/cache/NewsItemCache.java
+END
+FavorSQLiteHelper.java
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/web/web_qqnews_rep/!svn/ver/17133/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/cache/FavorSQLiteHelper.java
+END
+RssCatListCache.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/web/web_qqnews_rep/!svn/ver/17602/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/cache/RssCatListCache.java
+END
+FavorItemCache.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/web/web_qqnews_rep/!svn/ver/17833/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/cache/FavorItemCache.java
+END
+FavorDbItem.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/web/web_qqnews_rep/!svn/ver/16344/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/cache/FavorDbItem.java
+END
+NewsDetailCache.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/web/web_qqnews_rep/!svn/ver/16963/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/cache/NewsDetailCache.java
+END
+UserDBHelper.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/web/web_qqnews_rep/!svn/ver/13440/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/cache/UserDBHelper.java
+END
+NewsMsgGroupCache.java
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/web/web_qqnews_rep/!svn/ver/17534/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/cache/NewsMsgGroupCache.java
+END
+RssItemsCacheManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/web/web_qqnews_rep/!svn/ver/17902/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/cache/RssItemsCacheManager.java
+END
+FavorSyncHelper.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/web/web_qqnews_rep/!svn/ver/18203/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/cache/FavorSyncHelper.java
+END
+ChatMsgCache.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/web/web_qqnews_rep/!svn/ver/18226/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/cache/ChatMsgCache.java
+END
+RssChannelSyncHelper.java
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/web/web_qqnews_rep/!svn/ver/18248/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/cache/RssChannelSyncHelper.java
+END
+RssItemsCache.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/web/web_qqnews_rep/!svn/ver/17797/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/cache/RssItemsCache.java
+END
+UserRssChannelRecord.java
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/web/web_qqnews_rep/!svn/ver/18061/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/cache/UserRssChannelRecord.java
+END

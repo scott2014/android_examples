@@ -1,0 +1,17 @@
+K 10
+svn:ignore
+V 129
+*.classpath
+.classpath
+.settings
+ant.properties
+bin
+build.xml
+channel.tmp
+gen
+lint.xml
+local.properties
+proguard
+qqnews.keystore
+
+END

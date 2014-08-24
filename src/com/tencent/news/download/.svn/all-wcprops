@@ -1,0 +1,149 @@
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/web/web_qqnews_rep/!svn/ver/16549/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/download
+END
+DownloadDataCheck.java
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/web/web_qqnews_rep/!svn/ver/16344/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/download/DownloadDataCheck.java
+END
+OffLineDownloader.java
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/web/web_qqnews_rep/!svn/ver/16344/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/download/OffLineDownloader.java
+END
+IErrorProcessor.java
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/web/web_qqnews_rep/!svn/ver/13604/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/download/IErrorProcessor.java
+END
+DownloadManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/web/web_qqnews_rep/!svn/ver/18248/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/download/DownloadManager.java
+END
+AppPackageListener.java
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/web/web_qqnews_rep/!svn/ver/13767/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/download/AppPackageListener.java
+END
+DownloadAPNUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/web/web_qqnews_rep/!svn/ver/13604/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/download/DownloadAPNUtil.java
+END
+DownloadConstants.java
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/web/web_qqnews_rep/!svn/ver/14366/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/download/DownloadConstants.java
+END
+DownloadAppUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/web/web_qqnews_rep/!svn/ver/16344/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/download/DownloadAppUtil.java
+END
+DownloadTaskInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/web/web_qqnews_rep/!svn/ver/13604/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/download/DownloadTaskInfo.java
+END
+DownloadPackageReceiver.java
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/web/web_qqnews_rep/!svn/ver/13767/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/download/DownloadPackageReceiver.java
+END
+DownloadNotificationManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/web/web_qqnews_rep/!svn/ver/16549/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/download/DownloadNotificationManager.java
+END
+DownloadListener.java
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/web/web_qqnews_rep/!svn/ver/14047/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/download/DownloadListener.java
+END
+DownloadDataInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/web/web_qqnews_rep/!svn/ver/14000/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/download/DownloadDataInfo.java
+END
+DownloadDBHelper.java
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/web/web_qqnews_rep/!svn/ver/16344/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/download/DownloadDBHelper.java
+END
+APPDownloadListener.java
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/web/web_qqnews_rep/!svn/ver/13571/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/download/APPDownloadListener.java
+END
+MobileAPKInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/web/web_qqnews_rep/!svn/ver/13571/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/download/MobileAPKInfo.java
+END
+OffLineDownloadManagerNew.java
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/web/web_qqnews_rep/!svn/ver/15727/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/download/OffLineDownloadManagerNew.java
+END
+OffLineDownloadListener.java
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/web/web_qqnews_rep/!svn/ver/14437/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/download/OffLineDownloadListener.java
+END
+DownloadNetworkState.java
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/web/web_qqnews_rep/!svn/ver/13604/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/download/DownloadNetworkState.java
+END
+HttpMsg.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/web/web_qqnews_rep/!svn/ver/13604/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/download/HttpMsg.java
+END
+DownloadConnectionHelper.java
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/web/web_qqnews_rep/!svn/ver/16344/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/download/DownloadConnectionHelper.java
+END
+IProcessor.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/web/web_qqnews_rep/!svn/ver/13604/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/download/IProcessor.java
+END
+DownloadThreadPool.java
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/web/web_qqnews_rep/!svn/ver/13604/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/download/DownloadThreadPool.java
+END
+Downloader.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/web/web_qqnews_rep/!svn/ver/16344/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/download/Downloader.java
+END

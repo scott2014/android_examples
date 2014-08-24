@@ -1,0 +1,39 @@
+K 26
+svn:wc:ra_dav:activity-url
+V 29
+/web/web_qqnews_rep/!svn/act/
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/web/web_qqnews_rep/!svn/ver/18104/QQNews_Android_proj/trunk/TencentNews
+END
+.classpath
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/web/web_qqnews_rep/!svn/ver/18227/QQNews_Android_proj/trunk/TencentNews/.classpath
+END
+project.properties
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/web/web_qqnews_rep/!svn/ver/17156/QQNews_Android_proj/trunk/TencentNews/project.properties
+END
+proguard.txt
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/web/web_qqnews_rep/!svn/ver/16361/QQNews_Android_proj/trunk/TencentNews/proguard.txt
+END
+.project
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/web/web_qqnews_rep/!svn/ver/2392/QQNews_Android_proj/trunk/TencentNews/.project
+END
+AndroidManifest.xml
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/web/web_qqnews_rep/!svn/ver/18232/QQNews_Android_proj/trunk/TencentNews/AndroidManifest.xml
+END

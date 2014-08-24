@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/web/web_qqnews_rep/!svn/ver/18098/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/command
+END
+GetImageResponse.java
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/web/web_qqnews_rep/!svn/ver/16376/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/command/GetImageResponse.java
+END
+HttpDataRequest.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/web/web_qqnews_rep/!svn/ver/2108/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/command/HttpDataRequest.java
+END
+BaseHttpRequest.java
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/web/web_qqnews_rep/!svn/ver/17274/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/command/BaseHttpRequest.java
+END
+HttpDataResponse.java
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/web/web_qqnews_rep/!svn/ver/5305/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/command/HttpDataResponse.java
+END
+GetImageRequest.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/web/web_qqnews_rep/!svn/ver/2108/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/command/GetImageRequest.java
+END
+HttpTagDispatch.java
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/web/web_qqnews_rep/!svn/ver/18233/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/command/HttpTagDispatch.java
+END
+HttpPostRequest.java
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/web/web_qqnews_rep/!svn/ver/13600/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/command/HttpPostRequest.java
+END

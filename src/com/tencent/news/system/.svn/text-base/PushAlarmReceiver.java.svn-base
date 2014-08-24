@@ -1,0 +1,39 @@
+
+package com.tencent.news.system;
+
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+
+import com.tencent.news.boss.EventId;
+import com.tencent.news.config.Constants;
+import com.tencent.news.model.SettingInfo;
+import com.tencent.news.push.PushUtil;
+import com.tencent.news.system.observable.SettingObservable;
+import com.tencent.news.utils.SLog;
+import com.tencent.news.utils.WakeLockUtil;
+import com.tencent.omg.webdev.WebDev;
+
+public class PushAlarmReceiver extends BroadcastReceiver {
+
+    @Override
+    public void onReceive(Context context, Intent intent) {
+        if (intent.getAction().equals(Constants.ALARM_ACTION)) {
+            try {
+                SLog.push("wake up by AlramManager", "PushAlarmReceiver");
+
+                SettingInfo settingInfo = SettingObservable.getInstance().getData();
+                if (settingInfo.isIfPush()) {
+                    WakeLockUtil.acquireServiceWakeLock(context);
+                    PushUtil.startPushService(context, PushUtil.valueAlarm);
+                    // WakeLockUtil.releaseServiceWakeLock();
+                } else {
+                    WebDev.trackCustomEvent(context, EventId.BOSS_PUSH_UN_START, "PushAlarmReceiver not start push service by NO PUSH setting");
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+}

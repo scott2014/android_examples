@@ -1,0 +1,43 @@
+package com.tencent.news.system;
+
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Handler;
+import android.os.Message;
+import android.view.View;
+
+import com.tencent.news.ui.view.NetTipsBar;
+import com.tencent.news.utils.ApnUtil;
+
+public class NetTipsReceiver extends BroadcastReceiver {
+	private Handler mHandler = null;
+	private NetTipsBar mNetTipsBar = null;
+
+	public NetTipsReceiver(Handler mHandler) {
+		this.mHandler = mHandler;
+	}
+
+	public NetTipsReceiver(NetTipsBar mNetTipsBar) {
+		this.mNetTipsBar = mNetTipsBar;
+	}
+
+	@Override
+	public void onReceive(Context context, Intent intent) {
+		// TODO Auto-generated method stub
+		boolean bFlag = ApnUtil.isActivityApnConnected(context);
+		if (this.mHandler != null) {
+			Message msg = Message.obtain();
+			msg.obj = Boolean.valueOf(bFlag);
+			mHandler.sendMessage(msg);
+		}
+		if (mNetTipsBar != null) {
+			if (bFlag) {
+				mNetTipsBar.setVisibility(View.GONE);
+			} else {
+				mNetTipsBar.setVisibility(View.VISIBLE);
+			}
+		}
+	}
+
+}

@@ -1,0 +1,46 @@
+package com.tencent.news.system;
+
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.widget.BaseAdapter;
+
+import com.tencent.news.config.Constants;
+import com.tencent.news.model.SettingInfo;
+import com.tencent.news.model.pojo.Item;
+import com.tencent.news.shareprefrence.SpNewsHadRead;
+import com.tencent.news.system.observable.SettingObservable;
+import com.tencent.news.ui.view.PullImageHeadView;
+
+public class NewsHadReadReceiver extends BroadcastReceiver {
+	private String mChlid;
+	private BaseAdapter mAdapter;
+	private PullImageHeadView mHeadView;
+
+	public NewsHadReadReceiver(String chlid, BaseAdapter mAdapter,PullImageHeadView view) {
+		this.mChlid = chlid;
+		this.mAdapter = mAdapter;
+		this.mHeadView = view;
+	}
+
+	@Override
+	public void onReceive(Context context, Intent intent) {
+		if (intent.getAction().equals(Constants.NEWS_HAD_READ_ACTION + mChlid)) {
+			Bundle bundle = intent.getExtras();
+			Item item = (Item) bundle.getSerializable(Constants.NEWS_ID_KEY);
+			String position = bundle.getString(Constants.NEWS_CLICK_ITEM_POSITION);
+			SpNewsHadRead.saveNewsHadRead(item.getId());
+			if (mAdapter != null) {
+				mAdapter.notifyDataSetChanged();
+			}
+			if(mHeadView != null && position != null && position.equals("0")) {
+				SettingInfo settingInfo = SettingObservable.getInstance().getData();
+				if(settingInfo.isIfTextMode()){
+					mHeadView.setTextMode(item);
+				}
+			}
+		}
+	}
+
+}

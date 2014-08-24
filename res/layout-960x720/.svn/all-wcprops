@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/web/web_qqnews_rep/!svn/ver/16192/QQNews_Android_proj/trunk/TencentNews/res/layout-960x720
+END
+news_list_item_photos.xml
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/web/web_qqnews_rep/!svn/ver/15089/QQNews_Android_proj/trunk/TencentNews/res/layout-960x720/news_list_item_photos.xml
+END
+special_news_list_item.xml
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/web/web_qqnews_rep/!svn/ver/14525/QQNews_Android_proj/trunk/TencentNews/res/layout-960x720/special_news_list_item.xml
+END
+news_list_item.xml
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/web/web_qqnews_rep/!svn/ver/14546/QQNews_Android_proj/trunk/TencentNews/res/layout-960x720/news_list_item.xml
+END
+topic_list_item.xml
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/web/web_qqnews_rep/!svn/ver/14653/QQNews_Android_proj/trunk/TencentNews/res/layout-960x720/topic_list_item.xml
+END
+night_news_list_item.xml
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/web/web_qqnews_rep/!svn/ver/15089/QQNews_Android_proj/trunk/TencentNews/res/layout-960x720/night_news_list_item.xml
+END
+night_special_news_list_item.xml
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/web/web_qqnews_rep/!svn/ver/14525/QQNews_Android_proj/trunk/TencentNews/res/layout-960x720/night_special_news_list_item.xml
+END

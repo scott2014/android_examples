@@ -1,0 +1,352 @@
+package com.tencent.news.cache;
+
+import java.io.File;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Properties;
+
+import android.content.Context;
+import android.os.Handler;
+
+import com.tencent.news.api.TencentNews;
+import com.tencent.news.boss.EventId;
+import com.tencent.news.command.HttpDataRequest;
+import com.tencent.news.command.HttpDataResponse;
+import com.tencent.news.command.HttpTagDispatch.HttpTag;
+import com.tencent.news.config.Constants;
+import com.tencent.news.http.HttpEngine.HttpCode;
+import com.tencent.news.model.pojo.Id;
+import com.tencent.news.model.pojo.Item;
+import com.tencent.news.model.pojo.ItemsByLoadMore;
+import com.tencent.news.model.pojo.ItemsByRefresh;
+import com.tencent.news.task.TaskManager;
+import com.tencent.news.utils.FileUtil;
+import com.tencent.news.utils.SLog;
+import com.tencent.news.utils.StringUtil;
+import com.tencent.omg.webdev.WebDev;
+
+public class NewsItemCache implements Serializable, HttpDataResponse {
+
+	public interface QueryCacheCallback {
+		void onQueryError(HttpTag queryTag);
+
+		void onQueryComplete(HttpTag queryTag, List<Item> result);
+
+		void onStartQueryFromServer(HttpTag queryType);
+
+		void onQueryingFromServer(HttpTag queryType);
+	}
+
+	private static final String TAG = "NewsItemCache";
+	private static final int CACHE_PAGE_SIZE = 20;
+
+	private static final long serialVersionUID = 266301265128172964L;
+
+	private boolean mIsQuerying = false;
+
+	private File mCacheFile;
+	private Context mContext;
+	private String mChannel;
+
+	private int mQueryPage = 0;
+
+	private QueryCacheCallback mCallback;
+
+	private List<Item> mCacheList = new ArrayList<Item>();
+
+	private boolean mIsReady = false;
+	private boolean mHasQueryBeforReady = false;
+	private Object mReadLock = new Object();
+	private Handler mHandler = new Handler();
+	
+	@Override
+	public void onHttpRecvOK(HttpTag tag, Object result) {
+		if (tag.equals(HttpTag.NEWS_NEWS_TOP)) {
+
+			endTrack(0, EventId.VALUE_RESCODE_SUCCESS);
+
+			ItemsByRefresh mDataList = (ItemsByRefresh) result;
+			if (mDataList != null) {
+				if (mDataList.getRet().equals("0")) {
+					Item[] items = mDataList.getIdlist()[0].getNewslist();
+					if (items != null && items.length > 0) {
+						mDataList.getIdlist()[0].putCommentNumIntoItem();
+						for(Item item : items) {
+							String bstract = StringUtil.replaceBlank(item.getBstract());
+							item.setBstract(StringUtil.StringFilter(bstract));
+						}
+						generateCacheData(mDataList.getIdlist()[0].getIds(), mDataList.getIdlist()[0].getNewslist());
+					}
+					mCallback.onQueryComplete(HttpTag.NEWS_NEWS_TOP, new ArrayList<Item>(mCacheList));
+				}
+			} else {
+				mCallback.onQueryError(HttpTag.NEWS_NEWS_TOP);
+			}
+		} else if (tag.equals(HttpTag.NEWS_LIST_ITEMS)) {
+
+			endTrack(mQueryPage, EventId.VALUE_RESCODE_SUCCESS);
+
+			ItemsByLoadMore mItemsByLoadMore = (ItemsByLoadMore) result;
+
+			if (mItemsByLoadMore != null && mItemsByLoadMore.getNewslist() != null) {
+				final List<Item> list = new ArrayList<Item>();
+				for (Item mItem : mItemsByLoadMore.getNewslist()) {
+					list.add(mItem);
+					String bstract = StringUtil.replaceBlank(mItem.getBstract());
+					mItem.setBstract(StringUtil.StringFilter(bstract));
+				}
+
+				mergeCacheData(list);
+				int begin = mQueryPage * CACHE_PAGE_SIZE;
+				int end = begin + CACHE_PAGE_SIZE > mCacheList.size() ? mCacheList.size() : begin + CACHE_PAGE_SIZE;
+				mCallback.onQueryComplete(HttpTag.NEWS_LIST_ITEMS, mCacheList.subList(begin, end));
+			} else {
+				mCallback.onQueryError(HttpTag.NEWS_LIST_ITEMS);
+			}
+		}
+
+		mIsQuerying = false;
+	}
+
+	private void endTrack(int page, String resCode) {
+		Properties p = getPts(page);
+		WebDev.trackCustomEndKVEvent(mContext, EventId.ITIL_LOAD_CHANNEL_TIME, p);
+		Properties newp = new Properties(p);
+		newp.setProperty(EventId.KEY_RESCODE, resCode);
+		WebDev.trackCustomEvent(mContext, EventId.ITIL_LOAD_CHANNEL_TIME_RESULT, newp);
+	}
+
+	@Override
+	public void onHttpRecvError(HttpTag tag, HttpCode retCode, String msg) {
+		if (tag.equals(HttpTag.NEWS_NEWS_TOP)) {
+
+			endTrack(0, EventId.VALUE_RESCODE_ERROR);
+
+			mCallback.onQueryError(HttpTag.NEWS_NEWS_TOP);
+		} else if (tag.equals(HttpTag.NEWS_LIST_ITEMS)) {
+
+			endTrack(mQueryPage, EventId.VALUE_RESCODE_ERROR);
+
+			mCallback.onQueryError(HttpTag.NEWS_LIST_ITEMS);
+		}
+
+		mIsQuerying = false;
+	}
+
+	@Override
+	public void onHttpRecvCancelled(HttpTag tag) {
+
+		mIsQuerying = false;
+	}
+
+	/**
+	 * 向磁盘上读写的200个item
+	 */
+
+	public NewsItemCache(Context mContext, String channel, QueryCacheCallback callback) {
+		this.mContext = mContext;
+		this.mChannel = channel;
+		this.mCallback = callback;
+		this.mCacheFile = new File(Constants.CACHE_PATH + channel);
+		read();
+	}
+
+	synchronized public void getLatestData() {
+		if (mIsQuerying) {
+			mCallback.onQueryingFromServer(HttpTag.NEWS_NEWS_TOP);
+		} else {
+			mIsQuerying = true;
+			mCallback.onStartQueryFromServer(HttpTag.NEWS_NEWS_TOP);
+			HttpDataRequest request = TencentNews.getInstance().getQQNewsIndexAndItems(mChannel);
+			TaskManager.startHttpDataRequset(request, this);
+			WebDev.trackCustomBeginKVEvent(mContext, EventId.ITIL_LOAD_CHANNEL_TIME, getPts(0));
+		}
+	}
+
+	private Properties getPts(int page) {
+
+		Properties pts = new Properties();
+		pts.setProperty(EventId.KEY_CHANNELID, mChannel);
+		pts.setProperty(EventId.KEY_PAGE, "" + page);
+		return pts;
+	}
+
+	public synchronized void getCacheDataByPage(int page) {
+		mQueryPage = page;
+		synchronized(mReadLock) {
+			if(mIsReady) {
+				if(this.mCacheList == null || mCacheList.size() == 0) {
+					mCallback.onQueryComplete(HttpTag.NEWS_LIST_ITEMS, new ArrayList<Item>());
+					return;
+				}
+				if (this.mCacheList != null && page >= 0 && page * CACHE_PAGE_SIZE < this.mCacheList.size()) {
+					int begin = page * CACHE_PAGE_SIZE;
+					List<Item> result = mCacheList.subList(begin, begin + CACHE_PAGE_SIZE > mCacheList.size() ? mCacheList.size() : begin + CACHE_PAGE_SIZE);
+					String needLoad = getNeedLoadFromNetItemIds(result);
+					if(needLoad != null && !needLoad.equals("")) {
+						if(mIsQuerying) {
+							mCallback.onQueryingFromServer(HttpTag.NEWS_LIST_ITEMS);
+						} else {
+							mIsQuerying = true;
+							mCallback.onStartQueryFromServer(HttpTag.NEWS_LIST_ITEMS);
+							HttpDataRequest request = TencentNews.getInstance().getQQNewsListItems(needLoad, mChannel);
+							TaskManager.startHttpDataRequset(request, this);
+							
+							WebDev.trackCustomBeginKVEvent(mContext, EventId.ITIL_LOAD_CHANNEL_TIME, getPts(mQueryPage));
+							
+						}
+					} else {
+						mCallback.onQueryComplete(HttpTag.NEWS_LIST_ITEMS, new ArrayList<Item>(result));
+					}
+				}
+			} else {
+				mHasQueryBeforReady = true;
+			}
+		}
+	}
+
+	/**
+	 * 从文件读取数据
+	 */
+	@SuppressWarnings("unchecked")
+	private void read() {
+		(new Thread(new Runnable() {
+			@Override
+			public void run() {
+				// 从文件读取数据
+				Object o = FileUtil.readCache(mCacheFile);
+				if (o instanceof List<?>) {
+					mCacheList = (List<Item>) o;
+				}
+				synchronized(mReadLock) {
+					mIsReady = true;
+					if(mCacheList != null && mHasQueryBeforReady) {
+						mHandler.post(new Runnable() {
+							@Override
+							public void run() {							
+								getCacheDataByPage(mQueryPage);
+							}
+						});
+					}
+				}
+			}
+		})).start();
+	}
+
+	/**
+	 * 向缓存文件写数据
+	 */
+	synchronized private void write() {
+		if (mCacheList.size() > 0) {
+			FileUtil.saveCache(mCacheFile, mCacheList);
+		}
+	}
+
+	/**
+	 * 将200id和item合并,最终生成200个id和200个item
+	 * 
+	 * @param itemByRefresh
+	 * @param idByRefresh
+	 * 
+	 */
+	private synchronized void generateCacheData(final Id[] idByRefresh, final Item[] itemByRefresh) {
+		HashMap<String, Item> oldItemMap = new HashMap<String, Item>((int) (mCacheList.size() * 1.5));
+		if (mCacheList != null && mCacheList.size() > 0) {
+			for (Item i : mCacheList) {
+				if (i != null && i.getBstract() != null && i.getBstract().length() > 0 && i.getTitle() != null && i.getTitle().length() > 0) {
+					oldItemMap.put(i.getId(), i);
+				}
+			}
+		}
+
+		mCacheList = new ArrayList<Item>();
+
+		for (int i = 0; i < itemByRefresh.length; i++) {
+			Item temp = itemByRefresh[i];
+			temp.setCommentNum(idByRefresh[i].getComments());
+			temp.setVideo_hits(idByRefresh[i].getVideo_hits());
+			mCacheList.add(temp);
+		}
+
+		for (int i = itemByRefresh.length; i < idByRefresh.length; i++) {
+			Id id = idByRefresh[i];
+			Item searchItem = null;
+			if (oldItemMap.containsKey(id.getId())) {
+				searchItem = oldItemMap.get(id.getId());
+			} else {
+				searchItem = new Item(id.getId());
+			}
+			searchItem.setCommentNum(id.getComments());
+			searchItem.setVideo_hits(id.getVideo_hits());
+			mCacheList.add(searchItem);
+		}
+
+		new Thread(new Runnable() {
+			@Override
+			public void run() {
+				if (mCacheList.size() > 0) {
+					write();
+				}
+			}
+		}).start();
+	}
+
+	/*
+	 * return "" if no items need to load from server
+	 */
+	private synchronized String getNeedLoadFromNetItemIds(List<Item> cachePageData) {
+		StringBuffer sb = new StringBuffer();
+		for (Item item : cachePageData) {
+			if (item != null && item.getArticletype() != null && item.getArticletype().length() > 0) {
+				continue;
+			} else {
+				if (sb.length() > 0) {
+					sb.append(',');
+				}
+				sb.append(item.getId());
+			}
+		}
+
+		return sb.toString();
+	}
+
+	/**
+	 * 根据加载更多得到的数据,补齐之前某一区间里不完整的item
+	 * 
+	 * @param list
+	 */
+	private void mergeCacheData(List<Item> list) {
+		if (mCacheList == null || mCacheList.size() == 0) {
+			return;
+		}
+		HashMap<String, Item> refreshMap = new HashMap<String, Item>((int) (list.size() * 1.5));
+		for (Item temp : list) {
+			refreshMap.put(temp.getId(), temp);
+		}
+		for (int i = 0; i < mCacheList.size(); i++) {
+			if (refreshMap.size() == 0) {
+				break;
+			}
+			Item temp = mCacheList.get(i);
+			if (refreshMap.containsKey(temp.getId())) {
+				Item searchItem = refreshMap.get(temp.getId());
+				searchItem.setCommentNum(temp.getCommentNum());
+				searchItem.setVideo_hits(temp.getVideo_hits());
+				mCacheList.set(i, searchItem);
+				refreshMap.remove(temp.getId());
+			}
+		}
+
+		new Thread(new Runnable() {
+			@Override
+			public void run() {
+				if (mCacheList.size() > 0) {
+					write();
+				}
+			}
+		}).start();
+	}
+}

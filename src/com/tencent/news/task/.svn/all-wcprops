@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/web/web_qqnews_rep/!svn/ver/17884/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/task
+END
+RunnablePool.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/web/web_qqnews_rep/!svn/ver/11816/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/task/RunnablePool.java
+END
+ImageDownloadPool.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/web/web_qqnews_rep/!svn/ver/16344/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/task/ImageDownloadPool.java
+END
+WorkThreadPool.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/web/web_qqnews_rep/!svn/ver/12826/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/task/WorkThreadPool.java
+END
+PngImageDownloadPool.java
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/web/web_qqnews_rep/!svn/ver/16373/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/task/PngImageDownloadPool.java
+END
+HttpDataDownloadPool.java
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/web/web_qqnews_rep/!svn/ver/17884/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/task/HttpDataDownloadPool.java
+END
+TaskManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/web/web_qqnews_rep/!svn/ver/16344/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/task/TaskManager.java
+END

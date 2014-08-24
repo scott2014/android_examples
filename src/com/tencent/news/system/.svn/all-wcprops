@@ -1,0 +1,101 @@
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/web/web_qqnews_rep/!svn/ver/18101/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/system
+END
+ClearCacheReceiver.java
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/web/web_qqnews_rep/!svn/ver/16344/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/system/ClearCacheReceiver.java
+END
+Application.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/web/web_qqnews_rep/!svn/ver/18236/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/system/Application.java
+END
+RefreshCommentNumBroadcastReceiver.java
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/web/web_qqnews_rep/!svn/ver/13779/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/system/RefreshCommentNumBroadcastReceiver.java
+END
+NewsHadReadReceiver.java
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/web/web_qqnews_rep/!svn/ver/16344/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/system/NewsHadReadReceiver.java
+END
+SpecialNewsHadReadReceiver.java
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/web/web_qqnews_rep/!svn/ver/16344/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/system/SpecialNewsHadReadReceiver.java
+END
+NetTipsReceiver.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/web/web_qqnews_rep/!svn/ver/16344/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/system/NetTipsReceiver.java
+END
+BootBroadcastReceiver.java
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/web/web_qqnews_rep/!svn/ver/18248/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/system/BootBroadcastReceiver.java
+END
+OfflineNewsHadReadReceiver.java
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/web/web_qqnews_rep/!svn/ver/16344/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/system/OfflineNewsHadReadReceiver.java
+END
+NetStatusReceiver.java
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/web/web_qqnews_rep/!svn/ver/17900/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/system/NetStatusReceiver.java
+END
+PushAlarmReceiver.java
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/web/web_qqnews_rep/!svn/ver/18248/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/system/PushAlarmReceiver.java
+END
+AddCommentBroadcastReceiver.java
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/web/web_qqnews_rep/!svn/ver/12015/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/system/AddCommentBroadcastReceiver.java
+END
+ExternalStorageReceiver.java
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/web/web_qqnews_rep/!svn/ver/16344/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/system/ExternalStorageReceiver.java
+END
+ChannelLoadReceiver.java
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/web/web_qqnews_rep/!svn/ver/16344/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/system/ChannelLoadReceiver.java
+END
+WeiXinAuthBroadcastReceiver.java
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/web/web_qqnews_rep/!svn/ver/16344/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/system/WeiXinAuthBroadcastReceiver.java
+END
+MonitorServiceReceiver.java
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/web/web_qqnews_rep/!svn/ver/18248/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/system/MonitorServiceReceiver.java
+END
+CrashHandler.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/web/web_qqnews_rep/!svn/ver/5854/QQNews_Android_proj/trunk/TencentNews/src/com/tencent/news/system/CrashHandler.java
+END

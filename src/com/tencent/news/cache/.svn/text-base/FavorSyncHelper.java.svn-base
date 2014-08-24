@@ -1,0 +1,304 @@
+package com.tencent.news.cache;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import android.content.Context;
+import android.util.Log;
+
+import com.tencent.news.api.TencentNews;
+import com.tencent.news.command.HttpDataRequest;
+import com.tencent.news.command.HttpDataResponse;
+import com.tencent.news.command.HttpTagDispatch.HttpTag;
+import com.tencent.news.http.HttpEngine.HttpCode;
+import com.tencent.news.model.pojo.SyncFavorResult;
+import com.tencent.news.model.pojo.SyncFavorResultItem;
+import com.tencent.news.model.pojo.UserInfo;
+import com.tencent.news.system.Application;
+import com.tencent.news.task.TaskManager;
+import com.tencent.news.utils.SLog;
+
+public class FavorSyncHelper implements HttpDataResponse {
+
+    private static FavorSyncHelper sInstance = null;
+    
+    protected Context mContext;
+    
+    protected final int SYNC_IDLE = 0;
+    protected final int SYNC_ING = 1;
+    protected final int SYNC_PENDING = 2;
+    protected int syncStatus = SYNC_IDLE;
+    protected Object syncLock = new Object();
+    
+    protected final String DEFAULT_USER_ACCOUNT = "0";
+    
+    private FavorSQLiteHelper favorDB = null;
+    private int syncLoopNum=0;//同步时循环提交了多少次
+
+    public static FavorSyncHelper getInstance() {
+        synchronized (FavorSyncHelper.class) {
+            if (sInstance == null) {
+                sInstance = new FavorSyncHelper();
+                sInstance.openDB();
+            }
+        }
+        return sInstance;
+    }
+    
+    protected FavorSyncHelper() {
+        mContext = Application.getInstance().getApplicationContext();
+    }
+
+    public String getCurrentUser() {
+        UserInfo uf = UserDBHelper.getInstance().getUserInfo();
+        return uf != null ? uf.getAccount() : DEFAULT_USER_ACCOUNT;
+    }
+    
+    public String getDefaultUser(){
+        return DEFAULT_USER_ACCOUNT;
+    }
+    
+    public FavorDbItem addFavor(String newsId, int id_type) {
+        boolean success = false;
+    	newsId=translateId(newsId);//最新版本
+        FavorDbItem item = favorDB.findFavorItem(newsId, this.getCurrentUser());
+        if (item == null) {
+            item = new FavorDbItem();
+            item.news_id = newsId;
+            item.user_id = getCurrentUser();
+            item.source = id_type;
+            item.timestamp = System.currentTimeMillis() / 1000;
+            item.operation = FavorDbItem.OP_ADD;
+            success = favorDB.insert(item);
+        } else if (item.operation == FavorDbItem.OP_DEL) {
+            item.operation = FavorDbItem.OP_ADD;
+            item.timestamp = System.currentTimeMillis() / 1000;
+            success = favorDB.update(item);
+        }
+        
+        if (success) {
+            sync();
+        }
+        return item;
+    }
+    
+    public FavorDbItem delFavor(String newsId, int id_type){
+        boolean success = false;
+    	newsId=translateId(newsId);//最新版本
+        FavorDbItem item = favorDB.findFavorItem(newsId, this.getCurrentUser());
+        if (item == null) {
+            item = new FavorDbItem();
+            item.news_id = newsId;
+            item.user_id = getCurrentUser();
+            item.source = id_type;
+            item.timestamp = System.currentTimeMillis() / 1000;
+            item.operation = FavorDbItem.OP_DEL;
+            success = favorDB.insert(item);
+        } else if (item.operation != FavorDbItem.OP_DEL) {
+            item.operation = FavorDbItem.OP_DEL;
+            success = favorDB.update(item);
+        }
+        
+        if (success) {
+            sync();
+        }
+        return item;
+    }
+    
+    /**
+     * 判断文章是否收藏过
+     * @param newsId
+     * @param id_type
+     * @return
+     */
+    public boolean isFavor(String newsId, int id_type){
+    	boolean retValue=false;
+    	newsId=translateId(newsId);//最新版本
+    	FavorDbItem item = favorDB.findFavorItem(newsId, this.getCurrentUser());
+    	if (item != null && item.operation != FavorDbItem.OP_DEL) {
+    		retValue = true;
+    	}
+    	return retValue;
+    }
+    
+    /**
+     * 转换新闻id,新闻id最后两位表示新闻版本号，00表示最新版本
+     * @param newsId 新闻id
+     * @return
+     */
+    public String translateId(String newsId){
+    	if(newsId==null || newsId.length()<3){
+    		return newsId;
+    	}
+    	//SLog.i("FavorSyncHelper", "translateId "+newsId);
+    	return newsId.substring(0, newsId.length()-2)+"00";
+    }
+
+    /**
+     * 和服务器同步
+     */
+    public final void sync() {
+        synchronized (syncLock) {
+        	SLog.i("FavorSyncHelper", "sync ");
+            if (UserDBHelper.getInstance().getUserInfo() == null) {
+                return;
+            }
+            SLog.i("FavorSyncHelper", "sync user:"+getCurrentUser());
+            if (syncStatus == SYNC_IDLE) {
+                syncStatus = SYNC_ING;
+            }
+//            } else if (syncStatus == SYNC_ING) {
+//                syncStatus = SYNC_PENDING;
+//            }
+            if (syncStatus == SYNC_ING) {
+            	syncLoopNum=0;
+                doSync();
+            }
+        }
+    }
+    
+    private void openDB() {
+        if (favorDB == null || !favorDB.isOpen()) {
+            try {
+                favorDB = new FavorSQLiteHelper();
+                favorDB.open();
+            } catch (Exception e) {
+                Log.e("sync_db", e.getMessage());
+            }
+        }
+    }
+    
+    protected void doSync() {
+        //ArrayList<FavorDbItem> list = favorDB.getFavorItemsCache(this.getCurrentUser());
+//    	ArrayList<FavorDbItem> listAllStatus = favorDB.getFavorItemsCacheAllStatus(this.getCurrentUser());
+//    	if (listAllStatus != null && listAllStatus.size() > 0) {
+//    		for (FavorDbItem item : listAllStatus) {
+//    			SLog.i("FavorSyncHelper", "doSync item："+item.news_id+" "+item.source+" "+item.timestamp+" "+item.operation);
+//    		}
+//    	}
+    	//kimhuang(黄智丛) 2013-06-19 16:43:41
+    	//后台这边调整好了 可以用了  现在做了调整 添加接口add参数需要加上一个时间参数 格式是 id:time,id:time
+    	long nowTimestamp=System.currentTimeMillis() / 1000;
+        ArrayList<FavorDbItem> list = favorDB.getFavorItemsForSync(this.getCurrentUser());
+        if (list != null && list.size() > 0) {
+            String addParamsString = "";
+            String delParamsString = "";
+            for (FavorDbItem item : list) {
+                if (item.operation == FavorDbItem.OP_ADD) {
+                    if (addParamsString.length() > 0) {
+                        addParamsString += ",";
+                    }
+                    addParamsString += item.news_id;
+                    if(nowTimestamp>=item.timestamp){
+                    	addParamsString += ":"+String.valueOf(nowTimestamp-item.timestamp);
+                    }else{
+                    	addParamsString += ":0";
+                    }
+                } else if (item.operation == FavorDbItem.OP_DEL) {
+                    if (delParamsString.length() > 0) {
+                        delParamsString += ",";
+                    }
+                    delParamsString += (item.news_id + ":" + item.source);
+                }
+            }
+            
+            String paramString = "";
+            if (addParamsString.length() > 0) {
+                paramString = "add=" + addParamsString;
+            }
+            if (delParamsString.length() > 0) {
+                if (paramString.length() > 0) {
+                    paramString += "&";
+                }
+                paramString += "del=" + delParamsString;
+            }
+            if(paramString==null || paramString.length()==0){
+            	return;//没有需要同步的内容
+            }
+            SLog.i("FavorSyncHelper", "doSync "+paramString);
+            HttpDataRequest request = TencentNews.getInstance().syncFavorList(paramString);
+            TaskManager.startHttpDataRequset(request, this);
+        }else{
+        	 SLog.i("FavorSyncHelper", "doSync list.size=0");
+        }
+    }
+
+    @Override
+    public void onHttpRecvOK(HttpTag tag, Object result) {
+        if (tag.equals(HttpTag.SYNC_FAVOR_LIST)) {
+            SyncFavorResult syncFavorResult = null;
+            syncFavorResult = (SyncFavorResult) result;
+            if (syncFavorResult.getRet().equals("0")) {
+                // TODO sync
+            	boolean hasSync=false;
+            	boolean retOk=false;
+            	String account=this.getCurrentUser();
+            	List<SyncFavorResultItem> add=syncFavorResult.getAdd();
+            	List<SyncFavorResultItem> del=syncFavorResult.getDel();
+            	if(add!=null && add.size()>0){
+            		if(add.size()>=19){
+            			hasSync=true;
+            		}
+            		List<FavorDbItem> upList= new ArrayList<FavorDbItem>();
+            		for (SyncFavorResultItem item : add) {
+            			if(item.getRet().equals("0")){
+            				FavorDbItem dbItem = favorDB.findFavorItem(item.getId(), account);
+            				if(dbItem!=null){
+            					dbItem.operation=FavorDbItem.OP_SYNCED;
+            					upList.add(dbItem);
+            					//favorDB.update(dbItem);
+            				}
+            			}
+            		}
+            		favorDB.updates(upList);
+            		if(upList.size()>0){
+            			retOk=true;
+            		}
+            		upList.clear();
+            	}
+            	if(del!=null && del.size()>0){
+            		if(del.size()>=19){
+            			hasSync=true;
+            		}
+            		List<String> delList= new ArrayList<String>();
+            		for (SyncFavorResultItem item : del) {
+            			if(item.getRet().equals("0")){
+            				delList.add(item.getId());
+            				//favorDB.delete(item.getId(), account);
+            			}
+            		}
+            		favorDB.deletes(delList, account);
+            		if(delList.size()>0){
+            			retOk=true;
+            		}
+            		delList.clear();
+            	}
+            	add.clear();
+            	del.clear();
+            	syncLoopNum++;
+            	if(retOk && hasSync && syncLoopNum<=30){
+            		 doSync();
+            	}else{
+            		syncStatus = SYNC_IDLE;//同步完成
+            	}
+            }else{
+            	syncStatus = SYNC_IDLE;//本次同步失败，允许进行下次同步操作
+            }
+        }
+    }
+
+    @Override
+    public void onHttpRecvError(HttpTag tag, HttpCode retCode, String msg) {
+        Log.e("august", this.toString() + " sync failed. msg = " + msg);
+    }
+
+    @Override
+    public void onHttpRecvCancelled(HttpTag tag) {
+    }
+
+    public void onLoginSuccess() {
+        favorDB.updateDefaultUserAccount(DEFAULT_USER_ACCOUNT, getCurrentUser());
+        sync();
+    }
+
+}

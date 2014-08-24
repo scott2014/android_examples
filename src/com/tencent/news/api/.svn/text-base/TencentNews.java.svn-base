@@ -1,0 +1,1646 @@
+
+package com.tencent.news.api;
+
+import java.net.URLEncoder;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+
+import com.tencent.news.cache.NewsDetailCache.CacheType;
+import com.tencent.news.cache.RssChannelSyncHelper;
+import com.tencent.news.cache.UserDBHelper;
+import com.tencent.news.command.HttpDataRequest;
+import com.tencent.news.command.HttpPostRequest;
+import com.tencent.news.command.HttpTagDispatch.HttpTag;
+import com.tencent.news.config.Constants;
+import com.tencent.news.shareprefrence.SpConfig;
+import com.tencent.news.shareprefrence.SpUserUin;
+import com.tencent.news.utils.MobileUtil;
+import com.tencent.news.utils.SLog;
+
+/**
+ * @author haiyandu
+ */
+public class TencentNews {
+
+    // BASE_URL废除，分为读、写接口，底层页和push用到CDN
+    // public static final String BASE_URL = "http://inews.qq.com/";
+    // 分离为读和写两个URL
+    // public static final String TEST_BASE_URL = "http://icar.qq.com/";
+
+    public static final String READ_BASE_URL = "http://r.inews.qq.com/";
+    public static final String WRITE_BASE_URL = "http://w.inews.qq.com/";
+    public static final String CDN_BASE_URL = "http://rc.inews.qq.com/";
+
+    public static final String QQNEWS_LOG = "uploadQQNewsLogsAndroid";
+    public static final String QQNEWS_UPLOAD_LOG = WRITE_BASE_URL + QQNEWS_LOG;
+    public static final String INPUT_VOTE_URL = "http://input.vote.qq.com/survey.php";
+    public static final String VOTE_URL_REFERE = "http://page.vote.qq.com";
+    public static final String IMAGE_TEXT_LIVE_URL = "http://zhibo.inews.qq.com/";
+
+    private static final String QQNEWS_INDEX_ANDITEMS = "getQQNewsIndexAndItems";
+    private static final String QQNEWS_VOTE_INFO = "getQQVoteInfo";
+    private static final String QQNEWS_LIST_ITEMS = "getQQNewsListItems";
+    private static final String QQNEWS_SPECIAL_LIST_ITEMS = "getQQNewsSpecialListItems";
+    private static final String QQNEWS_SPLASH = "getSplashAndroid";
+    private static final String VIDEO_LIVE_STATUS = "getVideoLiveStatus";
+    private static final String SUB_CHANNELS = "getSubChannels";
+    private static final String SUB_CHANNELS_RESERVED = "getSubChannelsReserved";
+    private static final String EXTENDED_SUB_CHANNELS = "getExtendedChannelsAndroid";
+    private static final String IMG_TXT_LIVE = "getZhiboInfo";
+    private static final String SUBNEWS_MSG_GROUP = "getSubNewsMsgGroup";
+    private static final String DEL_SUBNEWS_MSG_GROUP = "delSubNewsMsg";
+    private static final String SUBNEWS_MSG_LIST = "getSubNewsMsgList";
+    private static final String ADD_SUBNEWS_MSG = "addSubNewsMsg";
+    private static final String CHECK_NEW_RSS = "checkForUpdate";
+
+    // “我的消息”中与评论相关的
+    private static final String MYCOMMENTS = "getMyComments";// 我的评论
+    private static final String ATMECOMMENTS = "getAtComments";// 提到我的评论
+    private static final String DEL_COMMENT = "delComment"; // 删除一条评论
+    private static final String SET_COMMENT_TOP = "setTop"; // 置顶或者取消置顶
+
+    // push数据拉取接口
+    public static final String GET_FULL_NEWS = "getFullNews";
+    // public static final String GET_FULL_NEWS = "getQQNewsFullHtmlContent";
+    // 底层页数据拉取接口
+    public static final String GET_SIMPLE_NEWS = "getSimpleNews";
+    // public static final String GET_SIMPLE_NEWS =
+    // "getQQNewsSimpleHtmlContent";
+
+    // 同步订阅
+    private static final String RSS_SYNC_CHANNEL_LIST = "getAndSetUserSubList";
+    // 获取某个媒体索引
+    private static final String RSS_INDEX_ANDITEMS = "getSubNewsIndex";
+    // 获取媒体聚合索引
+    private static final String RSS_INDEX_ANDITEMS_MULTI = "getSubNewsIndexMulti";
+    // 从id获取列表信息（拉取更多）
+    private static final String RSS_LIST_ITEMS = "getSubNewsListItems";
+    // 覆盖服务器的订阅
+    private static final String RSS_COVER_CHANNEL_LIST = "coverUserSubList";
+    // get first subscription list
+    private static final String RSS_FIRST_CHANNEL_LIST = "getFirstSubList";
+
+    // 同步收藏
+    private static final String SYNC_FAVOR_LIST = "updateCollList";
+    // 拉取收藏列表
+    private static final String GET_FAVOR_LIST = "getCollIndexAndListitems";
+    // 拉取更多收藏
+    private static final String GET_FAVOR_LIST_ITEMS = "getCollListitems";
+
+    private static final String OFFLINE_LIST = "getPackList";
+
+    /**
+     * push消息接口
+     */
+    private static final String TEST_PUSH_CONFIG = "http://push.qq.com/push/conf";
+    private static final String PUSH_CONFIG = "http://net.mpush.qq.com/push/conf";
+    private static final String PUSH_CONNECT = "http://wap.mpush.qq.com/push/conn";
+    private static final String PUSH_BASE_URL = "http://cdn.inews.qq.com/";
+    /**
+     * 写评论和同步微博合成一个的接口
+     */
+    private static final String QQNEWS_MULTI = "shareQQNewsMulti";
+    private static final String GET_USER_INFO_AFTER_WTLOGIN = "getUserInfoPhone";
+    private static final String QQNEWS_COMMENT_LIST = "getQQNewsComment";
+    private static final String QQNEWS_COMMENT_COUNT = "getQQNewsCommentCount";
+    private static final String QQNEWS_UP_ONE_COMMENT = "supportQQNewsComment";
+    private static final String QQNEWS_REMOTE_CONFIG = "getQQNewsRemoteConfigAndroid";
+    private static final String QQNEWS_CHECK_UPDATE = "checkAppVersionAndroid";
+    private static final String mVideoUrl = "http://vv.video.qq.com/geturl?format=%s&platform=2&network=1&vid=%s&uin=%s";
+    private static final String SUGGEST_QQNEWS = "manage/QQNewsResponse";
+    private static final String CHECK_LOGIN_ANDROID = "checkLoginAndroid";
+
+//    private static final String APP_LIST = "getQQNewsAppList"; //已废弃
+    private static final String HOT_APP_LIST = "getAppWall";
+
+    private static final String CAT_LIST = "getCatList";
+    private static final String GET_RSS_SUB_ITEM = "getSubItem";
+    public static final String TENCENT_NEWS_LICENSE = "treaty/androidCh.html";
+
+    /** 新闻频道列表 */
+    // 要闻
+    public static final String NEW_TOP = "news_news_top";
+    // 财经
+    public static final String FINANCE = "news_news_finance";
+    // 娱乐
+    public static final String SPORTFUI = "news_news_ent";
+    // 体育
+    public static final String SPORTS = "news_news_sports";
+    // 科技
+    public static final String TECHNOLOGY = "news_news_tech";
+    // 军事
+    public static final String MILITARY = "news_news_mil";
+    // 数码
+    public static final String DIGIT = "news_news_digi";
+    // 女性
+    public static final String FEMALE = "news_news_lad";
+    // 汽车
+    public static final String AUTO = "news_news_auto";
+    // 房产
+    public static final String HOUSE = "news_news_house";
+
+    /**
+     * 要闻<br/>
+     * news_photo
+     */
+    public static final String NEWS = "news_news";
+
+    /**
+     * 图片<br/>
+     * news_photo
+     */
+    public static final String PHOTO = "news_photo";
+    /**
+     * 话题<br/>
+     * news_topic
+     */
+    public static final String TOPIC = "news_topic";
+    /**
+     * 微博热议<br/>
+     * news_hotweibo
+     */
+    public static final String MBLOG = "news_hotweibo";
+
+    /**
+     * 视频<br/>
+     * news_video
+     */
+    public static final String VIDEO = "news_video";
+
+    /**
+     * 订阅<br/>
+     * news_video
+     */
+    public static final String RSS = "news_rss";
+    public static final String RSS_GUIDE = "rss_guide";
+
+    private static TencentNews mNews = null;
+
+    public static synchronized TencentNews getInstance() {
+        if (mNews == null) {
+            mNews = new TencentNews();
+        }
+        return mNews;
+    }
+
+    /**
+     * 取某个新闻列表
+     * 
+     * @param channel
+     * @return
+     */
+    public HttpDataRequest getQQNewsIndexAndItems(String channel) {
+        HttpDataRequest request = new HttpDataRequest();
+        request.setGzip(true);
+        request.setNeedAuth(true);
+        request.setRetry(false);
+        request.setTag(HttpTag.NEWS_NEWS_TOP);
+        request.setUrl(READ_BASE_URL + QQNEWS_INDEX_ANDITEMS);
+        request.setSort(Constants.REQUEST_METHOD_GET);
+        request.addUrlParams("chlid", channel);
+        request.addUrlParams("screen_width", String.valueOf(MobileUtil.getScreenWidthIntPx()));
+        return request;
+
+    }
+
+    /**
+     * 取某个专题新闻列表
+     * 
+     * @param channel
+     * @return
+     */
+    public HttpDataRequest getQQNewsSpecialListItems(String id, String channelId, String localIds) {
+        HttpDataRequest request = new HttpDataRequest();
+        request.setGzip(true);
+        request.setNeedAuth(true);
+        request.setRetry(false);
+        request.setTag(HttpTag.SPECIAL_NEWS_LIST);
+        request.setUrl(READ_BASE_URL + QQNEWS_SPECIAL_LIST_ITEMS);
+        request.setSort(Constants.REQUEST_METHOD_GET);
+        request.addUrlParams("id", id);
+        request.addUrlParams("chlid", channelId);
+        request.addUrlParams("screen_width", String.valueOf(MobileUtil.getScreenWidthIntPx()));
+        // if(localIds!=null && localIds.length()>0) {
+        // request.addUrlParams("lc_ids", localIds);
+        // }
+        return request;
+
+    }
+
+    /**
+     * 获取某条新闻的投票信息
+     * 
+     * @param id
+     * @return
+     */
+    public HttpDataRequest getQQNewsVoteInfo(String id, String chlid) {
+        HttpDataRequest request = new HttpDataRequest();
+        request.setGzip(true);
+        request.setNeedAuth(true);
+        request.setRetry(false);
+        request.setTag(HttpTag.QQNEWS_VOTE_INFO);
+        request.setUrl(READ_BASE_URL + QQNEWS_VOTE_INFO);
+        request.addUrlParams("id", id);
+        request.addUrlParams("chlid", chlid);
+        request.setSort(Constants.REQUEST_METHOD_GET);
+        return request;
+    }
+
+    /**
+     * 批量获取指定id的新闻列表
+     * 
+     * @param ids
+     * @return
+     */
+    public HttpDataRequest getQQNewsListItems(String ids, String chlid) {
+        HttpDataRequest request = new HttpDataRequest();
+        request.setGzip(true);
+        request.setNeedAuth(true);
+        request.setRetry(false);
+        request.setTag(HttpTag.NEWS_LIST_ITEMS);
+        request.setSort(Constants.REQUEST_METHOD_GET);
+        request.setUrl(READ_BASE_URL + QQNEWS_LIST_ITEMS);
+        request.addUrlParams("ids", ids);
+        request.addUrlParams("chlid", chlid);
+        request.addUrlParams("screen_width", String.valueOf(MobileUtil.getScreenWidthIntPx()));
+        return request;
+    }
+
+    /**
+     * 获取评论列表
+     * 
+     * @param comment_id
+     * @param url
+     * @param page
+     * @return
+     */
+    public HttpDataRequest getQQNewsComment(String comment_id, String channelId, String url, String replyID, String pubTime, int page) {
+        HttpDataRequest request = new HttpDataRequest();
+        request.setGzip(true);
+        request.setNeedAuth(true);
+        request.setRetry(false);
+        if (page > 1) {
+            request.setTag(HttpTag.QQNEWS_COMMENT_GET_MORE);
+        } else {
+            request.setTag(HttpTag.QQNEWS_COMMENT);
+            // if (howToOpenDetailPage != null) {
+            // request.addUrlParams("openFrom", howToOpenDetailPage);// 咋样打开底层的
+            // }
+            // if (loadDetailPageNeedTime != null) {
+            // request.addUrlParams("delay", loadDetailPageNeedTime);// 底层页加载耗时
+            // }
+        }
+        request.setSort(Constants.REQUEST_METHOD_GET);
+        request.setUrl(READ_BASE_URL + QQNEWS_COMMENT_LIST);
+        request.addUrlParams("comment_id", comment_id);
+        request.addUrlParams("chlid", channelId);
+        request.addUrlParams("url", url);
+        request.addUrlParams("page", "" + page);
+        if (replyID != null) {
+            request.addUrlParams("reply_id", replyID);
+        } else {
+            request.addUrlParams("reply_id", "");
+        }
+        if (pubTime != null) {
+            request.addUrlParams("pub_time", pubTime);
+        } else {
+            request.addUrlParams("pub_time", "");
+        }
+        return request;
+    }
+
+    // 获取我的评论
+    public HttpDataRequest getMyComments(String replyID, String pubTime, int Page) {
+        HttpDataRequest request = new HttpDataRequest();
+        request.setGzip(true);
+        request.setNeedAuth(true);
+        request.setRetry(false);
+        if (Page > 1) {
+            request.setTag(HttpTag.GET_MYCOMMENTS_MORE);
+        } else {
+            request.setTag(HttpTag.GET_MYCOMMENTS);
+        }
+        request.setSort(Constants.REQUEST_METHOD_GET);
+        request.setUrl(READ_BASE_URL + MYCOMMENTS);
+        // request.setUrl("http://inews.qq.com/getQQNewsComment?comment_id=41249992&openFrom=0&store=14&page=1&sceneid=00000&delay=186&chlid=news_news_top&&appver=10_android_2.8.0");
+        if (replyID != null) {
+            request.addUrlParams("reply_id", replyID);
+        } else {
+            request.addUrlParams("reply_id", "");
+        }
+        if (pubTime != null) {
+            request.addUrlParams("pub_time", pubTime);
+        } else {
+            request.addUrlParams("pub_time", "");
+        }
+        return request;
+    }
+
+    // 获取@我的评论
+    public HttpDataRequest getAtComments(String replyID, String pubTime, int page) {
+        HttpDataRequest request = new HttpDataRequest();
+        request.setGzip(true);
+        request.setNeedAuth(true);
+        request.setRetry(false);
+        if (page > 1) {
+            request.setTag(HttpTag.GET_ATCOMMENTS_MORE);
+        } else {
+            request.setTag(HttpTag.GET_ATCOMMENTS);
+        }
+
+        request.setSort(Constants.REQUEST_METHOD_GET);
+        request.setUrl(READ_BASE_URL + ATMECOMMENTS);
+        if (replyID != null) {
+            request.addUrlParams("reply_id", replyID);
+        } else {
+            request.addUrlParams("reply_id", "");
+        }
+        if (pubTime != null) {
+            request.addUrlParams("pub_time", pubTime);
+        } else {
+            request.addUrlParams("pub_time", "");
+        }
+        return request;
+    }
+
+    // 删除一条评论
+    // http://inews.qq.com/delComment?reply_id=5749382307836334082&comment_id=10453&cattr=&article_id=
+    public HttpDataRequest delOneComment(String replyID, String commentID, String articleID, String chlid, String attr) {
+        HttpDataRequest request = new HttpDataRequest();
+        request.setGzip(true);
+        request.setNeedAuth(true);
+        request.setRetry(false);
+        request.setTag(HttpTag.DEL_ONE_COMMENT);
+        request.setSort(Constants.REQUEST_METHOD_GET);
+        request.setUrl(WRITE_BASE_URL + DEL_COMMENT);
+        if (replyID != null) {
+            request.addUrlParams("reply_id", replyID);
+        } else {
+            request.addUrlParams("reply_id", "");
+        }
+        if (commentID != null) {
+            request.addUrlParams("commentid", commentID);
+        } else {
+            request.addUrlParams("commentid", "");
+        }
+        if (articleID != null) {
+            request.addUrlParams("article_id", articleID);
+        } else {
+            request.addUrlParams("article_id", "");
+        }
+        if(chlid!=null){
+        	request.addUrlParams("chlid", chlid);
+        }else{
+        	request.addUrlParams("chlid", "");
+        }
+        if (attr != null) {
+            request.addUrlParams("cattr", attr);
+        } else {
+            request.addUrlParams("cattr", "");
+        }
+
+        return request;
+    }
+
+    // 置顶评论或者取消置顶
+    public HttpDataRequest setOneHotOrNormal(String replyID, String commentID, String articleID, String chlid, String attr, boolean isSetHot) {
+        HttpDataRequest request = new HttpDataRequest();
+        request.setGzip(true);
+        request.setNeedAuth(true);
+        request.setRetry(false);
+        if (isSetHot) {
+            request.setTag(HttpTag.SET_ONE_TOP);
+        } else {
+            request.setTag(HttpTag.SET_ONE_NORMAL);
+        }
+        request.setSort(Constants.REQUEST_METHOD_GET);
+        request.setUrl(WRITE_BASE_URL + SET_COMMENT_TOP);
+        if (isSetHot) {
+            request.addUrlParams("top", "1");
+        } else {
+            request.addUrlParams("top", "0");
+        }
+        if (replyID != null) {
+            request.addUrlParams("reply_id", replyID);
+        } else {
+            request.addUrlParams("reply_id", "");
+        }
+        if (commentID != null) {
+            request.addUrlParams("commentid", commentID);
+        } else {
+            request.addUrlParams("commentid", "");
+        }
+        if (articleID != null) {
+            request.addUrlParams("article_id", articleID);
+        } else {
+            request.addUrlParams("article_id", "");
+        }
+        if(chlid!=null){
+        	request.addUrlParams("chlid", chlid);
+        }else{
+        	request.addUrlParams("chlid", "");
+        }
+        if (attr != null) {
+            request.addUrlParams("cattr", attr);
+        } else {
+            request.addUrlParams("cattr", "");
+        }
+
+        return request;
+    }
+
+    /**
+     * 获取评论数
+     * 
+     * @param comment_id
+     * @param url
+     * @param page
+     * @return
+     */
+    public HttpDataRequest getQQNewsCommentCount(String comment_id) {
+        HttpDataRequest request = new HttpDataRequest();
+        request.setGzip(true);
+        request.setNeedAuth(true);
+        request.setRetry(false);
+        request.setTag(HttpTag.QQNEWS_COMMENT_COUNT);
+        request.setSort(Constants.REQUEST_METHOD_GET);
+        request.setUrl(READ_BASE_URL + QQNEWS_COMMENT_COUNT);
+        request.addUrlParams("cid", comment_id);
+        return request;
+    }
+
+    /**
+     * 要闻二级导航接口
+     * 
+     * @return
+     */
+    public HttpDataRequest getSubChannels() {
+        HttpDataRequest request = new HttpDataRequest();
+        request.setGzip(true);
+        request.setNeedAuth(true);
+        request.setRetry(false);
+        request.setTag(HttpTag.GET_SUB_CHANNELS);
+        request.setSort(Constants.REQUEST_METHOD_GET);
+        request.setUrl(READ_BASE_URL + SUB_CHANNELS);
+        return request;
+    }
+
+    /**
+     * 获得频道信息
+     * 
+     * @param chlidFrom 图片频道chlidFrom=news_photo
+     * @return
+     */
+    public HttpDataRequest getSubChannels(String chlidFrom) {
+        HttpDataRequest request = new HttpDataRequest();
+        request.setGzip(true);
+        request.setNeedAuth(true);
+        request.setRetry(false);
+        request.setTag(HttpTag.GET_SUB_CHANNELS);
+        request.setSort(Constants.REQUEST_METHOD_GET);
+        request.setUrl(READ_BASE_URL + SUB_CHANNELS_RESERVED);
+        request.addUrlParams("chlidFrom", chlidFrom);
+        return request;
+    }
+
+    /**
+     * 获得扩展频道信息
+     * 
+     * @return
+     */
+    public HttpDataRequest getExtendedSubChannels() {
+        HttpDataRequest request = new HttpDataRequest();
+        request.setGzip(true);
+        request.setNeedAuth(true);
+        request.setRetry(false);
+        request.setTag(HttpTag.GET_EXTENDED_SUB_CHANNELS);
+        request.setSort(Constants.REQUEST_METHOD_GET);
+        request.setUrl(READ_BASE_URL + EXTENDED_SUB_CHANNELS);
+        request.addUrlParams("screen_width", String.valueOf(MobileUtil.getScreenWidthIntPx()));
+        return request;
+    }
+
+    /**
+     * 获得版本和配置信息
+     * 
+     * @return
+     */
+    public HttpDataRequest getQQNewsRemoteConfig() {
+        HttpDataRequest request = new HttpDataRequest();
+        request.setGzip(true);
+        request.setNeedAuth(true);
+        request.setRetry(false);
+        request.setSort(Constants.REQUEST_METHOD_GET);
+        request.setTag(HttpTag.NEWS_REMOTE_CONFIG);
+        request.setUrl(READ_BASE_URL + QQNEWS_REMOTE_CONFIG);
+        request.addHeadParams("uin", SpUserUin.getUserUin());
+        return request;
+    }
+
+    /**
+     * 检查更新时获得版本信息
+     * 
+     * @return
+     */
+    public HttpDataRequest getQQNewsVersionInfo() {
+        HttpDataRequest request = new HttpDataRequest();
+        request.setGzip(true);
+        request.setNeedAuth(true);
+        request.setRetry(false);
+        request.setSort(Constants.REQUEST_METHOD_GET);
+        request.setTag(HttpTag.NEWS_CHECK_UPDATE);
+        request.setUrl(READ_BASE_URL + QQNEWS_CHECK_UPDATE);
+        request.addHeadParams("uin", SpUserUin.getUserUin());
+        return request;
+    }
+
+//    /**
+//     * 获得精品推荐列表
+//     * 
+//     * @return
+//     */
+//    public HttpDataRequest getAppListQQNews() {
+//        HttpDataRequest request = new HttpDataRequest();
+//        request.setGzip(true);
+//        request.setNeedAuth(true);
+//        request.setRetry(false);
+//        request.setSort(Constants.REQUEST_METHOD_GET);
+//        request.setTag(HttpTag.APP_LIST_QQNEWS);
+//        request.setUrl(READ_BASE_URL + APP_LIST);
+//        return request;
+//    }
+
+    /**
+     * 写评论并同步到xxx
+     * 
+     * @param shareType分享类型
+     * @param chlid频道id
+     * @param articleId文章id
+     * @param articleURL文章url
+     * @param articleTitle文章标题
+     * @param articleSum文章摘要
+     * @param commentId评论id
+     * @param content写的内容
+     * @param content_qqweibo写的内容加上同步到微博的文字
+     * @param imgUrl图片url
+     * @param vid视频id
+     * @return
+     */
+    public HttpDataRequest publishQQNewsMulti(String shareType, String chlid, String articleId, String articleURL, String articleTitle,
+            String articleSum, String commentId, String content, String content_qqweibo, String imgUrl, String vid, String graphicLiveID,
+            String graphicLiveChlid, String specialID, String attr) {
+        HttpPostRequest request = new HttpPostRequest();
+        request.setGzip(true);
+        request.setNeedAuth(true);
+        request.setRetry(false);
+        request.setSort(Constants.REQUEST_METHOD_POST);
+        request.setTag(HttpTag.PUBLISH_QQNEWS_MULTI);
+        request.setUrl(WRITE_BASE_URL + QQNEWS_MULTI);
+        Map<String, String> bodyParams = new HashMap<String, String>();
+
+        /**
+         * 写评论参数
+         */
+        if (shareType.length() > 0) {
+            bodyParams.put("shareType", shareType);
+        }
+        bodyParams.put("chlid", chlid);
+        bodyParams.put("comment_id", commentId);
+        bodyParams.put("article_id", articleId);
+        bodyParams.put("content", content);// 评论内容
+        bodyParams.put("url", articleURL);// 文章的URL
+        bodyParams.put("title", articleTitle);// 文章的标题
+        bodyParams.put("summary", articleSum);// 文章的摘要
+        bodyParams.put("openWeibo",
+                UserDBHelper.getInstance().getUserInfo() != null && UserDBHelper.getInstance().getUserInfo().isOpenMBlog() ? "yes" : "no");// 用户是否开通腾讯微博
+
+        /**
+         * 腾讯微博参数
+         */
+        bodyParams.put("type", "0");// 原创
+        bodyParams.put("pid", "");// 不用管
+        bodyParams.put("img", imgUrl);// 图片地址
+        bodyParams.put("vid", vid);// 视频地址
+        bodyParams.put("content_qqweibo", content_qqweibo);// 微博内容
+
+        /**
+         * 专题列表的id
+         */
+        if (specialID != null && specialID.trim().length() > 0) {
+            bodyParams.put("specialID", specialID);// 专题id
+        }
+        /**
+         * 图文直播的俩参数
+         */
+        if (graphicLiveID != null && graphicLiveID.trim().length() > 0) {
+            bodyParams.put("graphicLiveID", graphicLiveID);// 直播id
+            bodyParams.put("graphicLiveChlid", graphicLiveChlid);// 直播那边的频道
+        }
+
+        // 标识评论来自哪个页面 (普通新闻底层评论、订阅新闻底层评论、我的评论、提到我的)
+        if (attr == null) {
+            bodyParams.put("cattr", "");
+        } else {
+            bodyParams.put("cattr", attr);
+        }
+
+        SLog.d("#####publishQQNewsMulti", bodyParams.toString());
+
+        // TODO:做微信分享和新浪分享的时候需要再加2个参数,以此标记
+
+        request.setBodyParams(bodyParams);
+        return request;
+    }
+
+    /**
+     * 转一下评论
+     * 
+     * @param shareType 分享类型:qqcomment,qqweibo,qzone,sina
+     * @param chlid 频道id
+     * @param articleId 文章id
+     * @param commentId 文章的评论id(-1时禁止评论)
+     * @param replyId 被转一下评论的评论id
+     * @param content 转一下写内容
+     * @param content_qqweibo 转一下同步到腾讯微博的内容
+     * @return
+     */
+    public HttpDataRequest transComment(String shareType, String chlid, String articleId, String articleURL, String articleTitle, String articleSum,
+            String commentId, String replyId, String content, String content_qqweibo, String imgUrl, String vid, String graphicLiveID,
+            String graphicLiveChlid, String specialID, String attr) {
+        HttpPostRequest request = new HttpPostRequest();
+        request.setGzip(true);
+        request.setNeedAuth(true);
+        request.setRetry(false);
+        request.setSort(Constants.REQUEST_METHOD_POST);
+        request.setTag(HttpTag.PUBLISH_TRANS_COMMENT_MULTI);
+        request.setUrl(WRITE_BASE_URL + QQNEWS_MULTI);
+        Map<String, String> bodyParams = new HashMap<String, String>();
+
+        /**
+         * 写评论参数
+         */
+        if (shareType.length() > 0) {
+            bodyParams.put("shareType", shareType);
+        }
+        bodyParams.put("chlid", chlid);
+        bodyParams.put("comment_id", commentId);
+        bodyParams.put("rid", replyId);
+        bodyParams.put("article_id", articleId);
+        bodyParams.put("content", content);// 评论内容
+        bodyParams.put("url", articleURL);// 文章的URL
+        bodyParams.put("title", articleTitle);// 文章的标题
+        bodyParams.put("summary", articleSum);// 文章的摘要
+        bodyParams.put("openWeibo",
+                UserDBHelper.getInstance().getUserInfo() != null && UserDBHelper.getInstance().getUserInfo().isOpenMBlog() ? "yes" : "no");// 用户是否开通腾讯微博
+
+        /**
+         * 腾讯微博参数
+         */
+        bodyParams.put("type", "0");// 原创
+        bodyParams.put("pid", "");// 不用管
+        bodyParams.put("img", imgUrl);// 图片地址
+        bodyParams.put("vid", vid);// 视频地址
+        bodyParams.put("content_qqweibo", content_qqweibo);// 微博内容
+
+        // 标识评论来自哪个页面 (普通新闻底层评论、订阅新闻底层评论、我的评论、提到我的)
+        if (attr == null) {
+            bodyParams.put("cattr", "");
+        } else {
+            bodyParams.put("cattr", attr);
+        }
+
+        /**
+         * 专题列表的id
+         */
+        if (specialID != null && specialID.trim().length() > 0) {
+            bodyParams.put("specialID", specialID);// 专题id
+        }
+        /**
+         * 图文直播的俩参数
+         */
+        if (graphicLiveID != null && graphicLiveID.trim().length() > 0) {
+            bodyParams.put("graphicLiveID", graphicLiveID);// 直播id
+            bodyParams.put("graphicLiveChlid", graphicLiveChlid);// 直播那边的频道
+        }
+
+        SLog.d("#####transComment", bodyParams.toString());
+
+        // TODO:做微信分享和新浪分享的时候需要再加2个参数,以此标记
+
+        request.setBodyParams(bodyParams);
+        return request;
+    }
+
+    /**
+     * 获取用户信息
+     * 
+     * @return
+     */
+    public HttpDataRequest getUserInfo() {
+        HttpPostRequest request = new HttpPostRequest();
+        request.setGzip(true);
+        request.setNeedAuth(true);
+        request.setRetry(false);
+        request.setSort(Constants.REQUEST_METHOD_GET);
+        request.setTag(HttpTag.GET_USER_INFO_AFTER_WTLOGIN);
+        request.addUrlParams("format", "json");
+        request.setUrl(READ_BASE_URL + GET_USER_INFO_AFTER_WTLOGIN);
+        return request;
+    }
+
+    /**
+     * 意见反馈
+     * 
+     * @param advice
+     * @param connect
+     * @param qqname
+     * @return
+     */
+    public HttpDataRequest suggestQQNews(String advice, String connect, String qqname) {
+        HttpPostRequest request = new HttpPostRequest();
+        request.setGzip(true);
+        request.setNeedAuth(true);
+        request.setRetry(false);
+        request.setSort(Constants.REQUEST_METHOD_POST);
+        request.setTag(HttpTag.SUGGEST_QQNEWS);
+        request.setUrl(WRITE_BASE_URL + SUGGEST_QQNEWS);
+        Map<String, String> bodyParams = new HashMap<String, String>();
+        bodyParams.put("advice", advice);
+        bodyParams.put("connect", connect);
+        bodyParams.put("qqname", qqname);
+        request.setBodyParams(bodyParams);
+        return request;
+    }
+
+    /**
+     * 拉去评论列表
+     * 
+     * @param newsUrl
+     * @param commentId
+     * @param replyId
+     * @return
+     */
+    public HttpDataRequest upOneComment(String newsUrl, String commentId, String replyId, String attr) {
+        HttpPostRequest request = new HttpPostRequest();
+        request.setGzip(true);
+        request.setNeedAuth(true);
+        request.setRetry(false);
+        request.setSort(Constants.REQUEST_METHOD_POST);
+        request.setTag(HttpTag.UP_ONE_COMMENT);
+        request.setUrl(WRITE_BASE_URL + QQNEWS_UP_ONE_COMMENT);
+        Map<String, String> bodyParams = new HashMap<String, String>();
+        bodyParams.put("url", newsUrl);// 新闻的URL
+        bodyParams.put("comment_id", commentId);// item的评论id
+        bodyParams.put("rid", replyId);// 评论列表里的id
+        if (attr == null) {
+            bodyParams.put("cattr", ""); // attr用来标识是在哪个页面顶的评论（底层评论页、我的评论、提到我的）
+        } else {
+            bodyParams.put("cattr", attr);
+        }
+        SLog.d("#####upOneComment", bodyParams.toString());
+        request.setBodyParams(bodyParams);
+        return request;
+    }
+
+    /**
+     * 视频点播
+     * 
+     * @param format
+     * @param vid
+     * @return
+     */
+    public HttpDataRequest getVideoUrl(String format, String vid, String uni) {
+        HttpDataRequest request = new HttpDataRequest();
+        request.setGzip(false);
+        request.setNeedAuth(true);
+        request.setRetry(false);
+        request.setSort(Constants.REQUEST_METHOD_GET);
+        request.setUrl(String.format(mVideoUrl, format, vid, uni));
+        request.setTag(HttpTag.GET_VIDEO_URL);
+        return request;
+    }
+
+    /**
+     * push获得配置接口
+     * 
+     * @return
+     */
+    public HttpDataRequest getPushConfig() {
+        HttpDataRequest request = new HttpDataRequest();
+        request.setGzip(true);
+        request.setNeedAuth(true);
+        request.setRetry(false);
+        request.setSort(Constants.REQUEST_METHOD_GET);
+        request.setTag(HttpTag.PUSH_MSG_CONFIG);
+        request.setUrl(PUSH_CONFIG);
+        request.addUrlParams("bid", "10001");
+        request.addUrlParams("did", MobileUtil.getImei());
+        if (UserDBHelper.getInstance().getUserInfo() != null) {
+            request.addUrlParams("uin", UserDBHelper.getInstance().getUserInfo().getUin());
+        }
+        return request;
+    }
+
+    /**
+     * push轮询接口
+     * 
+     * @param auth
+     * @return
+     */
+    public HttpDataRequest getPushConnect(String auth, String latestMsg) {
+        HttpDataRequest request = new HttpDataRequest();
+        request.setGzip(true);
+        request.setNeedAuth(true);
+        request.setRetry(false);
+        request.setSort(Constants.REQUEST_METHOD_GET);
+        request.setUrl(PUSH_CONNECT);
+        request.setTag(HttpTag.PUSH_MSG_CONN);
+        request.addUrlParams("bid", "10001");
+        request.addUrlParams("did", MobileUtil.getImei());
+        request.addUrlParams("auth", auth);
+        // request.addUrlParams("msgid", latestMsg);
+        if (UserDBHelper.getInstance().getUserInfo() != null) {
+            request.addUrlParams("uin", UserDBHelper.getInstance().getUserInfo().getUin());
+        }
+        return request;
+    }
+
+    /**
+     * 动态splash
+     * 
+     * @return request
+     */
+    public HttpDataRequest getSplashData() {
+        HttpDataRequest request = new HttpDataRequest();
+        request.setGzip(true);
+        request.setNeedAuth(true);
+        request.setRetry(false);
+        request.setTag(HttpTag.SPLASH_DATA);
+        request.setSort(Constants.REQUEST_METHOD_GET);
+        request.setUrl(READ_BASE_URL + QQNEWS_SPLASH);
+        request.addUrlParams("screen_width", "" + MobileUtil.getScreenWidthIntPx());
+        request.addUrlParams("screen_height", "" + MobileUtil.getScreenHeightIntPx());
+        return request;
+    }
+
+    /**
+     * 视频直播
+     * 
+     * @param progid
+     * @param id
+     * @param chlid
+     * @return request
+     */
+    public HttpDataRequest getVideoLiveStatus(String progid, String id, String chlid) {
+        HttpDataRequest request = new HttpDataRequest();
+        request.setGzip(true);
+        request.setNeedAuth(true);
+        request.setRetry(false);
+        request.setSort(Constants.REQUEST_METHOD_GET);
+        request.setUrl(READ_BASE_URL + VIDEO_LIVE_STATUS);
+        request.setTag(HttpTag.VIDEO_LIVE);
+        request.addUrlParams("progid", progid);
+        request.addUrlParams("qtype", "1");
+        request.addUrlParams("aid", id);
+        request.addUrlParams("channel", chlid);
+        request.addUrlParams("auth", "1");
+        return request;
+    }
+
+    /**
+     * 上报投票结果
+     * 
+     * @param json
+     * @return
+     * @throws JSONException
+     */
+    public HttpDataRequest reportInputVote(String json) throws JSONException {
+        HttpPostRequest request = new HttpPostRequest();
+        request.setGzip(true);
+        request.setNeedAuth(true);
+        request.setRetry(false);
+        request.setSort(Constants.REQUEST_METHOD_POST);
+        request.setTag(HttpTag.REPORT_INPUT_VOTE);
+        request.setUrl(INPUT_VOTE_URL);
+        Map<String, String> headParams = new HashMap<String, String>();
+        headParams.put("Referer", VOTE_URL_REFERE);
+        request.setHeadParams(headParams);
+        Map<String, String> bodyParams = new HashMap<String, String>();
+        bodyParams.put("fmt", "json");
+        JSONArray ret = new JSONArray(json);
+        if (json != null && json.length() > 0) {
+            for (int i = 0; i < ret.length(); i++) {
+                String str = ret.getString(i);
+                String subDatas[] = str.split(":");
+                bodyParams.put(subDatas[0], subDatas[1]);
+            }
+            request.setBodyParams(bodyParams);
+        }
+        return request;
+    }
+
+    /**
+     * 图文直播
+     * 
+     * @param zhiboId
+     * @param startId
+     * @param num
+     * @param newOrOld
+     * @param summaryVer
+     * @return request
+     */
+    public HttpDataRequest getImgTxtLive(String zhiboId, String startId, String num, String newOrOld, String summaryVer) {
+        HttpDataRequest request = new HttpDataRequest();
+        request.setGzip(true);
+        request.setNeedAuth(true);
+        request.setRetry(false);
+        request.setSort(Constants.REQUEST_METHOD_GET);
+        request.setUrl(IMAGE_TEXT_LIVE_URL + IMG_TXT_LIVE);
+        request.addUrlParams("zhiboId", zhiboId);
+        request.addUrlParams("startId", startId);
+        request.addUrlParams("num", num);
+        request.addUrlParams("new", newOrOld);
+        request.addUrlParams("summary", "0");
+        return request;
+    }
+
+    /**
+     * 新浪微博分享
+     * 
+     * @param article_id
+     * @param sinaNews_accesstoken
+     * @param content_qqweibo
+     * @param img
+     * @param vid
+     * @param summary
+     * @param title
+     * @param specialID
+     * @param url
+     * @param aType
+     * @return
+     */
+    public HttpDataRequest shareSinaWeibo(String article_id, String sinaNews_accesstoken, String content_qqweibo, String img, String vid,
+            String summary, String title, String specialID, String url, String aType) {
+        HttpPostRequest request = new HttpPostRequest();
+        request.setGzip(true);
+        request.setNeedAuth(true);
+        request.setRetry(false);
+        request.setSort(Constants.REQUEST_METHOD_POST);
+        request.setUrl(WRITE_BASE_URL + QQNEWS_MULTI);
+        request.setTag(HttpTag.SHARE_SINA_WEIBO);
+        Map<String, String> bodyParams = new HashMap<String, String>();
+        bodyParams.put("shareType", "sina");
+        bodyParams.put("article_id", article_id);
+        bodyParams.put("sinaNews_accesstoken", sinaNews_accesstoken);
+        bodyParams.put("content_qqweibo", content_qqweibo);
+        bodyParams.put("img", img);
+        bodyParams.put("vid", vid);
+        bodyParams.put("summary", summary);
+        bodyParams.put("title", title);
+        bodyParams.put("specialID", specialID);
+        bodyParams.put("url", url);
+        bodyParams.put("aType", aType);
+        request.setBodyParams(bodyParams);
+        return request;
+    }
+
+    /**
+     * 腾讯微博分享
+     * 
+     * @param article_id
+     * @param pid
+     * @param content_qqweibo
+     * @param img
+     * @param vid
+     * @param summary
+     * @param title
+     * @param specialID
+     * @param url
+     * @param aType
+     * @return
+     */
+    public HttpDataRequest shareTencentWeibo(String article_id, String pid, String content_qqweibo, String img, String vid, String summary,
+            String title, String specialID, String url, String aType) {
+        HttpPostRequest request = new HttpPostRequest();
+        request.setGzip(true);
+        request.setNeedAuth(true);
+        request.setRetry(false);
+        request.setSort(Constants.REQUEST_METHOD_POST);
+        request.setUrl(WRITE_BASE_URL + QQNEWS_MULTI);
+        request.setTag(HttpTag.SHARE_TENCENT_WEIBO);
+        Map<String, String> bodyParams = new HashMap<String, String>();
+        bodyParams.put("shareType", "qqweibo");
+        bodyParams.put("article_id", article_id);
+        bodyParams.put("pid", pid);
+        bodyParams.put("content_qqweibo", content_qqweibo);
+        bodyParams.put("img", img);
+        bodyParams.put("vid", vid);
+        bodyParams.put("summary", summary);
+        bodyParams.put("title", title);
+        bodyParams.put("specialID", specialID);
+        bodyParams.put("url", url);
+        bodyParams.put("aType", aType);
+        request.setBodyParams(bodyParams);
+        return request;
+    }
+
+    // 腾讯空间分享
+    public HttpDataRequest shareTencentQzone(String article_id, String url, String title, String summary, String desc, String img, String vid,
+            String content, String aType) {
+        HttpPostRequest request = new HttpPostRequest();
+        request.setGzip(true);
+        request.setNeedAuth(true);
+        request.setRetry(false);
+        request.setSort(Constants.REQUEST_METHOD_POST);
+        request.setUrl(WRITE_BASE_URL + QQNEWS_MULTI);
+        request.setTag(HttpTag.SHARE_TENCENT_QZONE);
+        Map<String, String> bodyParams = new HashMap<String, String>();
+        bodyParams.put("shareType", "qzone");
+        bodyParams.put("article_id", article_id);
+        bodyParams.put("url", url);
+        bodyParams.put("title", title);
+        bodyParams.put("summary", summary);
+        bodyParams.put("desc", desc);
+        bodyParams.put("img", img);
+        bodyParams.put("vid", vid);
+        bodyParams.put("content", content);
+        bodyParams.put("aType", aType);
+        request.setBodyParams(bodyParams);
+        return request;
+    }
+
+    /**
+     * 腾讯微信朋友圈分享
+     * 
+     * @param article_id
+     * @param wxFriends_accesstoken
+     * @param title
+     * @param url
+     * @param content
+     * @param img
+     * @param flag
+     * @param vid
+     * @return
+     */
+    public HttpDataRequest shareWeChatFriendZone(String article_id, String wxFriends_accesstoken, String title, String url, String content,
+            String img, String flag, String vid) {
+        HttpPostRequest request = new HttpPostRequest();
+        request.setGzip(true);
+        request.setNeedAuth(true);
+        request.setRetry(false);
+        request.setSort(Constants.REQUEST_METHOD_POST);
+        request.setUrl(WRITE_BASE_URL + QQNEWS_MULTI);
+        request.setTag(HttpTag.SHARE_WECHAT_FRIEND_ZONE);
+        Map<String, String> bodyParams = new HashMap<String, String>();
+        bodyParams.put("shareType", "friends");
+        bodyParams.put("article_id", article_id);
+        bodyParams.put("wxFriends_accesstoken", wxFriends_accesstoken);
+        bodyParams.put("title", title);
+        bodyParams.put("url", url);
+        bodyParams.put("content", content);
+        bodyParams.put("img", img);
+        bodyParams.put("flag", flag);
+        bodyParams.put("vid", vid);
+        request.setBodyParams(bodyParams);
+        return request;
+    }
+
+    /**
+     * 拉去push接口
+     * 
+     * @param id
+     * @return
+     */
+    public HttpDataRequest getQQNewsFullHtmlContent(String id, String pushFrom, String chlid) {
+        HttpDataRequest request = new HttpDataRequest();
+        request.setGzip(true);
+        request.setNeedAuth(true);
+        request.setRetry(false);
+        request.setTag(HttpTag.FULL_HTML_CONTENT);
+
+        StringBuilder sb = new StringBuilder();
+        sb.append(TencentNews.CDN_BASE_URL + TencentNews.GET_FULL_NEWS);
+        sb.append("/" + URLEncoder.encode(MobileUtil.getSystemSdk() + "_android_" + MobileUtil.getVersionName()));
+        sb.append("/" + chlid);
+        sb.append("/" + id);
+        sb.append("?devid=" + URLEncoder.encode(MobileUtil.getImei()));
+        sb.append("&newFrom=" + pushFrom);
+
+        request.setUrl(sb.toString());
+
+        request.setSort(Constants.REQUEST_METHOD_GET);
+        return request;
+    }
+
+    /**
+     * 新闻底层页新接口
+     * 
+     * @param id 新闻id
+     * @param chlid 频道
+     * @param flag 新闻类型 默认:普通新闻 favor:收藏
+     * @return
+     */
+    public HttpDataRequest getSimpleHtmlContent(String id, String chlid, String flag) {
+        HttpDataRequest request = new HttpDataRequest();
+        request.setGzip(true);
+        request.setNeedAuth(true);
+        request.setRetry(false);
+        request.setTag(HttpTag.SIMPLE_HTML_CONTENT);
+        if (flag == null) {
+            flag = "";
+        }
+        if (CacheType.FAVOR_CACHE.equals(flag)) {// 收藏
+            request.setUrl(READ_BASE_URL + "getSubNewsContent");
+            // kimhuang(黄智丛) 2013-06-19 16:44:59 底层是用的订阅底层接口带上chlid=news_collect
+            request.addUrlParams("chlid", "news_collect");
+            request.addUrlParams("id", id);
+        }
+        if (CacheType.RSS_CACHE.equals(flag)) {
+            request.setUrl(READ_BASE_URL + "getSubNewsContent");
+            request.addUrlParams("id", id);
+        } else {
+            StringBuilder sb = new StringBuilder();
+            sb.append(TencentNews.CDN_BASE_URL + TencentNews.GET_SIMPLE_NEWS);
+            sb.append("/" + URLEncoder.encode(MobileUtil.getSystemSdk() + "_android_" + MobileUtil.getVersionName()));
+            sb.append("/" + chlid);
+            sb.append("/" + id);
+            sb.append("?devid=" + URLEncoder.encode(MobileUtil.getImei()));
+
+            request.setUrl(sb.toString());
+        }
+
+        request.setSort(Constants.REQUEST_METHOD_GET);
+        return request;
+    }
+
+    /**
+     * 离线下载获取打包列表
+     * 
+     * @param channelColonVersionStr
+     * @return
+     */
+    public HttpDataRequest getOfflineList(String channelColonVersionStr) {
+        HttpPostRequest request = new HttpPostRequest();
+        request.setGzip(true);
+        request.setNeedAuth(true);
+        request.setRetry(false);
+        request.setTag(HttpTag.OFFLINE_LIST);
+        request.setUrl(READ_BASE_URL + OFFLINE_LIST);
+        request.addUrlParams("chlstr", channelColonVersionStr);
+        request.setSort(Constants.REQUEST_METHOD_POST);
+        return request;
+    }
+
+    /**
+     * 热门应用列表
+     * 
+     * @param page
+     * @return
+     */
+    public HttpDataRequest getHotAppList(String page) {
+        HttpDataRequest request = new HttpDataRequest();
+        request.setGzip(true);
+        request.setNeedAuth(true);
+        request.setRetry(false);
+        request.setSort(Constants.REQUEST_METHOD_GET);
+        request.setUrl(READ_BASE_URL + HOT_APP_LIST);
+        request.addUrlParams("page", page);
+        request.setTag(HttpTag.HOT_APP_LIST);
+        return request;
+    }
+
+    /**
+     * 检查的安装测试包是否在有效期内、用户是否是合法的测试用户
+     * 
+     * @return
+     */
+    public HttpDataRequest getBetaTestingAuthInfo() {
+        HttpPostRequest request = new HttpPostRequest();
+        request.setGzip(true);
+        request.setNeedAuth(true);
+        request.setRetry(false);
+        request.setSort(Constants.REQUEST_METHOD_GET);
+        request.setTag(HttpTag.GET_BETATESTING_AUTHINFO);
+        request.addUrlParams("format", "json");
+        request.setUrl(READ_BASE_URL + CHECK_LOGIN_ANDROID);
+        return request;
+    }
+
+    /**
+     * 获取所有订阅媒体和分类
+     * 
+     * @return
+     */
+    public HttpDataRequest getCatList() {
+        HttpPostRequest request = new HttpPostRequest();
+        request.setGzip(true);
+        request.setNeedAuth(true);
+        request.setRetry(false);
+        request.setSort(Constants.REQUEST_METHOD_GET);
+        request.setTag(HttpTag.GET_RSS_CAT_LIST);
+        request.addUrlParams("format", "json");
+        request.setUrl(READ_BASE_URL + CAT_LIST);
+        return request;
+    }
+
+    /**
+     * 获取单个订阅媒体
+     * 
+     * @return
+     */
+    public HttpDataRequest getRssSubItem(String chlid) {
+        HttpPostRequest request = new HttpPostRequest();
+        request.setGzip(true);
+        request.setNeedAuth(true);
+        request.setRetry(false);
+        request.setSort(Constants.REQUEST_METHOD_GET);
+        request.setTag(HttpTag.GET_RSS_SUB_ITEM);
+        request.addUrlParams("format", "json");
+        request.setUrl(READ_BASE_URL + GET_RSS_SUB_ITEM);
+        request.addUrlParams("chlid", chlid);
+        return request;
+    }
+
+    /**
+     * 同步订阅信息
+     * 
+     * @param id
+     * @return
+     */
+    public HttpDataRequest syncRssChannelList(String addParams, String delParams) {
+        HttpDataRequest request = new HttpDataRequest();
+        request.setGzip(true);
+        request.setNeedAuth(true);
+        request.setRetry(true);
+        request.setSort(Constants.REQUEST_METHOD_GET);
+        request.setTag(HttpTag.RSS_SYNC_CHANNEL_LIST);
+        request.addUrlParams("format", "json");
+        request.setUrl(WRITE_BASE_URL + RSS_SYNC_CHANNEL_LIST);
+
+        String uid = RssChannelSyncHelper.getInstance().getUid();
+        if (uid != null && uid.length() > 0) {
+            request.addUrlParams("uid", uid);
+        }
+        if (addParams != null) {
+            request.addUrlParams("add", addParams);
+        }
+        if (delParams != null) {
+            request.addUrlParams("del", delParams);
+        }
+        String version = getRssChannelVersion();
+        request.addUrlParams("version", (version == null || version.length() == 0) ? "0" : version);
+        return request;
+    }
+
+    /**
+     * 同步第一次订阅推荐信息
+     * 
+     * @return
+     */
+    public HttpDataRequest getFirstRssChannelList() {
+        HttpDataRequest request = new HttpDataRequest();
+        request.setGzip(true);
+        request.setNeedAuth(true);
+        request.setRetry(true);
+        request.setSort(Constants.REQUEST_METHOD_GET);
+        request.setTag(HttpTag.RSS_FIRST_SUB);
+        request.addUrlParams("format", "json");
+        request.setUrl(READ_BASE_URL + RSS_FIRST_CHANNEL_LIST);
+        String uid = RssChannelSyncHelper.getInstance().getUid();
+        
+        if (uid != null && uid.length() > 0) {
+            request.addUrlParams("uid", uid);
+        }
+
+        return request;
+    }
+
+    private String getRssChannelVersion() {
+        int count = RssChannelSyncHelper.getInstance().getRssChannelCount();
+        if (count == 0) {
+            SpConfig.setRssChannelVersion("0");
+            return "0";
+        } else {
+            return SpConfig.getRssChannelVersion();
+        }
+    }
+
+    /**
+     * Title:getSubNewsIndex
+     * 
+     * @Description:获取某个媒体索引
+     * @param childId
+     * @return
+     * @return HttpDataRequest
+     * @throws
+     */
+    public HttpDataRequest getSubNewsIndex(String chlid) {
+
+        HttpDataRequest request = new HttpDataRequest();
+        request.setGzip(true);
+        request.setNeedAuth(true);
+        request.setRetry(true);
+        request.setSort(Constants.REQUEST_METHOD_GET);
+        request.setTag(HttpTag.RSS_INDEX_ANDITEMS);
+        request.addUrlParams("format", "json");
+        request.setUrl(READ_BASE_URL + RSS_INDEX_ANDITEMS);
+        request.addUrlParams("chlid", chlid);
+        return request;
+    }
+
+    /**
+     * Title:getSubNewsIndexMulti
+     * 
+     * @Description:获取订阅聚合列表的索引和列表项
+     * @param uid
+     * @param chlid 如果有chlid，服务器会忽略uid和登录态
+     * @param version 服务器下发的version
+     * @return
+     */
+    public HttpDataRequest getSubNewsIndexMulti() {
+        String uid = RssChannelSyncHelper.getInstance().getUid();
+        String chlid = SpConfig.getRssCoverParam();
+        String version = getRssChannelVersion();
+
+        HttpDataRequest request = new HttpDataRequest();
+        request.setGzip(true);
+        request.setNeedAuth(true);
+        request.setRetry(true);
+        request.setSort(Constants.REQUEST_METHOD_GET);
+        request.setTag(HttpTag.RSS_INDEX_ANDITEMS_MULTI);
+        request.addUrlParams("format", "json");
+        request.setUrl(READ_BASE_URL + RSS_INDEX_ANDITEMS_MULTI);
+        if (uid != null && uid.length() > 0) {
+            request.addUrlParams("uid", uid);
+        }
+        if (chlid != null && chlid.length() > 0) {
+            request.addUrlParams("chlid", chlid);
+            RssChannelSyncHelper.getInstance().needCover();
+        }
+        request.addUrlParams("version", (version == null || version.length() == 0) ? "0" : version);
+        return request;
+    }
+
+    /**
+     * 批量获取订阅列表指定id的新闻列表
+     * 
+     * @param ids
+     * @return
+     */
+    public HttpDataRequest getSubNewsListItems(String ids) {
+        HttpDataRequest request = new HttpDataRequest();
+        request.setGzip(true);
+        request.setNeedAuth(true);
+        request.setRetry(false);
+        request.setTag(HttpTag.RSS_LIST_ITEMS);
+        request.setSort(Constants.REQUEST_METHOD_GET);
+        request.setUrl(READ_BASE_URL + RSS_LIST_ITEMS);
+        request.addUrlParams("ids", ids);
+        return request;
+    }
+
+    /**
+     * 覆盖服务器的订阅
+     * 
+     * @return
+     */
+    public HttpDataRequest rssCoverChannelList(String chlid) {
+        HttpDataRequest request = new HttpDataRequest();
+        request.setGzip(true);
+        request.setNeedAuth(true);
+        request.setRetry(true);
+        request.setSort(Constants.REQUEST_METHOD_GET);
+        request.setTag(HttpTag.RSS_COVER_CHANNEL_LIST);
+        request.addUrlParams("format", "json");
+        request.setUrl(WRITE_BASE_URL + RSS_COVER_CHANNEL_LIST);
+
+        String uid = RssChannelSyncHelper.getInstance().getUid();
+        if (uid != null && uid.length() > 0) {
+            request.addUrlParams("uid", uid);
+        }
+        if (chlid == null) {
+            chlid = "";
+        }
+        request.addUrlParams("chlid", chlid);
+        return request;
+    }
+
+    /**
+     * 同步收藏列表
+     */
+    public HttpDataRequest syncFavorList(String syncParams) {
+        if (syncParams != null && syncParams.length() == 0) {
+            syncParams = null;
+        }
+
+        HttpDataRequest request = new HttpDataRequest();
+        request.setGzip(true);
+        request.setNeedAuth(true);
+        request.setRetry(true);
+        request.setSort(Constants.REQUEST_METHOD_GET);
+        request.setTag(HttpTag.SYNC_FAVOR_LIST);
+        request.addUrlParams("format", "json");
+        request.setUrl(WRITE_BASE_URL + SYNC_FAVOR_LIST + ((syncParams == null) ? "" : "?" + syncParams));
+        return request;
+    }
+
+    /**
+     * 拉取收藏列表
+     * 
+     * @param num 拉取索引数量，默认是200
+     * @param id 最后一篇文章的id，可能是新闻的，也可能是其他来源，具体有id_type区分
+     * @param timestamp 最后一篇文章的收藏时间
+     * @param id_type 用来表示id的来源。0-新闻客户端，1-浏览器，2-微云
+     * @return
+     */
+    public HttpDataRequest getFavorList(int num, String id, long timestamp, int id_type) {
+        HttpDataRequest request = new HttpDataRequest();
+        request.setGzip(true);
+        request.setNeedAuth(true);
+        request.setRetry(true);
+        request.setSort(Constants.REQUEST_METHOD_GET);
+        request.setTag(HttpTag.GET_FAVOR_LIST);
+        request.addUrlParams("format", "json");
+        request.setUrl(READ_BASE_URL + GET_FAVOR_LIST);
+        request.addUrlParams("num", String.valueOf(num));
+        request.addUrlParams("id", id);
+        request.addUrlParams("timestamp", String.valueOf(timestamp));
+        request.addUrlParams("id_type", String.valueOf(id_type));
+        return request;
+    }
+
+    /**
+     * 拉取更多收藏
+     */
+    public HttpDataRequest getFavorListItems(String ids) {
+        HttpDataRequest request = new HttpDataRequest();
+        request.setGzip(true);
+        request.setNeedAuth(true);
+        request.setRetry(true);
+        request.setSort(Constants.REQUEST_METHOD_GET);
+        request.setTag(HttpTag.GET_FAVOR_LIST_ITEMS);
+        request.addUrlParams("format", "json");
+        request.setUrl(READ_BASE_URL + GET_FAVOR_LIST_ITEMS);
+        request.addUrlParams("ids", ids);
+        return request;
+    }
+
+    /**
+     * 私信列表
+     * 
+     * @param time
+     * @param cnt
+     * @return
+     */
+    public HttpDataRequest getSubNewsMsgGroup(String time) {
+        HttpDataRequest request = new HttpDataRequest();
+        request.setGzip(true);
+        request.setNeedAuth(true);
+        request.setRetry(true);
+        request.setSort(Constants.REQUEST_METHOD_GET);
+        request.setTag(HttpTag.SUB_NEWS_MSGGROUP);
+        request.addUrlParams("mtime", time);
+        request.addUrlParams("cnt", "200");
+        request.setUrl(READ_BASE_URL + SUBNEWS_MSG_GROUP);
+        return request;
+    }
+
+    public HttpDataRequest delSubNewsMsgGroup(List<String> uinList) {
+        HttpPostRequest request = new HttpPostRequest();
+        request.setGzip(true);
+        request.setNeedAuth(true);
+        request.setRetry(false);
+        request.setSort(Constants.REQUEST_METHOD_POST);
+        request.setTag(HttpTag.DEL_SUBNEWS_GROUP);
+        request.setUrl(WRITE_BASE_URL + DEL_SUBNEWS_MSG_GROUP);
+
+        Map<String, String> bodyParams = new HashMap<String, String>();
+
+        StringBuilder sb = new StringBuilder();
+
+        for ( ; uinList.size() > 0;) {
+            String uin = uinList.remove(0);
+            if (uin != null && uin.length() > 0) {
+                sb.append(uin + (uinList.size() >= 1 ? "," : ""));
+            }
+        }
+
+        bodyParams.put("ruin", sb.toString());
+        request.setBodyParams(bodyParams);
+        return request;
+    }
+
+    /**
+     * 对话列表刷新数据
+     * 
+     * @param ruin
+     * @param time
+     * @return
+     */
+    // 请求消息列表中最前的cnt条消息
+    public HttpDataRequest getSubNewsMsgListBack(String ruin) {
+        HttpDataRequest request = new HttpDataRequest();
+        request.setGzip(true);
+        request.setNeedAuth(true);
+        request.setRetry(true);
+        request.setSort(Constants.REQUEST_METHOD_GET);
+        request.setTag(HttpTag.SUB_NEWS_MSGLIST_BACK);
+        request.setUrl(READ_BASE_URL + SUBNEWS_MSG_LIST);
+        request.addUrlParams("mtime", "0");
+        request.addUrlParams("cnt", "10");
+        request.addUrlParams("ruin", ruin);
+        /* request.addUrlParams("direction", "back"); */
+        return request;
+    }
+    
+    /**
+     * 对话列表刷新数据
+     * 
+     * @param ruin
+     * @param time
+     * @return
+     */
+    // 请求 mtime 之后的cnt条消息
+    public HttpDataRequest getSubNewsMsgListBackIncremental(String ruin, String time) {
+        HttpDataRequest request = new HttpDataRequest();
+        request.setGzip(true);
+        request.setNeedAuth(true);
+        request.setRetry(true);
+        request.setSort(Constants.REQUEST_METHOD_GET);
+        request.setTag(HttpTag.SUB_NEWS_MSGLIST_BACK_INCREMENTAL);
+        request.setUrl(READ_BASE_URL + SUBNEWS_MSG_LIST);
+        request.addUrlParams("mtime", time);
+        request.addUrlParams("cnt", "10");
+        request.addUrlParams("ruin", ruin);
+        request.addUrlParams("direction", "back");
+        /* request.addUrlParams("direction", "back"); */
+        return request;
+    }
+    
+    
+
+    /**
+     * 对话列加载旧数据
+     * 
+     * @param ruin
+     * @param time
+     * @return
+     */
+    // 请求 mtime 之前的 cnt条消息
+    public HttpDataRequest getSubNewsMsgListFront(String ruin, String time) {
+        HttpDataRequest request = new HttpDataRequest();
+        request.setGzip(true);
+        request.setNeedAuth(true);
+        request.setRetry(true);
+        request.setSort(Constants.REQUEST_METHOD_GET);
+        request.setTag(HttpTag.SUB_NEWS_MSGLIST_FRONT);
+        request.setUrl(READ_BASE_URL + SUBNEWS_MSG_LIST);
+        request.addUrlParams("mtime", time);
+        request.addUrlParams("cnt", "10");
+        request.addUrlParams("ruin", ruin);
+        request.addUrlParams("direction", "front");
+        return request;
+    }
+
+    /**
+     * @param ruin
+     * @param msg
+     * @return
+     */
+    public HttpDataRequest addSubNewsMsg(String ruin, String msg) {
+        HttpPostRequest request = new HttpPostRequest();
+        request.setGzip(true);
+        request.setNeedAuth(true);
+        request.setRetry(false);
+        request.setSort(Constants.REQUEST_METHOD_POST);
+        request.setTag(HttpTag.ADD_SUBNEWS_MSG);
+        request.setUrl(WRITE_BASE_URL + ADD_SUBNEWS_MSG);
+        Map<String, String> bodyParams = new HashMap<String, String>();
+        bodyParams.put("ruin", ruin);
+        bodyParams.put("msg", msg);
+        request.setBodyParams(bodyParams);
+        return request;
+    }
+
+    /**
+     * @param ruin
+     * @param msg
+     * @return
+     */
+    public HttpDataRequest getCheckNewSubscribeRequest(String chlid, long lastUpdate) {
+        HttpPostRequest request = new HttpPostRequest();
+        request.setGzip(true);
+        request.setNeedAuth(true);
+        request.setRetry(false);
+        request.setSort(Constants.REQUEST_METHOD_GET);
+        request.setTag(HttpTag.CHECK_SUBSCRIBE_UPDATE);
+        request.setUrl(READ_BASE_URL + CHECK_NEW_RSS);
+        request.addUrlParams("chlid", chlid);
+        request.addUrlParams("update", Long.toString(lastUpdate));
+        return request;
+    }
+}

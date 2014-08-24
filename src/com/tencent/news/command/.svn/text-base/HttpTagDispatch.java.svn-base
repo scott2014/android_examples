@@ -1,0 +1,249 @@
+package com.tencent.news.command;
+
+import android.util.Log;
+
+import com.tencent.news.api.JsonParse;
+import com.tencent.news.utils.SLog;
+
+public class HttpTagDispatch {
+
+	public enum HttpTag { // 顺序已按接口测速文档排列,切勿移动!!!
+
+		NEWS_REMOTE_CONFIG(1), // 配置拉取
+		SPLASH_DATA(2), // 获取splash页
+		NEWS_NEWS_TOP(3), // 获取列表页
+		SIMPLE_HTML_CONTENT(4), // 获取底层页
+		QQNEWS_COMMENT(5), // 获取评论
+		QQNEWS_COMMENT_GET_MORE(6), // 获取评论
+		GET_MYCOMMENTS(7), // 获取评论
+		GET_MYCOMMENTS_MORE(8), // 获取评论
+		GET_ATCOMMENTS(9), // 获取评论
+		GET_ATCOMMENTS_MORE(10), // 获取评论
+		QQNEWS_COMMENT_COUNT(11), // 获取评论数
+		IMG_TXT_LIVE_NEW_DATA(12), // 图文直播
+		IMG_TXT_LIVE_REFRESH_DATA(13), // 图文直播
+		IMG_TXT_LIVE_AUTO_REFRESH_DATA(14), // 图文直播
+		IMG_TXT_LIVE_LOAD_MORE_DATA(15), // 图文直播
+		GET_VIDEO_URL(16), // 视频点播
+		VIDEO_LIVE(17), // 视频直播
+		GET_SUB_CHANNELS(18), // 新闻页卡二级导航 图片页卡二级导航 视频页卡二级导航
+		GET_EXTENDED_SUB_CHANNELS(19), // 扩展页卡的二级导航接口
+		HOT_APP_LIST(20), // 精品推荐
+		QQNEWS_VOTE_INFO(21), // 获取投票信息
+		SPECIAL_NEWS_LIST(22), // 获取专题列表
+		GET_USER_INFO_AFTER_WTLOGIN(23), // 获取用户信息
+		OFFLINE_LIST(24), // 获取打包列表
+		PUBLISH_QQNEWS_MULTI(25), // 发表评论 发表微博
+		PUBLISH_TRANS_COMMENT_MULTI(26), // 转发评论 发表微博
+		SHARE_TENCENT_WEIBO(27), // 腾讯微博分享
+		SHARE_SINA_WEIBO(28), // 新浪微博分享
+		SHARE_TENCENT_QZONE(29), // QQ空间分享
+
+		SHARE_WECHAT_FRIEND_ZONE(30), //
+		SUGGEST_QQNEWS(31), //
+		NEWS_LIST_ITEMS(32), //
+		UP_ONE_COMMENT(33), //
+		PUSH_MSG_CONFIG(34), //
+		PUSH_MSG_CONN(35), //
+		REPORT_INPUT_VOTE(36), //
+		FULL_HTML_CONTENT(37), //
+		GET_BETATESTING_AUTHINFO(38), //
+		NEWS_CHECK_UPDATE(39), //
+		GET_RSS_CAT_LIST(40), //
+		RSS_SYNC_CHANNEL_LIST(41), //
+		SYNC_FAVOR_LIST(42), //
+		GET_FAVOR_LIST(43), //
+		GET_FAVOR_LIST_ITEMS(44), //
+		RSS_INDEX_ANDITEMS(45), //
+		RSS_INDEX_ANDITEMS_MULTI(46), //
+		RSS_LIST_ITEMS(47), //
+		SUB_NEWS_MSGGROUP(48), //
+		SUB_NEWS_MSGGROUP_MORE(49), //
+		SUB_NEWS_MSGLIST_BACK(50), //
+		SUB_NEWS_MSGLIST_FRONT(51), //
+		ADD_SUBNEWS_MSG(52), //
+		CHECK_SUBSCRIBE_UPDATE(53), //
+		RSS_COVER_CHANNEL_LIST(54), //
+		DEL_ONE_COMMENT(55), //
+		GET_RSS_SUB_ITEM(56), //
+		DEL_SUBNEWS_GROUP(57), //
+		RSS_FIRST_SUB(58), //
+		SET_ONE_TOP(59), //
+		SET_ONE_NORMAL(60), //
+		SUB_NEWS_MSGLIST_BACK_INCREMENTAL(61); //
+
+		HttpTag(int ni) {
+			this.nativeInt = ni;
+		}
+
+		final int nativeInt;
+	}
+
+	public static Object dispatch(HttpDataRequest request, String json) throws Exception {
+		Object result = null;
+		switch (request.getTag()) {
+		case NEWS_NEWS_TOP:
+			long start = System.currentTimeMillis();
+			Log.i("readCache", "解析开始" + start);
+			result = JsonParse.parseItemsByRefresh(json);
+			Log.i("readCache", "解析结束" + (System.currentTimeMillis() - start));
+			break;
+
+		case NEWS_LIST_ITEMS:
+			result = JsonParse.parseItemsByLoadMore(json);
+			break;
+		case RSS_INDEX_ANDITEMS:
+		case RSS_INDEX_ANDITEMS_MULTI:
+			result = JsonParse.parseRssItemsByRefresh(json);
+			break;
+		case RSS_LIST_ITEMS:
+			result = JsonParse.parseRssItemsByLoadMore(json);
+			break;
+		case PUBLISH_QQNEWS_MULTI:// 写评论和分享到微博合成一个的接口(微热点的还需要另外加接口)
+		case PUBLISH_TRANS_COMMENT_MULTI:
+			result = JsonParse.parsePublishQQNewsMulti(json);
+			break;
+		case QQNEWS_COMMENT:
+		case QQNEWS_COMMENT_GET_MORE:
+		case GET_MYCOMMENTS:
+		case GET_MYCOMMENTS_MORE:
+		case GET_ATCOMMENTS:
+		case GET_ATCOMMENTS_MORE:
+			result = JsonParse.parseNewsCommentList(json);
+			break;
+		case GET_SUB_CHANNELS:
+			result = JsonParse.parseChannelList(json);
+			break;
+		case NEWS_REMOTE_CONFIG:
+			result = JsonParse.parseNewsRemoteConfig(json);
+			break;
+		case NEWS_CHECK_UPDATE:
+			result = JsonParse.parseNewsVersionInfo(json);
+			break;
+		// case APP_LIST_QQNEWS:
+		// result = JsonParse.parseAppListQQNews(json);
+		// break;
+		case GET_USER_INFO_AFTER_WTLOGIN:
+			result = JsonParse.parseUserInfoFromServerJson(json);
+			break;
+		case UP_ONE_COMMENT:
+		case SUGGEST_QQNEWS:
+			result = json;
+			break;
+		case DEL_ONE_COMMENT:
+		case SET_ONE_TOP:
+		case SET_ONE_NORMAL:
+			result = JsonParse.parseRerurnMsgOfCommentOperating(json);
+			break;
+		case GET_VIDEO_URL:
+			result = JsonParse.parseVideoUrl(json);
+			break;
+		case PUSH_MSG_CONFIG:
+			result = JsonParse.parsePushConfig(json);
+			break;
+		case PUSH_MSG_CONN:
+			result = JsonParse.parsePushConnect(json);
+			break;
+		case SPLASH_DATA:
+			result = JsonParse.parseSplashData(json);
+			break;
+		case VIDEO_LIVE:
+			result = JsonParse.parseVideoLiveStatus(json);
+			break;
+		case SPECIAL_NEWS_LIST:
+			result = JsonParse.parseSpecialNewsList(json);
+			break;
+		case GET_EXTENDED_SUB_CHANNELS:
+			result = JsonParse.parseExtendedChannels(json);
+			break;
+		case QQNEWS_VOTE_INFO:
+			result = JsonParse.parseVoteInfo(json);
+			break;
+		case REPORT_INPUT_VOTE:
+			result = json;
+			break;
+		case OFFLINE_LIST:
+			long startOFFLINE_LIST = System.currentTimeMillis();
+			result = JsonParse.parseOfflineList(json);
+			SLog.i("olTime", "解析离线任务耗时:" + (System.currentTimeMillis() - startOFFLINE_LIST) + "ms");
+			break;
+		case IMG_TXT_LIVE_NEW_DATA:
+		case IMG_TXT_LIVE_REFRESH_DATA:
+		case IMG_TXT_LIVE_AUTO_REFRESH_DATA:
+		case IMG_TXT_LIVE_LOAD_MORE_DATA:
+			result = JsonParse.parseImgTxtLive(json);
+			break;
+		case SHARE_SINA_WEIBO:
+			result = JsonParse.parseSinaWeiboReponse(json);
+			break;
+		case SHARE_TENCENT_WEIBO:
+			result = JsonParse.parseQQWeiboReponse(json);
+			break;
+		case SHARE_TENCENT_QZONE:
+			result = JsonParse.parseQzoneReponse(json);
+			break;
+		case SHARE_WECHAT_FRIEND_ZONE:
+			result = JsonParse.parseWechatFriendReponse(json);
+			break;
+		case FULL_HTML_CONTENT:
+			result = JsonParse.parseFullHtmlContent(json);
+			break;
+		case SIMPLE_HTML_CONTENT:
+			result = JsonParse.parseSimpleHtmlContent(json);
+			break;
+
+		case HOT_APP_LIST:
+			result = JsonParse.parseHotAppListReponse(json);
+			break;
+
+		case GET_BETATESTING_AUTHINFO: // 检查的安装测试包是否在有效期内、用户是否是合法的测试用户
+			result = JsonParse.parseBetaTestingAuthInfo(json);
+			break;
+		case QQNEWS_COMMENT_COUNT:
+			result = JsonParse.parseNewsCommentCount(json);
+			break;
+		case GET_RSS_CAT_LIST:
+			result = JsonParse.parseRssCatList(json);
+			break;
+		case GET_RSS_SUB_ITEM:
+			result = JsonParse.parseRssSubItem(json);
+			break;
+		case RSS_SYNC_CHANNEL_LIST:
+		case RSS_COVER_CHANNEL_LIST:
+			result = JsonParse.parseRssChannelList(json);
+			break;
+		case SYNC_FAVOR_LIST:
+			result = JsonParse.parseSyncFavorResult(json);
+			break;
+		case GET_FAVOR_LIST:
+			result = JsonParse.parseFavorItemsByRefresh(json);
+			break;
+		case GET_FAVOR_LIST_ITEMS:
+			result = JsonParse.parseFavorItemsByLoadMore(json);
+			break;
+		case SUB_NEWS_MSGGROUP:
+			result = JsonParse.parseNewsMsgGroup(json);
+			break;
+		case DEL_SUBNEWS_GROUP:
+			result = JsonParse.parseDelNewsMsgGroup(json);
+			break;
+		case SUB_NEWS_MSGLIST_BACK:
+		case SUB_NEWS_MSGLIST_FRONT:
+		case SUB_NEWS_MSGLIST_BACK_INCREMENTAL:
+			result = JsonParse.parseNewsMsgList(json);
+			break;
+		case ADD_SUBNEWS_MSG:
+			result = JsonParse.parseAddNewsMsg(json);
+			break;
+		case CHECK_SUBSCRIBE_UPDATE:
+			result = JsonParse.parseCheckSubscribeUpdate(json);
+			break;
+		case RSS_FIRST_SUB:
+			result = JsonParse.parseRssFirstSubscriptionList(json);
+			break;
+		default:
+			throw new IllegalArgumentException("Unknown HttpTag for request: " + request.getTag());
+		}
+		return result;
+	}
+}
