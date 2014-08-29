@@ -29,7 +29,7 @@ import android.content.Context;
 
 import com.tencent.news.boss.SpeedTest;
 import com.tencent.news.command.BaseHttpRequest;
-import com.tencent.news.command.HttpDataRequest;
+import com.tencent.news.command.HttpCryptPostRequest;
 import com.tencent.news.config.Constants;
 import com.tencent.news.model.pojo.HttpResult;
 import com.tencent.news.system.Application;
@@ -252,6 +252,28 @@ public abstract class HttpEngine {
 		client.getParams().setParameter(ConnRoutePNames.DEFAULT_PROXY, httpHost);
 
 		return client;
+	}
+	
+	
+	public static HttpEngine getHttpEngine(BaseHttpRequest req) {
+		String sort = req.getSort();
+		HttpEngine httpEngine = null;
+		
+		if (sort.equalsIgnoreCase(Constants.REQUEST_METHOD_GET)) {
+			httpEngine = new HttpGetEngine(req);
+		} else if (sort.equalsIgnoreCase(Constants.REQUEST_METHOD_POST)) {
+			if(req instanceof HttpCryptPostRequest) 
+			{
+				httpEngine = new HttpCryptPostEngine(req);
+			}else{
+				httpEngine = new HttpPostEngine(req);
+			}
+		} else if (sort.equalsIgnoreCase(Constants.REQUEST_METHOD_PUT)) {
+			httpEngine = new HttpPutEngine(req);
+		} else if (sort.equalsIgnoreCase(Constants.REQUEST_METHOD_DELETE)) {
+			httpEngine = new HttpDeleteEngine(req);
+		}
+		return httpEngine;
 	}
 
 	protected abstract void initTag();

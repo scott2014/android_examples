@@ -1,7 +1,10 @@
 package com.tencent.news.model.pojo;
 
+import android.database.CursorJoiner.Result;
+
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
+import com.tencent.news.http.HttpEngine.HttpCode;
 import com.tencent.news.model.OrgData;
 import com.tencent.news.utils.Crypt;
 
@@ -42,14 +45,24 @@ public class HttpCryptResult extends HttpResult {
 
 	@Override
 	public byte[] getData() {
-		// TODO Auto-generated method stub
-		return super.getData();
+		return result.getData();
 	}
 
 	@Override
 	public void setData(byte[] data) {
 		// TODO Auto-generated method stub
 		super.setData(data);
+	}
+
+	@Override
+	public HttpCode getResultCode() {
+		return result.getResultCode();
+	}
+
+	@Override
+	public void setResultCode(HttpCode resultCode) {
+		// TODO Auto-generated method stub
+		super.setResultCode(resultCode);
 	}
 	
 	

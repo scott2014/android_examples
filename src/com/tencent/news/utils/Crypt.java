@@ -1,8 +1,5 @@
 package com.tencent.news.utils;
 
-import com.tencent.mm.algorithm.MD5;
-
-
 /*
  * 基于base64的加密解密算法
  * 

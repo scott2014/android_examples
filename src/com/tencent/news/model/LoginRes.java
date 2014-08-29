@@ -7,6 +7,7 @@ public class LoginRes implements Serializable {
 	private String token;
 	private String status;
 	private String cust_flag;
+	private String userid;
 	
 	public String getCode() {
 		return code;
@@ -32,4 +33,11 @@ public class LoginRes implements Serializable {
 	public void setCust_flag(String cust_flag) {
 		this.cust_flag = cust_flag;
 	}
+	public String getUserid() {
+		return userid;
+	}
+	public void setUserid(String userid) {
+		this.userid = userid;
+	}
+	
 }

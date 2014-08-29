@@ -18,6 +18,7 @@ import com.tencent.news.model.dataloader.BaseDataLoader.DataLoaderCallback;
 import com.tencent.news.model.dataloader.CacheDataLoader;
 import com.tencent.news.model.req.LoginReq;
 import com.tencent.news.utils.Crypt;
+import com.tencent.news.utils.SHA1;
 
 public class Login extends Activity implements DataLoaderCallback {
 	
@@ -45,7 +46,7 @@ public class Login extends Activity implements DataLoaderCallback {
 				reqObj.setCmd(HttpTag.LOGIN);
 				
 				reqObj.setTel(et_phone_no.getText().toString());
-				reqObj.setPwd(Crypt.encode(et_passwd.getText().toString()));
+				reqObj.setPwd(SHA1.crypt(et_passwd.getText().toString()));
 				
 				HttpDataRequest request = HttpRequestFactory.getInstance().post(reqObj);
 				

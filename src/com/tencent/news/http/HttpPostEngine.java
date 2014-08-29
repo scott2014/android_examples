@@ -17,7 +17,7 @@ public class HttpPostEngine extends HttpEngine {
 
 	@Override
 	protected void initTag() {
-		TAG = "HttpPostEngine";
+		TAG = HttpPostEngine.class.getSimpleName();
 	}
 
 	@Override
@@ -28,9 +28,20 @@ public class HttpPostEngine extends HttpEngine {
 	@Override
 	protected void setRequestParams() throws UnsupportedEncodingException {
 		HttpPostRequest postRequest = (HttpPostRequest)baseRequest;
-		String entityString = postRequest.getString();
-		AbstractHttpEntity entity = new StringEntity(entityString);
-		entity.setContentType("application/x-www-form-urlencoded");
-    	((HttpPost) requestBase).setEntity(entity); 
+		
+		if(postRequest.getBody() != null)
+		{
+			String entityString = postRequest.getBody();
+			AbstractHttpEntity entity = new StringEntity(entityString);
+			entity.setContentType("application/octet-stream");
+	    	((HttpPost) requestBase).setEntity(entity); 
+		}
+		else
+		{
+			String entityString = postRequest.getString();
+			AbstractHttpEntity entity = new StringEntity(entityString);
+			entity.setContentType("application/x-www-form-urlencoded");
+	    	((HttpPost) requestBase).setEntity(entity); 
+		}
 	}
 }

@@ -218,23 +218,7 @@ public class HttpDataDownloadPool {
 				HttpDataResponse response = mHttpProcessingArray[runId].getResponse();
 				HttpResult result = null;
 
-				String sort = request.getSort();
-				HttpEngine httpEngine = null;
-				if (sort.equalsIgnoreCase(Constants.REQUEST_METHOD_GET)) {
-					httpEngine = new HttpGetEngine(request);
-				} else if (sort.equalsIgnoreCase(Constants.REQUEST_METHOD_POST)) {
-					if(request instanceof HttpCryptPostRequest) 
-					{
-						httpEngine = new HttpCryptPostEngine(request);
-					}else{
-						httpEngine = new HttpPostEngine(request);
-					}
-				//	httpEngine = new HttpPostEngine(request);
-				} else if (sort.equalsIgnoreCase(Constants.REQUEST_METHOD_PUT)) {
-					httpEngine = new HttpPutEngine(request);
-				} else if (sort.equalsIgnoreCase(Constants.REQUEST_METHOD_DELETE)) {
-					httpEngine = new HttpDeleteEngine(request);
-				}
+				HttpEngine httpEngine = HttpEngine.getHttpEngine(request);
 
 				/**
 				 * 完全从网络取数据
@@ -263,8 +247,6 @@ public class HttpDataDownloadPool {
 						// 网络访问成功
 						SLog.v("****网络访问成功");
 						String json = new String(result.getData());
-						
-						
 						
 						json = json.trim();
 						printJSONString(json);
