@@ -10,7 +10,7 @@ import com.tencent.news.model.BaseReq;
 public class HttpRequestFactory {
 	
 	//开发环境
-	public static final String READ_BASE_URL = "http://218.17.118.28:8081/";
+	public static String READ_BASE_URL = "http://218.17.118.27:8081/";
 	
 	private static HttpRequestFactory requestFactory = null;
 	
