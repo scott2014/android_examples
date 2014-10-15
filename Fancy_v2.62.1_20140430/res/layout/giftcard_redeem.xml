@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:background="@color/fancy_background" android:fadingEdgeLength="0.0px" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:custom="http://schemas.android.com/apk/res/com.thefancy.app">
+    <LinearLayout android:gravity="top|center" android:orientation="vertical" android:padding="20.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:id="@id/phone_menu_dummy" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="0.0px" android:layout_height="0.0px" />
+        <LinearLayout android:gravity="top|center" android:orientation="vertical" android:background="@drawable/multifeed_back_off" android:padding="20.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="18.0sp" android:textColor="#ff333333" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/giftcard_redeem_title" />
+            <TextView android:textSize="16.0sp" android:textColor="#ff656565" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="@string/giftcard_redeem_text" android:singleLine="false" />
+            <RelativeLayout android:background="@drawable/giftcard_background" android:layout_width="400.0dip" android:layout_height="247.0dip" android:layout_marginTop="40.0dip" android:layout_marginBottom="40.0dip">
+                <EditText android:textSize="16.0sp" android:textColor="#ff000000" android:textColorHint="#ffa3a3a3" android:gravity="center" android:id="@id/giftcard_code" android:background="@drawable/giftcard_code_background" android:padding="10.0dip" android:layout_width="360.0dip" android:layout_height="wrap_content" android:hint="@string/giftcard_code_hint" android:singleLine="true" android:layout_centerInParent="true" />
+            </RelativeLayout>
+            <TextView android:textSize="17.0sp" android:textStyle="bold" android:textColor="#ffffffff" android:gravity="center" android:id="@id/giftcard_redeem_button" android:background="@drawable/button_normal_blue" android:paddingLeft="30.0dip" android:paddingTop="10.0dip" android:paddingRight="30.0dip" android:paddingBottom="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/giftcard_redeem_button" />
+            <TextView android:textSize="15.0sp" android:textColor="#ff333333" android:layout_gravity="center" android:id="@id/giftcard_purchase" android:background="@drawable/clickable_background" android:paddingLeft="5.0dip" android:paddingTop="15.0dip" android:paddingRight="5.0dip" android:paddingBottom="15.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="30.0dip" android:text="@string/giftcard_purchase" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

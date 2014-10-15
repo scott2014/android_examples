@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/carditem_option" android:background="@drawable/flat_clickable_background_tp" android:paddingLeft="@dimen/_13dp" android:paddingTop="@dimen/_16dp" android:paddingRight="@dimen/_13dp" android:paddingBottom="@dimen/_16dp" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/card_item_radiobox" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/_13dp" android:src="@drawable/radiobox_button" />
+    <ImageView android:id="@id/card_item_cardtype" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/_10dp" />
+    <TextView android:textSize="@dimen/xxhdpi_38pt" android:textColor="#ffadafb2" android:gravity="start" android:id="@id/card_item_text" android:layout_width="0.0px" android:layout_height="wrap_content" android:includeFontPadding="false" android:layout_weight="1.0" />
+</LinearLayout>

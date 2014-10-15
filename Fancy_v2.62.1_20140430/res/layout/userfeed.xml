@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:background="@color/fancy_background" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:custom="http://schemas.android.com/apk/res/com.thefancy.app" xmlns:holo="http://schemas.android.com/apk/res-auto">
+    <View android:focusable="true" android:focusableInTouchMode="true" android:layout_width="0.0px" android:layout_height="0.0px" />
+    <com.thefancy.app.widgets.ExtendedScrollEventListView android:layout_gravity="top" android:id="@id/listview" android:background="@color/fancy_background" android:scrollbars="none" android:fadingEdgeLength="0.0dip" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/transparent" android:scrollingCache="false" android:dividerHeight="0.0dip" android:fastScrollEnabled="false" android:overScrollMode="never" />
+    <FrameLayout android:id="@id/message_container" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.thefancy.app.widgets.ProgressSpinner android:layout_gravity="center" android:id="@id/spinner" android:visibility="gone" android:layout_width="@dimen/_30dp" android:layout_height="@dimen/_30dp" custom:color_style="gray" />
+        <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <ImageView android:layout_gravity="center_horizontal" android:id="@id/feed_message_icon" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/_20dp" android:src="@drawable/feed_bgicon_fancy" />
+            <com.thefancy.app.widgets.FancyTextView android:textSize="@dimen/xxhdpi_44pt" android:textColor="#ff454950" android:layout_gravity="center" android:id="@id/feed_message_text_main" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/_5dp" android:text="@string/feed_bg_message_main_my_fancy" custom:font_name="medium" />
+            <com.thefancy.app.widgets.FancyTextView android:textSize="@dimen/xxhdpi_36pt" android:textColor="#ff93969c" android:layout_gravity="center" android:id="@id/feed_message_text_sub" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/_8dp" android:text="@string/feed_bg_message_sub_my_fancy" custom:font_name="regular" />
+            <com.thefancy.app.widgets.FancyTextView android:textSize="@dimen/xxhdpi_42pt" android:textColor="#ff797c84" android:gravity="center" android:layout_gravity="center" android:id="@id/feed_message_button" android:paddingLeft="@dimen/_16dp" android:paddingTop="@dimen/_7.3dp" android:paddingRight="@dimen/_16dp" android:paddingBottom="@dimen/_7dp" android:focusable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/menu_item_upload" custom:font_name="medium" custom:corner_radius="3.0dip" custom:border_width="1.2999878dip" custom:border_color="#ffcfd2d4" custom:border_color_pressed="#ffe2e4e5" custom:bg_color="#ffdcdee0" custom:bg_color_pressed="#ffcfd2d4" />
+        </LinearLayout>
+    </FrameLayout>
+</FrameLayout>

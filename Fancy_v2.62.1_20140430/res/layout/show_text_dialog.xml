@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="#fffcfcfc" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:holo="http://schemas.android.com/apk/res-auto"
+  xmlns:custom="http://schemas.android.com/apk/res/com.thefancy.app">
+    <com.thefancy.app.widgets.FancyTextView android:textSize="@dimen/xxhdpi_46pt" android:textStyle="normal" android:textColor="#ff4c5159" android:layout_gravity="left|center" android:id="@id/dialog_title" android:paddingLeft="@dimen/_17dp" android:paddingTop="@dimen/_17dp" android:paddingRight="@dimen/_17dp" android:paddingBottom="@dimen/_17dp" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="Title" custom:font_name="Roboto-Medium" />
+    <View android:background="#ffebebeb" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" />
+    <com.thefancy.app.widgets.FancyTextView android:textSize="@dimen/xxhdpi_40pt" android:textColor="#ff585d66" android:textColorHint="#80585d66" android:gravity="top|left|center" android:id="@id/dialog_text" android:padding="@dimen/_10dp" android:focusable="true" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="@dimen/_17dp" android:maxHeight="300.0dip" android:minHeight="@dimen/_60dp" android:singleLine="false" custom:corner_radius="3.0dip" custom:border_width="1.2999878dip" custom:border_color="#ffcfd2d4" custom:border_color_pressed="#ffe2e4e5" custom:bg_color="#ffffffff" custom:bg_color_pressed="@color/flat_item_pressed_gray" />
+</LinearLayout>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:id="@id/scroller" android:background="@color/fancy_background" android:layout_width="fill_parent" android:layout_height="wrap_content" android:fillViewport="false"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/groupgift_frame" android:padding="20.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:gravity="top|center" android:orientation="vertical" android:background="@drawable/multifeed_back_off" android:padding="15.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="18.0sp" android:textColor="#ff333333" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="5.0dip" android:text="@string/groupgift_help_title" />
+            <TextView android:textSize="14.0sp" android:textColor="#ff666666" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/groupgift_help_tagline" />
+            <RelativeLayout android:id="@id/groupgift_video" android:background="#ff000000" android:layout_width="500.0dip" android:layout_height="279.0dip" android:layout_marginTop="25.0dip">
+                <ImageView android:layout_width="70.0dip" android:layout_height="70.0dip" android:src="@drawable/video_play" android:scaleType="fitXY" android:layout_centerInParent="true" />
+            </RelativeLayout>
+        </LinearLayout>
+        <LinearLayout android:gravity="top|center" android:orientation="vertical" android:background="@drawable/multifeed_back_off" android:padding="15.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="15.0dip">
+            <TextView android:textSize="16.0sp" android:textColor="#ff333333" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="20.0dip" android:text="@string/groupgift_help_how" />
+            <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="5.0dip">
+                <TextView android:textSize="13.0sp" android:textStyle="bold" android:textColor="#ffffffff" android:gravity="center" android:background="@drawable/circle_background" android:layout_width="22.0dip" android:layout_height="22.0dip" android:layout_marginLeft="14.0dip" android:layout_marginRight="14.0dip" android:text="1" />
+                <TextView android:textSize="15.0sp" android:textColor="#ff505050" android:layout_width="0.0px" android:layout_height="wrap_content" android:text="@string/groupgift_help_step1" android:layout_weight="1.0" />
+            </LinearLayout>
+            <TextView android:textSize="14.0sp" android:textColor="#ff888888" android:paddingLeft="50.0dip" android:paddingRight="30.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="15.0dip" android:text="@string/groupgift_help_step1_desc" />
+            <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="5.0dip">
+                <TextView android:textSize="13.0sp" android:textStyle="bold" android:textColor="#ffffffff" android:gravity="center" android:background="@drawable/circle_background" android:layout_width="22.0dip" android:layout_height="22.0dip" android:layout_marginLeft="14.0dip" android:layout_marginRight="14.0dip" android:text="2" />
+                <TextView android:textSize="15.0sp" android:textColor="#ff505050" android:layout_width="0.0px" android:layout_height="wrap_content" android:text="@string/groupgift_help_step2" android:layout_weight="1.0" />
+            </LinearLayout>
+            <TextView android:textSize="14.0sp" android:textColor="#ff888888" android:paddingLeft="50.0dip" android:paddingRight="30.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="15.0dip" android:text="@string/groupgift_help_step2_desc" />
+            <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="5.0dip">
+                <TextView android:textSize="13.0sp" android:textStyle="bold" android:textColor="#ffffffff" android:gravity="center" android:background="@drawable/circle_background" android:layout_width="22.0dip" android:layout_height="22.0dip" android:layout_marginLeft="14.0dip" android:layout_marginRight="14.0dip" android:text="3" />
+                <TextView android:textSize="15.0sp" android:textColor="#ff505050" android:layout_width="0.0px" android:layout_height="wrap_content" android:text="@string/groupgift_help_step3" android:layout_weight="1.0" />
+            </LinearLayout>
+            <TextView android:textSize="14.0sp" android:textColor="#ff888888" android:paddingLeft="50.0dip" android:paddingRight="30.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="15.0dip" android:text="@string/groupgift_help_step3_desc" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

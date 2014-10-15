@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:holo="http://schemas.android.com/apk/res-auto">
+    <PreferenceCategory android:title="@string/setting_header_profile">
+        <com.thefancy.app.widgets.ProfilePreference android:persistent="false" android:layout="@layout/settings_profile" android:title="@string/setting_edit_profile" android:key="profile" />
+        <Preference android:persistent="false" android:title="@string/setting_edit_profile" android:key="profile_edit" />
+        <Preference android:persistent="false" android:title="@string/setting_change_password" android:key="password" />
+        <Preference android:persistent="false" android:title="@string/setting_header_linked" android:key="link_social" />
+        <Preference android:persistent="false" android:title="@string/invite_fancy_credit" android:key="fancy_credit" />
+        <Preference android:persistent="false" android:title="@string/giftcard_redeem_button" android:key="redeem" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/setting_header_misc" android:key="group_misc">
+        <Preference android:persistent="false" android:title="@string/setting_notification_settings" android:key="notification" />
+        <Preference android:persistent="false" android:title="@string/setting_email_settings" android:key="email" />
+        <CheckBoxPreference android:persistent="false" android:title="@string/setting_showlist_title" android:key="showlist" android:summary="@string/setting_showlist_desc" />
+        <CheckBoxPreference android:persistent="false" android:title="@string/setting_disable_google_wallet" android:key="disable_google_wallet" android:summary="@string/setting_disable_google_wallet_desc" />
+        <CheckBoxPreference android:persistent="false" android:title="@string/setting_profile_privacy" android:key="is_private" android:summary="@string/setting_profile_privacy_desc" />
+        <ListPreference android:persistent="false" android:title="@string/setting_language_title" android:key="language" android:summary="Choose your language" />
+        <CheckBoxPreference android:persistent="false" android:title="@string/setting_statistics_title" android:key="anonymous" android:summary="@string/setting_anonymous_desc" />
+        <Preference android:persistent="false" android:title="@string/setting_version_title" android:key="version" android:summary="@string/setting_version_desc" />
+        <Preference android:persistent="false" android:title="@string/setting_feedback_title" android:key="feedback" android:summary="@string/setting_feedback_desc" />
+    </PreferenceCategory>
+</PreferenceScreen>

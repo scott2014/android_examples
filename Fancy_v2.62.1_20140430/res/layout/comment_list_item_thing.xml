@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:paddingLeft="@dimen/_13.3dp" android:paddingTop="@dimen/_10dp" android:paddingRight="@dimen/_13.3dp" android:paddingBottom="@dimen/_10dp" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:custom="http://schemas.android.com/apk/res/com.thefancy.app">
+    <com.thefancy.app.widgets.FancyImageView android:id="@id/thing_comment_item_image" android:background="@drawable/flat_image_thing_default" android:padding="0.0px" android:layout_width="@dimen/_40dp" android:layout_height="@dimen/_40dp" android:layout_marginRight="@dimen/_10dp" custom:border_is_circle="true" />
+    <LinearLayout android:orientation="vertical" android:layout_width="0.0px" android:layout_height="wrap_content" android:layout_weight="1.0">
+        <com.thefancy.app.widgets.FancyTextView android:textSize="@dimen/xxhdpi_44pt" android:textColor="#ff494c53" android:id="@id/thing_comment_item_username" android:background="@drawable/flat_clickable_background_tp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="0.0dip" android:text="Yongha Yoo" custom:font_name="Roboto-Medium" />
+        <TextView android:textSize="@dimen/xxhdpi_40pt" android:textStyle="normal" android:textColor="#ff686b70" android:id="@id/thing_comment_item_content" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/_1dp" android:text="This is a comment." android:singleLine="false" />
+    </LinearLayout>
+    <com.thefancy.app.widgets.ImageButton android:id="@id/thing_comment_item_action" android:paddingLeft="@dimen/_16dp" android:paddingTop="@dimen/_6dp" android:paddingRight="@dimen/_6dp" android:paddingBottom="@dimen/_24dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/thing_icon_action_comment" android:scaleType="centerInside" />
+    <com.thefancy.app.widgets.ProgressSpinner android:id="@id/thing_comment_item_spinner" android:visibility="gone" android:layout_width="@dimen/_15dp" android:layout_height="@dimen/_15dp" />
+</LinearLayout>

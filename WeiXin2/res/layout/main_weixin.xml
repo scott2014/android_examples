@@ -1,0 +1,115 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainWeiXin"
+    android:orientation="vertical"
+    android:background="#eee" >
+
+    <RelativeLayout android:id="@+id/main_bottom"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_alignParentBottom="true"
+                    android:background="@drawable/bottom_bar">
+        
+        <ImageView android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:scaleType="matrix"
+                   android:layout_gravity="bottom"
+                   android:layout_alignParentBottom="true"
+                   android:src="@drawable/tab_bg"
+                   android:id="@+id/tab_bg"/>
+        
+        <LinearLayout android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:layout_alignParentBottom="true"
+                      android:paddingBottom="2dp">
+            <LinearLayout android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:orientation="vertical"
+                          android:gravity="center_horizontal"
+                          android:layout_weight="1">
+                <ImageView android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:scaleType="matrix"
+                           android:clickable="true"
+                           android:src="@drawable/tab_weixin_pressed"
+                           android:id="@+id/img_weixin"/>
+                <TextView android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:text="微信"
+                          android:textSize="12sp"
+                          android:textColor="#fff"/>
+            </LinearLayout>
+            
+             <LinearLayout android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:orientation="vertical"
+                          android:gravity="center_horizontal"
+                          android:layout_weight="1">
+                <ImageView android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:scaleType="matrix"
+                           android:clickable="true"
+                           android:src="@drawable/tab_address_normal"
+                           android:id="@+id/img_address"/>
+                <TextView android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:text="通讯录"
+                          android:textSize="12sp"
+                          android:textColor="#fff"/>
+            </LinearLayout>
+            
+              <LinearLayout android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:orientation="vertical"
+                          android:gravity="center_horizontal"
+                          android:layout_weight="1">
+                <ImageView android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:scaleType="matrix"
+                           android:clickable="true"
+                           android:src="@drawable/tab_find_frd_normal"
+                           android:id="@+id/img_find"/>
+                <TextView android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:text="朋友们"
+                          android:textSize="12sp"
+                          android:textColor="#fff"/>
+            </LinearLayout>
+            
+               <LinearLayout android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:orientation="vertical"
+                          android:gravity="center_horizontal"
+                          android:layout_weight="1">
+                <ImageView android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:scaleType="matrix"
+                           android:clickable="true"
+                           android:src="@drawable/tab_settings_normal"
+                           android:id="@+id/img_setting"/>
+                <TextView android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:text="设置"
+                          android:textSize="12sp"
+                          android:textColor="#fff"/>
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+    
+    
+    <LinearLayout android:layout_width="match_parent"
+        		  android:layout_height="wrap_content"
+        		  android:layout_above="@id/main_bottom"
+        		  android:layout_alignParentTop="true"
+        		  android:orientation="vertical"
+        		  >
+        <android.support.v4.view.ViewPager android:layout_width="wrap_content"
+                                           android:layout_height="wrap_content"
+                                           android:layout_gravity="center"
+                                           android:id="@+id/main_viewPager"
+                                           ></android.support.v4.view.ViewPager>
+    </LinearLayout>
+
+</RelativeLayout>

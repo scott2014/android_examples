@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/frame" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:custom="http://schemas.android.com/apk/res/com.thefancy.app">
+    <RelativeLayout android:id="@id/thing_image_frame" android:layout_width="fill_parent" android:layout_height="0.0px" android:layout_weight="9.0">
+        <com.thefancy.app.widgets.FancyImageView android:id="@id/thing_image" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitCenter" />
+    </RelativeLayout>
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="0.0px" android:layout_weight="8.0">
+        <LinearLayout android:gravity="center" android:orientation="horizontal" android:padding="12.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="18.0sp" android:textColor="#ff505359" android:gravity="left|center" android:id="@id/thing_desc" android:layout_width="0.0px" android:layout_height="wrap_content" android:layout_weight="1.0" android:lineSpacingExtra="2.0dip" />
+            <com.thefancy.app.widgets.TextButton android:textSize="16.0sp" android:textColor="#ff434343" android:id="@id/thing_button_fancy" android:background="@drawable/button_border_gray" android:padding="14.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginRight="12.0dip" android:text="@string/feed_button_fancy" android:drawableLeft="@drawable/thing_icon_fancy" android:drawablePadding="10.0dip" custom:focusStyle="darken" />
+            <com.thefancy.app.widgets.TextButton android:textSize="16.0sp" android:textColor="#ff434343" android:id="@id/thing_button_addlist" android:background="@drawable/button_border_gray" android:padding="14.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/feed_button_add_to_list" android:drawableLeft="@drawable/thing_icon_list" android:drawablePadding="10.0dip" custom:focusStyle="darken" />
+        </LinearLayout>
+        <View android:background="#fff2f2f2" android:layout_width="fill_parent" android:layout_height="1.0px" />
+        <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/thing_tabitems" android:layout_width="fill_parent" android:layout_height="47.0dip">
+            <TextView android:textSize="16.0sp" android:textStyle="bold" android:textColor="#ff666666" android:gravity="center" android:id="@id/thing_tabitem_comments" android:background="@drawable/tab_item_background" android:layout_width="0.0px" android:layout_height="fill_parent" android:text="@string/comment_view_title" android:layout_weight="1.0" />
+            <View android:background="#fff2f2f2" android:layout_width="1.0px" android:layout_height="27.0dip" />
+            <TextView android:textSize="16.0sp" android:textStyle="bold" android:textColor="#ff666666" android:gravity="center" android:id="@id/thing_tabitem_recommended" android:background="@drawable/tab_item_background" android:layout_width="0.0px" android:layout_height="fill_parent" android:text="@string/intro_large_step3_title" android:layout_weight="1.0" />
+            <View android:background="#fff2f2f2" android:layout_width="1.0px" android:layout_height="27.0dip" />
+            <TextView android:textSize="16.0sp" android:textStyle="bold" android:textColor="#ff666666" android:gravity="center" android:id="@id/thing_tabitem_users" android:background="@drawable/tab_item_background" android:layout_width="0.0px" android:layout_height="fill_parent" android:text="@string/userlist_fancyd_title" android:layout_weight="1.0" />
+        </LinearLayout>
+        <View android:background="#ffdcdcdd" android:layout_width="fill_parent" android:layout_height="1.0px" />
+        <View android:background="#ffeeeeef" android:layout_width="fill_parent" android:layout_height="1.0px" />
+        <View android:background="#fff9f9f9" android:layout_width="fill_parent" android:layout_height="1.0px" />
+        <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/thing_tab_spinner" android:layout_width="fill_parent" android:layout_height="0.0px" android:layout_weight="1.0">
+            <com.thefancy.app.widgets.ProgressSpinner android:layout_width="48.0dip" android:layout_height="48.0dip" />
+        </LinearLayout>
+        <android.support.v4.view.ViewPager android:tag="thing_tab_pager" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="0.0px" android:layout_weight="1.0" />
+    </LinearLayout>
+</LinearLayout>

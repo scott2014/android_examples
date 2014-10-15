@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="hotel_adults">
+        <item quantity="other">%d البالغين</item>
+        <item quantity="zero">%d البالغ</item>
+        <item quantity="one">%d البالغين</item>
+        <item quantity="two">%d البالغين</item>
+        <item quantity="few">%d البالغين</item>
+        <item quantity="many">%d البالغين</item>
+    </plurals>
+    <plurals name="hotel_children">
+        <item quantity="other">%d الاطفال</item>
+        <item quantity="zero">طفل واحد</item>
+        <item quantity="one">%d الاطفال</item>
+        <item quantity="two">%d الاطفال</item>
+        <item quantity="few">%d الاطفال</item>
+        <item quantity="many">%d الاطفال</item>
+    </plurals>
+    <plurals name="hotel_night">
+        <item quantity="other">%d الليالي</item>
+        <item quantity="zero">ليله واحده</item>
+        <item quantity="one">%d الليالي</item>
+        <item quantity="two">%d الليالي</item>
+        <item quantity="few">%d الليالي</item>
+        <item quantity="many">%d الليالي</item>
+    </plurals>
+    <plurals name="sale_time_day">
+        <item quantity="other">%d ايام</item>
+        <item quantity="zero">يوم واحد</item>
+        <item quantity="one">%d ايام</item>
+        <item quantity="two">%d ايام</item>
+        <item quantity="few">%d ايام</item>
+        <item quantity="many">%d ايام</item>
+    </plurals>
+    <plurals name="sale_time_hour">
+        <item quantity="other">%d ساعات</item>
+        <item quantity="zero">ساعه واحده</item>
+        <item quantity="one">%d ساعات</item>
+        <item quantity="two">%d ساعات</item>
+        <item quantity="few">%d ساعات</item>
+        <item quantity="many">%d ساعات</item>
+    </plurals>
+    <plurals name="sale_time_minute">
+        <item quantity="other">%d دقائق</item>
+        <item quantity="zero">دقيقه واحده</item>
+        <item quantity="one">%d دقائق</item>
+        <item quantity="two">%d دقائق</item>
+        <item quantity="few">%d دقائق</item>
+        <item quantity="many">%d دقائق</item>
+    </plurals>
+    <plurals name="sale_time_second">
+        <item quantity="other">%d ثواني</item>
+        <item quantity="zero">ثانيه واحده</item>
+        <item quantity="one">%d ثواني</item>
+        <item quantity="two">%d ثواني</item>
+        <item quantity="few">%d ثواني</item>
+        <item quantity="many">%d ثواني</item>
+    </plurals>
+    <plurals name="timeline_new_things">
+        <item quantity="other">%d شي جديد-إضغط للتحديث!</item>
+        <item quantity="zero">%d شي جديد-إضغط للتحديث!</item>
+        <item quantity="one">%d شي جديد-إضغط للتحديث!</item>
+        <item quantity="two">%d شي جديد-إضغط للتحديث!</item>
+        <item quantity="few">%d شي جديد-إضغط للتحديث!</item>
+        <item quantity="many">%d شي جديد-إضغط للتحديث!</item>
+    </plurals>
+</resources>

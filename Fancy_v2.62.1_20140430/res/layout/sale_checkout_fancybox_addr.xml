@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/checkout_fancybox_address" android:background="@drawable/flat_clickable_background_tp" android:paddingLeft="@dimen/_13dp" android:paddingRight="@dimen/_13dp" android:layout_width="fill_parent" android:layout_height="@dimen/_51dp"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:custom="http://schemas.android.com/apk/res/com.thefancy.app">
+    <com.thefancy.app.widgets.FancyTextView android:textSize="@dimen/xxhdpi_42pt" android:textColor="#ff4d535d" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/sale_checkout_address" android:includeFontPadding="false" custom:font_name="Roboto-Medium" />
+    <TextView android:textSize="@dimen/xxhdpi_42pt" android:textColor="#ffadafb3" android:gravity="right" android:id="@id/checkout_fancybox_address_value" android:layout_width="0.0px" android:layout_height="wrap_content" android:includeFontPadding="false" android:layout_weight="1.0" />
+    <ImageView android:id="@id/checkout_fancybox_address_more" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/_8dp" android:src="@drawable/checkout_more_options" />
+</LinearLayout>

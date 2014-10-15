@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="attach_option">
+        <item>Obrázek z galérie</item>
+        <item>Zachytit obrázek</item>
+    </string-array>
+    <string-array name="attach_option_nocamera">
+        <item>Obrázek z galerie</item>
+    </string-array>
+    <string-array name="setting_gender_label">
+        <item>Raději bych neřekl</item>
+        <item>Jsem kluk</item>
+        <item>Jsem dívka</item>
+    </string-array>
+</resources>

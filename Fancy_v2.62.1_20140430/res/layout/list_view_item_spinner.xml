@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:paddingLeft="@dimen/_17dp" android:paddingTop="@dimen/_18dp" android:paddingRight="@dimen/_17dp" android:paddingBottom="@dimen/_18dp" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:custom="http://schemas.android.com/apk/res/com.thefancy.app">
+    <com.thefancy.app.widgets.ProgressSpinner android:id="@id/spinner" android:layout_width="@dimen/_16dp" android:layout_height="@dimen/_16dp" android:layout_marginRight="@dimen/_7dp" />
+    <com.thefancy.app.widgets.FancyTextView android:textSize="@dimen/xxhdpi_42pt" android:textStyle="normal" android:textColor="#ffadafb3" android:id="@android:id/text1" android:layout_width="0.0px" android:layout_height="wrap_content" android:text="@string/loading" android:layout_weight="1.0" />
+</LinearLayout>

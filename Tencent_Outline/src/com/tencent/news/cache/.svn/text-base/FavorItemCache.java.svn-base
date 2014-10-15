@@ -1,0 +1,392 @@
+
+package com.tencent.news.cache;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+import android.content.Context;
+import android.util.Log;
+
+import com.tencent.news.cache.FavorSQLiteHelper.FavorCacheItem;
+import com.tencent.news.config.Constants;
+import com.tencent.news.model.pojo.CachePageResult;
+import com.tencent.news.model.pojo.FavorId;
+import com.tencent.news.model.pojo.Item;
+import com.tencent.news.system.Application;
+import com.tencent.news.task.TaskManager;
+import com.tencent.news.utils.FileUtil;
+import com.tencent.news.utils.SLog;
+
+public class FavorItemCache {
+    private final static String TAG = FavorItemCache.class.getSimpleName();
+    private static FavorItemCache sInstance = null;
+    protected Context mContext;
+    private FavorSQLiteHelper favorDB = null;
+    public static FavorSyncHelper favorSyncHp = null;
+    private ArrayList<FavorDbItem> favorList = null;
+    private String currentUser = "";
+    private boolean itemInDb=true;//Item信息是否存放在数据库中
+
+    // private HashMap<String, Item> hashItem = new HashMap<String, Item>();
+
+    public static FavorItemCache getInstance() {
+        synchronized (FavorItemCache.class) {
+            if (sInstance == null) {
+                sInstance = new FavorItemCache();
+                sInstance.openDB();
+                favorSyncHp = FavorSyncHelper.getInstance();
+            }
+        }
+        return sInstance;
+    }
+    
+    public FavorSQLiteHelper getFavorSQLiteHelper(){
+        return favorDB;
+    }
+
+    protected FavorItemCache() {
+        mContext = Application.getInstance().getApplicationContext();
+    }
+
+    private void openDB() {
+        if (favorDB == null || !favorDB.isOpen()) {
+            try {
+                favorDB = new FavorSQLiteHelper();
+                favorDB.open();
+            } catch (Exception e) {
+                Log.e("FavorItemCache", e.getMessage());
+            }
+        }
+    }
+
+    /**
+     * Title:getCache
+     * @Description:从数据库中获取当前用户的所有收藏文章ID，包括去重逻辑
+     * @return
+     * @return List<FavorDbItem>
+     * @throws
+     */
+    public List<FavorDbItem> getCache() {
+//    	ArrayList<FavorCacheItem> list = favorDB.findAllFavorCacheItem();
+//    	if(list==null){
+//    		SLog.d(TAG, "getCache  FavorCacheItem list size: null");
+//    	}else{
+//    		SLog.d(TAG, "getCache  FavorCacheItem list size: " +list.size());
+//    		for (FavorCacheItem item : list) {
+//    			SLog.i(TAG, "getCache FavorCacheItem："+item._id+" "+item.news_id);
+//    		}
+//    	}
+    	
+        favorList = favorDB.getFavorItemsCache(favorSyncHp.getCurrentUser());
+        if (favorList != null && favorList.size() > 0) {
+            return favorList;
+        }
+        return null;
+    }
+
+    public String getFavorPath(String id) {
+        String itemCachePath = Constants.CACHE_FAVOR_PATH + File.separator + id;
+        return itemCachePath;
+    }
+
+    /**
+     * Title:generateCacheData
+     * @Description:下拉刷新和增量拉取id时，将id写入数据库，并将item存入数据库。
+     * @param idByRefresh
+     * @param itemByRefresh
+     * @param isLoadMoreIds，是否是增量拉取id
+     * @return
+     * @return List<FavorDbItem>
+     * @throws
+     */
+    public List<FavorDbItem> generateCacheData(FavorId[] idByRefresh, Item[] itemByRefresh, boolean isLoadMoreIds) {
+
+        currentUser = favorSyncHp.getCurrentUser();
+        if (isLoadMoreIds) {
+            doMergeFromLoadMoreIds(idByRefresh, itemByRefresh);
+        } else {
+            doMergeFromRefresh(idByRefresh, itemByRefresh);
+        }
+        
+        return getCache();
+    }
+
+    public void doMergeFromLoadMoreIds(FavorId[] idByRefresh, Item[] itemByRefresh) {
+
+        FavorId favorId;
+        favorDB.beginTransaction();
+        try {
+
+            for (int i = 0; i < idByRefresh.length; i++) {
+                FavorDbItem favorDbItem = new FavorDbItem();
+                favorId = idByRefresh[i];
+                favorDbItem.news_id = favorId.getId();
+                favorDbItem.source = Integer.parseInt(favorId.getId_type());
+                favorDbItem.timestamp = Long.parseLong(favorId.getTime());
+                favorDbItem.user_id = currentUser;
+                favorDbItem.operation = FavorDbItem.OP_SYNCED;
+                // check return?
+                favorDB.insert2(favorDbItem);
+            }
+
+            favorDB.setTransactionSuccessful();
+
+        } catch (Exception e) {
+            SLog.d(TAG, "doMergeFromLoadMoreIds : " + e.getMessage());
+        } finally {
+            favorDB.endTransaction();
+        }
+
+        for (int i = 0; i < itemByRefresh.length; i++) {
+            writeToCache(itemByRefresh[i].getId(), itemByRefresh[i]);
+        }
+        
+    }
+
+    /**
+     * Title:doMergeFromRefresh
+     * @Description:合并下拉刷新获取的id和item，包括id去重逻辑
+     * @param idByRefresh
+     * @param itemByRefresh
+     * @return void
+     * @throws
+     */
+    public void doMergeFromRefresh(FavorId[] idByRefresh, Item[] itemByRefresh) {
+
+         long test_delete_time_start = 0;
+         long test_delete_time_end = 0;
+         long test_getNotSync_time_start = 0;
+         long test_getNotSync_time_end = 0;
+         long test_insertDB_time_start = 0;
+         long test_insertDB_time_end = 0;
+         long test_writeItem_time_start = 0;
+         long test_writeItem_time_end = 0;
+         
+        FavorId favorId;
+        test_delete_time_start = System.currentTimeMillis();
+        favorDB.delete2(FavorDbItem.OP_SYNCED, currentUser);
+        test_delete_time_end = System.currentTimeMillis();
+        SLog.d(TAG, "delete:" + (test_delete_time_end - test_delete_time_start));
+        
+        test_getNotSync_time_start = System.currentTimeMillis();
+        HashMap<String, Boolean> favorNotSyncExist = new HashMap<String, Boolean>();
+        List<FavorDbItem> temp = favorDB.getNotSyncFavorItems(currentUser);
+        for (int i = 0; i < temp.size(); i++) {
+            favorNotSyncExist.put(temp.get(i).news_id, true);
+        }
+        test_getNotSync_time_end = System.currentTimeMillis();
+        SLog.d(TAG, "getNotSync:" + (test_getNotSync_time_end - test_getNotSync_time_start));
+
+        test_insertDB_time_start = System.currentTimeMillis();
+        favorList.clear();
+        favorDB.beginTransaction();
+        try {
+
+            for (int i = 0; i < idByRefresh.length; i++) {
+                FavorDbItem favorDbItem = new FavorDbItem();
+                favorId = idByRefresh[i];
+                if (favorNotSyncExist.containsKey(favorId.getId())) {
+                    continue;
+                }
+                favorDbItem.news_id = favorId.getId();
+                favorDbItem.source = Integer.parseInt(favorId.getId_type());
+                favorDbItem.timestamp = Long.parseLong(favorId.getTime());
+                favorDbItem.user_id = currentUser;
+                favorDbItem.operation = FavorDbItem.OP_SYNCED;
+                // check return?
+                favorDB.insert2(favorDbItem);
+            }
+
+            favorDB.setTransactionSuccessful();
+
+        } catch (Exception e) {
+            SLog.d(TAG, "doMergeFromRefresh : " + e.getMessage());
+        } finally {
+            favorDB.endTransaction();
+        }
+
+        test_insertDB_time_end =  System.currentTimeMillis();
+        SLog.d(TAG, "insertDB:" + (test_insertDB_time_end - test_insertDB_time_start));
+
+        test_writeItem_time_start =  System.currentTimeMillis();
+
+        for (int i = 0; i < itemByRefresh.length; i++) {
+            if(!hasFavorCacheItem(itemByRefresh[i].getId())){
+                writeToCache(itemByRefresh[i].getId(), itemByRefresh[i]);
+            }
+        }
+        
+        test_writeItem_time_end =  System.currentTimeMillis();
+        SLog.d(TAG, "writeItem:" + (test_writeItem_time_end - test_writeItem_time_start));
+
+    }
+
+    /**
+     * Title:getCacheDataByPage
+     * @Description:根据偏移量获取item数据
+     * @param start
+     * @param end
+     * @return
+     * @return CachePageResult<Item>
+     * @throws
+     */
+    public CachePageResult<Item> getCacheDataByPage(int start, int end) {
+
+        CachePageResult<Item> cachePageResult = new CachePageResult<Item>();
+        List<Item> cachePageData = new ArrayList<Item>();
+        String key = "";
+        FavorDbItem id = null;
+        Item item = null;
+        StringBuffer needFromNetLoadIds = new StringBuffer();
+        int needFromNetLoadIdsCount = 0;
+
+        for (int i = start, j = Math.min(this.favorList.size(), end); i < j; i++) {
+            id = favorList.get(i);
+            key = id.news_id;
+
+            item = readFromCache(key);
+            if (item != null) {
+//                SLog.d(TAG, "getCacheDataByPage: from cachefile");
+                item.setFavorSource(String.valueOf(id.source));
+                item.setFavorTimestamp(String.valueOf(id.timestamp));
+                item.setId(id.news_id);
+                cachePageData.add(item);
+            } else {
+                // need From Net Load Ids
+                if (needFromNetLoadIdsCount != 0) {
+                    needFromNetLoadIds.append(",");
+                }
+                needFromNetLoadIds.append(key + ":" + id.source);
+                needFromNetLoadIdsCount++;
+            }
+        }
+
+        if (needFromNetLoadIdsCount != 0) {
+            cachePageResult.setResultFail();
+            cachePageResult.setNeedLoadIds(needFromNetLoadIds.toString());
+            cachePageResult.setCachePageData(cachePageData);
+        } else {
+            cachePageResult.setResultOK();
+            cachePageResult.setCachePageData(cachePageData);
+        }
+        return cachePageResult;
+    }
+
+    /**
+     * Title:polishingData
+     * @Description:加载更多时，存入根据id拉取的item
+     * @param start
+     * @param end
+     * @param list
+     * @return
+     * @return List<Item>
+     * @throws
+     */
+    public synchronized List<Item> polishingData(int start, int end, List<Item> list) {
+        List<Item> cachePageData = new ArrayList<Item>();
+
+        String key = "";
+        FavorDbItem id = null;
+        Item item = null;
+
+        for (int i = 0; i < list.size(); i++) {
+            item = list.get(i);
+            key = item.getId();
+            writeToCache(key, item);
+        }
+        for (int i = start, j = Math.min(this.favorList.size(), end); i < j; i++) {
+            id = favorList.get(i);
+            key = id.news_id;
+
+            item = readFromCache(key);
+            if (item != null) {
+                item.setFavorSource(String.valueOf(id.source));
+                item.setFavorTimestamp(String.valueOf(id.timestamp));
+                item.setId(id.news_id);
+                cachePageData.add(item);
+            }
+        }
+        return cachePageData;
+    }
+    
+    /**
+     * Title:hasFavorCacheItem
+     * @Description:判断item是否已经缓存
+     * @param newsId
+     * @return
+     * @return boolean
+     * @throws
+     */
+    public boolean hasFavorCacheItem(String newsId) {
+    	if(itemInDb){
+    		return favorDB.hasFavorCacheItem(newsId);
+    	}else{
+    		//文件方式
+    		return false;
+    	}
+    }
+
+    public Item readFromCache(String id) {
+    	if(itemInDb){
+    		return favorDB.findFavorCacheItem(id);
+    	}
+    	
+        Object object = FileUtil.readCache(new File(getFavorPath(id)));
+        if (object instanceof Item) {
+            return (Item) object;
+        } else {
+            return null;
+        }
+    }
+
+    public void writeToCache(String id, Object object) {
+    	if(itemInDb){
+    		SLog.d(TAG, "writeToCache  key: " +id);
+    		favorDB.insertItem(id, (Item)object);
+    	}else{
+    	    
+    		FileUtil.saveCache(new File(getFavorPath(id)), object);
+    	}
+    }
+    
+    /**
+     * 清理所有收藏缓存(包括item和detail缓存)
+     */
+    public void clearCache(){
+
+		TaskManager.startRunnableRequest(new Runnable() {
+			@Override
+			public void run() {
+				if(itemInDb){
+		    		int ret=favorDB.deleteItemAll();
+		    		SLog.d(TAG, "clearCache  ret: " +ret);
+		    	}
+				//清理文件缓存目录
+		    	File allCache = new File(Constants.CACHE_FAVOR_PATH);
+		    	File delFile = new File(allCache.getPath() + System.currentTimeMillis() + "_del");
+		    	allCache.renameTo(delFile);
+		    	FileUtil.delete(delFile, true);
+		    	
+			}
+		});
+    }
+    
+    /**
+     * 清楚一篇收藏文章的缓存(包括item和detail缓存)
+     * @param id 指定文章的id
+     */
+    public void clearCache(String id){
+    	if(itemInDb){
+    		int ret=favorDB.deleteItem(id);
+    		SLog.d(TAG, "clearCache  ret: " +ret);
+    	}else{
+    		File newsItemCache = new File(getFavorPath(id));
+    		FileUtil.delete(newsItemCache, true);
+    	}
+		File newsDetailCache = new File(getFavorPath("detail" + File.separator + id));
+		FileUtil.delete(newsDetailCache, true);
+    }
+
+}

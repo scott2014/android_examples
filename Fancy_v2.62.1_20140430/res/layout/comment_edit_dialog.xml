@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="#fffcfcfc" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:holo="http://schemas.android.com/apk/res-auto"
+  xmlns:custom="http://schemas.android.com/apk/res/com.thefancy.app">
+    <com.thefancy.app.widgets.FancyTextView android:textSize="@dimen/xxhdpi_46pt" android:textStyle="normal" android:textColor="#ff4c5159" android:layout_gravity="left|center" android:paddingLeft="@dimen/_17dp" android:paddingTop="@dimen/_17dp" android:paddingRight="@dimen/_17dp" android:paddingBottom="@dimen/_17dp" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/edit_comment_title" custom:font_name="Roboto-Medium" />
+    <View android:background="#ffebebeb" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" />
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:paddingLeft="@dimen/_17dp" android:paddingTop="@dimen/_17dp" android:paddingRight="@dimen/_17dp" android:paddingBottom="@dimen/_16dp" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <com.thefancy.app.widgets.FancyEditText android:textSize="@dimen/xxhdpi_40pt" android:textColor="#ff585d66" android:textColorHint="#80585d66" android:gravity="top|left|center" android:id="@id/comment_edit_text" android:paddingLeft="@dimen/_13dp" android:paddingTop="@dimen/_13dp" android:paddingRight="@dimen/_13dp" android:paddingBottom="@dimen/_13dp" android:layout_width="fill_parent" android:layout_height="@dimen/_80dp" android:hint="@string/comment_dialog_title" android:lines="3" android:singleLine="false" android:inputType="text" android:imeOptions="actionNone" android:textCursorDrawable="@null" custom:corner_radius="3.0dip" custom:border_width="1.2999878dip" custom:border_color="#ffaaadb3" custom:bg_color="#fffcfcfc" />
+            </LinearLayout>
+            <View android:background="#ffebebeb" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" />
+            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <TextView android:textSize="@dimen/xxhdpi_42pt" android:textColor="#ff4c5159" android:gravity="center" android:id="@id/comment_edit_button_cancel" android:background="@drawable/flat_clickable_background" android:paddingLeft="@dimen/_17dp" android:paddingTop="@dimen/_17dp" android:paddingRight="@dimen/_17dp" android:paddingBottom="@dimen/_17dp" android:focusable="true" android:layout_width="0.0px" android:layout_height="wrap_content" android:text="@string/button_cancel" android:layout_weight="1.0" />
+                <View android:background="#ffebebeb" android:layout_width="@dimen/divider_height" android:layout_height="fill_parent" />
+                <com.thefancy.app.widgets.FancyTextView android:textSize="@dimen/xxhdpi_42pt" android:textStyle="normal" android:textColor="#ff4c5159" android:gravity="center" android:id="@id/comment_edit_button_save" android:background="@drawable/flat_clickable_background" android:paddingLeft="@dimen/_17dp" android:paddingTop="@dimen/_17dp" android:paddingRight="@dimen/_17dp" android:paddingBottom="@dimen/_17dp" android:focusable="true" android:layout_width="0.0px" android:layout_height="wrap_content" android:text="@string/password_button_save" android:layout_weight="1.0" custom:font_name="Roboto-Medium" />
+            </LinearLayout>
+        </LinearLayout>
+        <FrameLayout android:id="@id/comment_edit_spinner" android:background="#80ffffff" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <com.thefancy.app.widgets.ProgressSpinner android:layout_gravity="center" android:layout_width="@dimen/_32dp" android:layout_height="@dimen/_32dp" />
+        </FrameLayout>
+    </FrameLayout>
+</LinearLayout>

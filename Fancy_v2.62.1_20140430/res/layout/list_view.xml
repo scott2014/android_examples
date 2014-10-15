@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:background="@color/fancy_background" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:custom="http://schemas.android.com/apk/res/com.thefancy.app" xmlns:holo="http://schemas.android.com/apk/res-auto">
+    <View android:focusable="true" android:focusableInTouchMode="true" android:layout_width="0.0px" android:layout_height="0.0px" />
+    <com.thefancy.app.widgets.ExtendedScrollEventListView android:id="@id/listview" android:background="@color/fancy_background" android:fadingEdgeLength="0.0dip" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/transparent" android:divider="#ffebebeb" android:dividerHeight="@dimen/divider_height" android:overScrollMode="never" />
+    <FrameLayout android:id="@id/message_container" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.thefancy.app.widgets.ProgressSpinner android:layout_gravity="center" android:id="@id/spinner" android:visibility="gone" android:layout_width="@dimen/_30dp" android:layout_height="@dimen/_30dp" custom:color_style="gray" />
+        <com.thefancy.app.widgets.FancyTextView android:textSize="@dimen/xxhdpi_42pt" android:textColor="#ff454950" android:layout_gravity="top|center" android:id="@id/message" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/_100dp" custom:font_name="regular" />
+    </FrameLayout>
+    <LinearLayout android:layout_gravity="top" android:orientation="vertical" android:id="@id/top_attachable" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+</FrameLayout>

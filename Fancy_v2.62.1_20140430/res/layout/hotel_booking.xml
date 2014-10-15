@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:id="@id/hotel_scroller" android:fadingEdgeLength="0.0px" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:custom="http://schemas.android.com/apk/res/com.thefancy.app">
+    <LinearLayout android:gravity="top|center" android:orientation="vertical" android:background="#fffafafa" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="18.0sp" android:textStyle="bold" android:textColor="#ff373d48" android:gravity="left|center" android:id="@id/hotel_checkin_date" android:paddingLeft="8.0dip" android:paddingBottom="2.0dip" android:layout_width="fill_parent" android:layout_height="55.0dip" android:text="@string/hotel_checkin" />
+        <LinearLayout android:gravity="top|center" android:orientation="vertical" android:id="@id/hotel_checkin_calendar" android:background="#ffeff1f3" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <View android:background="#ffc0c0c0" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_alignParentTop="true" />
+                <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/phone_hotel_arrow" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
+            </RelativeLayout>
+            <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="322.0dip" android:layout_height="45.0dip">
+                <com.thefancy.app.widgets.ImageButton android:id="@id/calendar_month_prev" android:paddingLeft="7.0dip" android:paddingRight="30.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@drawable/phone_hotel_arrow_left" android:scaleType="centerInside" />
+                <TextView android:textSize="16.0sp" android:textStyle="bold" android:textColor="#ff373d48" android:gravity="center" android:id="@id/calendar_month_label" android:layout_width="0.0px" android:layout_height="50.0dip" android:layout_marginBottom="2.0dip" android:singleLine="true" android:layout_weight="1.0" />
+                <com.thefancy.app.widgets.ImageButton android:id="@id/calendar_month_next" android:paddingLeft="30.0dip" android:paddingRight="7.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@drawable/phone_hotel_arrow_right" android:scaleType="centerInside" />
+            </LinearLayout>
+            <View android:background="#ffc0c0c0" android:layout_width="318.0dip" android:layout_height="1.0px" android:layout_marginLeft="9.0dip" android:layout_marginRight="9.0dip" android:layout_alignParentTop="true" />
+            <TableLayout android:id="@id/calendar_table" android:layout_width="322.0dip" android:layout_height="wrap_content" android:layout_marginLeft="7.0dip" android:layout_marginRight="7.0dip" android:layout_marginBottom="15.0dip" />
+        </LinearLayout>
+        <View android:background="#ffc0c0c0" android:layout_width="fill_parent" android:layout_height="1.0px" />
+        <TextView android:textSize="18.0sp" android:textStyle="bold" android:textColor="#ff373d48" android:gravity="left|center" android:id="@id/hotel_checkout_date" android:paddingLeft="8.0dip" android:paddingBottom="2.0dip" android:layout_width="fill_parent" android:layout_height="55.0dip" android:text="@string/hotel_checkout" />
+        <LinearLayout android:gravity="top|center" android:orientation="vertical" android:id="@id/hotel_checkout_calendar" android:background="#ffeff1f3" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <View android:background="#ffc0c0c0" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_alignParentTop="true" />
+                <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/phone_hotel_arrow" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
+            </RelativeLayout>
+            <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="322.0dip" android:layout_height="45.0dip">
+                <com.thefancy.app.widgets.ImageButton android:id="@id/calendar_month_prev" android:paddingLeft="7.0dip" android:paddingRight="30.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@drawable/phone_hotel_arrow_left" android:scaleType="centerInside" />
+                <TextView android:textSize="16.0sp" android:textStyle="bold" android:textColor="#ff373d48" android:gravity="center" android:id="@id/calendar_month_label" android:layout_width="0.0px" android:layout_height="50.0dip" android:layout_marginBottom="2.0dip" android:singleLine="true" android:layout_weight="1.0" />
+                <com.thefancy.app.widgets.ImageButton android:id="@id/calendar_month_next" android:paddingLeft="30.0dip" android:paddingRight="7.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@drawable/phone_hotel_arrow_right" android:scaleType="centerInside" />
+            </LinearLayout>
+            <View android:background="#ffc0c0c0" android:layout_width="318.0dip" android:layout_height="1.0px" android:layout_marginLeft="9.0dip" android:layout_marginRight="9.0dip" android:layout_alignParentTop="true" />
+            <TableLayout android:id="@id/calendar_table" android:layout_width="322.0dip" android:layout_height="wrap_content" android:layout_marginLeft="7.0dip" android:layout_marginRight="7.0dip" android:layout_marginBottom="15.0dip" />
+        </LinearLayout>
+        <View android:background="#ffc0c0c0" android:layout_width="fill_parent" android:layout_height="1.0px" />
+        <TextView android:textSize="18.0sp" android:textStyle="bold" android:textColor="#ff373d48" android:gravity="left|center" android:id="@id/hotel_guest_count" android:paddingLeft="8.0dip" android:paddingBottom="2.0dip" android:layout_width="fill_parent" android:layout_height="55.0dip" android:text="" />
+        <LinearLayout android:gravity="top|center" android:orientation="vertical" android:id="@id/hotel_guest_count_selector" android:background="#ffeff1f3" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <View android:background="#ffc0c0c0" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_alignParentTop="true" />
+                <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/phone_hotel_arrow" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
+            </RelativeLayout>
+            <LinearLayout android:gravity="center" android:orientation="horizontal" android:paddingTop="15.0dip" android:paddingBottom="20.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="0.0px" android:layout_height="wrap_content" android:layout_weight="1.0">
+                    <TextView android:textSize="15.0sp" android:textStyle="bold" android:textColor="#ff373d48" android:paddingBottom="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/hotel_adults_label" />
+                    <Spinner android:id="@id/hotel_adults_spinner" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                </LinearLayout>
+                <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="0.0px" android:layout_height="wrap_content" android:layout_weight="1.0">
+                    <TextView android:textSize="15.0sp" android:textStyle="bold" android:textColor="#ff373d48" android:paddingBottom="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/hotel_children_label" />
+                    <Spinner android:id="@id/hotel_children_spinner" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+        <View android:background="#ffc0c0c0" android:layout_width="fill_parent" android:layout_height="1.0px" />
+        <TextView android:textSize="14.0sp" android:textStyle="bold" android:textColor="#ffffffff" android:gravity="center" android:id="@id/hotel_checkavail_button" android:background="@drawable/button_normal_blue" android:layout_width="315.0dip" android:layout_height="38.0dip" android:layout_marginTop="10.0dip" android:layout_marginBottom="10.0dip" android:text="@string/hotel_check_button" />
+        <LinearLayout android:gravity="top|left|center" android:orientation="vertical" android:id="@id/hotel_room_list" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="8.0dip" android:layout_marginBottom="10.0dip" />
+    </LinearLayout>
+</ScrollView>

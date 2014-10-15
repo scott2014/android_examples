@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/flat_clickable_background" android:paddingLeft="@dimen/_17dp" android:paddingTop="@dimen/_12dp" android:paddingRight="@dimen/_17dp" android:paddingBottom="@dimen/_12dp" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:custom="http://schemas.android.com/apk/res/com.thefancy.app">
+    <com.thefancy.app.widgets.FancyImageView android:id="@id/user_image" android:background="@drawable/flat_image_thing_default" android:padding="0.0px" android:layout_width="@dimen/_32dp" android:layout_height="@dimen/_32dp" android:layout_marginRight="@dimen/_7dp" custom:border_is_circle="true" />
+    <LinearLayout android:orientation="vertical" android:layout_width="0.0px" android:layout_height="wrap_content" android:layout_weight="1.0">
+        <com.thefancy.app.widgets.FancyTextView android:textSize="@dimen/xxhdpi_42pt" android:textStyle="normal" android:textColor="#ff585d66" android:id="@android:id/text1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="UserName" />
+        <com.thefancy.app.widgets.FancyTextView android:textSize="@dimen/xxhdpi_40pt" android:textStyle="normal" android:textColor="#ffadafb3" android:id="@android:id/text2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="Name" />
+    </LinearLayout>
+    <ImageView android:layout_gravity="center_vertical" android:id="@id/list_item_check" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/_9dp" android:src="@drawable/flat_icon_tick_black" />
+</LinearLayout>

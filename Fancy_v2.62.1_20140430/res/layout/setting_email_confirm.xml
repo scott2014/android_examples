@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:orientation="vertical" android:paddingRight="?android:scrollbarSize" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="?android:listPreferredItemHeight"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textAppearance="?android:textAppearanceSmall" android:textColor="#ff7f7f7f" android:id="@id/email_confirm_message" android:fadingEdge="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="12.0dip" android:singleLine="false" />
+    <View android:background="#ffcccccc" android:layout_width="fill_parent" android:layout_height="1.0px" />
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textAppearance="?android:textAppearanceSmall" android:gravity="center" android:id="@id/email_confirm_resend" android:background="@drawable/clickable_background" android:padding="12.0dip" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/email_confirm_resend" android:layout_weight="1.0" />
+        <View android:background="#ffb7b7b7" android:layout_width="1.0px" android:layout_height="fill_parent" />
+        <TextView android:textAppearance="?android:textAppearanceSmall" android:gravity="center" android:id="@id/email_confirm_cancel" android:background="@drawable/clickable_background" android:padding="12.0dip" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/email_confirm_cancel" android:layout_weight="1.0" />
+    </LinearLayout>
+    <View android:background="#ffb7b7b7" android:layout_width="fill_parent" android:layout_height="1.0px" />
+</LinearLayout>

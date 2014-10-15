@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="attach_option">
+        <item>Bilde fra Galleri</item>
+        <item>Legg til bilde</item>
+    </string-array>
+    <string-array name="attach_option_nocamera">
+        <item>Bilde fra Galleri</item>
+    </string-array>
+    <string-array name="setting_gender_label">
+        <item>Vil helst ikke oppgi</item>
+        <item>Jeg er en gutt</item>
+        <item>Jeg er en jente</item>
+    </string-array>
+</resources>

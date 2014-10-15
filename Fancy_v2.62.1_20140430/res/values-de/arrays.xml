@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="attach_option">
+        <item>Foto aus der Gallerie</item>
+        <item>Bild erfassen</item>
+    </string-array>
+    <string-array name="attach_option_nocamera">
+        <item>Bild aus der Gallerie</item>
+    </string-array>
+    <string-array name="setting_gender_label">
+        <item>Sag ich lieber nicht</item>
+        <item>Ich bin ein Junge</item>
+        <item>Ich bin ein Mädchen</item>
+    </string-array>
+</resources>

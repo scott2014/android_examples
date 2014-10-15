@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8"?>
+<org.holoeverywhere.widget.datetimepicker.date.TextViewWithCircularIndicator android:textSize="26.0sp" android:textColor="?dateTimePickerActiveTextColor" android:gravity="center" android:layout_gravity="center" android:id="@id/month_text_view" android:layout_width="70.0dip" android:layout_height="70.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

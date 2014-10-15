@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="hotel_adults">
+        <item quantity="other">%d Yetişkin</item>
+    </plurals>
+    <plurals name="hotel_children">
+        <item quantity="other">%d Çocuk</item>
+    </plurals>
+    <plurals name="hotel_night">
+        <item quantity="other">1 Gece%d</item>
+    </plurals>
+    <plurals name="sale_time_day">
+        <item quantity="other">%d gün</item>
+    </plurals>
+    <plurals name="sale_time_hour">
+        <item quantity="other">%d saat</item>
+    </plurals>
+    <plurals name="sale_time_minute">
+        <item quantity="other">%d dakika</item>
+    </plurals>
+    <plurals name="sale_time_second">
+        <item quantity="other">%d saniye</item>
+    </plurals>
+    <plurals name="timeline_new_things">
+        <item quantity="other">%d yeni şey - güncellemek için tıkla!</item>
+    </plurals>
+</resources>

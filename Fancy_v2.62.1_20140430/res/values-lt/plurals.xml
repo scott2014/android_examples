@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="hotel_adults">
+        <item quantity="other">%d Suagusieji</item>
+        <item quantity="one">%d Suagęs</item>
+        <item quantity="few">%d Suaugusieji</item>
+    </plurals>
+    <plurals name="hotel_children">
+        <item quantity="other">Vaikai</item>
+        <item quantity="one">Vaikas</item>
+        <item quantity="few">Vaikai</item>
+    </plurals>
+    <plurals name="hotel_night">
+        <item quantity="other">Naktys</item>
+        <item quantity="one">Naktis</item>
+        <item quantity="few">Naktys</item>
+    </plurals>
+    <plurals name="sale_time_day">
+        <item quantity="other">dienos</item>
+        <item quantity="one">diena</item>
+        <item quantity="few">dienos</item>
+    </plurals>
+    <plurals name="sale_time_hour">
+        <item quantity="other">valandų</item>
+        <item quantity="one">valanda</item>
+        <item quantity="few">valandos</item>
+    </plurals>
+    <plurals name="sale_time_minute">
+        <item quantity="other">minutės</item>
+        <item quantity="one">minutė</item>
+        <item quantity="few">minutės</item>
+    </plurals>
+    <plurals name="sale_time_second">
+        <item quantity="other">sekundės</item>
+        <item quantity="one">sekundė</item>
+        <item quantity="few">sekundės</item>
+    </plurals>
+    <plurals name="timeline_new_things">
+        <item quantity="other">%d nauji daiktai-spustelėkite, norėdami atnaujinti!</item>
+        <item quantity="one">%d naujas daiktas-spustelėkite, norėdami atnaujinti!</item>
+        <item quantity="few">%d nauji daiktai-spustelėkite, norėdami atnaujinti!</item>
+    </plurals>
+</resources>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:custom="http://schemas.android.com/apk/res/com.thefancy.app">
+    <LinearLayout android:paddingLeft="@dimen/_12dp" android:paddingTop="@dimen/_8.3dp" android:paddingRight="@dimen/_12dp" android:paddingBottom="@dimen/_8dp" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <ImageView android:layout_gravity="center" android:id="@id/notice_popup_image" android:paddingTop="1.0px" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/_5.6dp" android:src="@drawable/ic_goto_top" />
+        <com.thefancy.app.widgets.FancyTextView android:textSize="@dimen/xxhdpi_38pt" android:textColor="#ff4487c2" android:layout_gravity="center" android:id="@id/notice_popup_text" android:layout_width="wrap_content" android:layout_height="wrap_content" custom:font_name="Roboto-Medium" />
+    </LinearLayout>
+</merge>

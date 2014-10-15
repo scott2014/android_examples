@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:background="@drawable/flat_clickable_background" android:paddingLeft="@dimen/_14dp" android:paddingTop="@dimen/_14dp" android:paddingRight="@dimen/_14dp" android:paddingBottom="@dimen/_14dp" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:custom="http://schemas.android.com/apk/res/com.thefancy.app">
+    <ImageView android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/_10dp" android:src="@drawable/ic_search" />
+    <com.thefancy.app.widgets.FancyTextView android:textSize="@dimen/xxhdpi_44pt" android:textStyle="normal" android:textColor="#ff4d535d" android:layout_gravity="center_vertical" android:id="@android:id/text1" android:layout_width="0.0px" android:layout_height="wrap_content" android:text="Item" android:layout_weight="1.0" />
+</LinearLayout>

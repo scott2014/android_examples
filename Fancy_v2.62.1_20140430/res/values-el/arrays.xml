@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="attach_option">
+        <item>Εικόνα Από Έκθεση</item>
+        <item>Σύλληψη Eiκόνας</item>
+    </string-array>
+    <string-array name="attach_option_nocamera">
+        <item>Εικόνα Από την Γκαλερί</item>
+    </string-array>
+    <string-array name="setting_gender_label">
+        <item>Θα προτιμούσα να μην πω</item>
+        <item>Αρσενικό</item>
+        <item>Θηλυκό</item>
+    </string-array>
+</resources>

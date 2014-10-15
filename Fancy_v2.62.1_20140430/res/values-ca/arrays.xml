@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="attach_option">
+        <item>"Fotografia de la galeria d'imatges"</item>
+        <item>Capturar fotografia</item>
+    </string-array>
+    <string-array name="attach_option_nocamera">
+        <item>"Fotografia de la galeria d'imatges"</item>
+    </string-array>
+    <string-array name="setting_gender_label">
+        <item>Preferiria no dir-ho</item>
+        <item>Sóc un home</item>
+        <item>Sóc una dona</item>
+    </string-array>
+</resources>

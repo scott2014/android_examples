@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:custom="http://schemas.android.com/apk/res/com.thefancy.app">
+    <View android:focusable="true" android:focusableInTouchMode="true" android:layout_width="0.0px" android:layout_height="0.0px" />
+    <com.thefancy.app.widgets.FancyViewPager android:layout_gravity="top" android:id="@id/tab_pager" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.thefancy.app.widgets.ProgressSpinner android:layout_gravity="center" android:id="@id/spinner" android:visibility="gone" android:layout_width="@dimen/_30dp" android:layout_height="@dimen/_30dp" custom:color_style="gray" />
+    <LinearLayout android:orientation="vertical" android:id="@id/header_container" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="vertical" android:id="@id/tabview_container" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <View android:background="#ffe6e8ea" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" />
+            <HorizontalScrollView android:id="@id/tabview_scrollview" android:background="#ffffffff" android:scrollbars="none" android:fadingEdgeLength="0.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:overScrollMode="never">
+                <com.thefancy.app.widgets.FancyTabView android:id="@id/tabview" android:layout_width="wrap_content" android:layout_height="@dimen/_48dp" custom:tab_style="full" />
+            </HorizontalScrollView>
+            <View android:background="#1a0b2338" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>

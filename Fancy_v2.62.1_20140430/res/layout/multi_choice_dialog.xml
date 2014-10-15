@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="#fffcfcfc" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:holo="http://schemas.android.com/apk/res-auto"
+  xmlns:custom="http://schemas.android.com/apk/res/com.thefancy.app">
+    <com.thefancy.app.widgets.FancyTextView android:textSize="@dimen/xxhdpi_46pt" android:textStyle="normal" android:textColor="#ff4c5159" android:layout_gravity="left|center" android:id="@id/list_dialog_title" android:paddingLeft="@dimen/_17dp" android:paddingTop="@dimen/_17dp" android:paddingRight="@dimen/_17dp" android:paddingBottom="@dimen/_17dp" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="Browse" custom:font_name="Roboto-Medium" />
+    <View android:background="#ffebebeb" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" />
+    <com.thefancy.app.widgets.FancyLinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="0.0px" android:layout_weight="1.0" custom:min_height="40.0dip">
+        <ListView android:id="@id/list_dialog_listview" android:background="#fffcfcfc" android:fadingEdgeLength="0.0dip" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/transparent" android:divider="#ffebebeb" android:dividerHeight="@dimen/divider_height" />
+    </com.thefancy.app.widgets.FancyLinearLayout>
+    <View android:background="#ffebebeb" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" />
+    <TextView android:textSize="@dimen/xxhdpi_42pt" android:textColor="#ff4c5159" android:gravity="center" android:id="@id/list_dialog_btn" android:background="@drawable/flat_clickable_background_tp" android:paddingLeft="@dimen/_17dp" android:paddingTop="@dimen/_17dp" android:paddingRight="@dimen/_17dp" android:paddingBottom="@dimen/_17dp" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/button_apply" />
+</LinearLayout>

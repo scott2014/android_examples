@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="hotel_adults">
+        <item quantity="other">%d Aikuista</item>
+        <item quantity="one">%d Aikuinen</item>
+    </plurals>
+    <plurals name="hotel_children">
+        <item quantity="other">%d Lasta</item>
+        <item quantity="one">1 Lapsi</item>
+    </plurals>
+    <plurals name="hotel_night">
+        <item quantity="other">%d Yötä</item>
+        <item quantity="one">1 Yö</item>
+    </plurals>
+    <plurals name="sale_time_day">
+        <item quantity="other">%d päivää</item>
+        <item quantity="one">1 päivä</item>
+    </plurals>
+    <plurals name="sale_time_hour">
+        <item quantity="other">%d tuntia</item>
+        <item quantity="one">1 tunti</item>
+    </plurals>
+    <plurals name="sale_time_minute">
+        <item quantity="other">%d minuuttia</item>
+        <item quantity="one">1 minuutti</item>
+    </plurals>
+    <plurals name="sale_time_second">
+        <item quantity="other">%d sekunttia</item>
+        <item quantity="one">1 sekuntti</item>
+    </plurals>
+    <plurals name="timeline_new_things">
+        <item quantity="other">%d uutta tavaraa - napauta päivttääksesi!</item>
+        <item quantity="one">%d uusi tavara - napauta päivittääksesi!</item>
+    </plurals>
+</resources>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:custom="http://schemas.android.com/apk/res/com.thefancy.app">
+    <View android:focusable="true" android:focusableInTouchMode="true" android:layout_width="0.0px" android:layout_height="0.0px" />
+    <com.thefancy.app.widgets.FancyViewPager android:layout_gravity="top" android:id="@id/tab_pager" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.thefancy.app.widgets.ProgressSpinner android:layout_gravity="center" android:id="@id/spinner" android:visibility="gone" android:layout_width="@dimen/_30dp" android:layout_height="@dimen/_30dp" custom:color_style="gray" />
+    <com.thefancy.app.widgets.FancyLinearLayout android:orientation="vertical" android:id="@id/header" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="vertical" android:id="@id/header_container" android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:orientation="vertical" android:id="@id/list_cover_image_container" android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <com.thefancy.app.widgets.FancyImageView android:layout_gravity="top" android:id="@id/list_cover_image" android:background="#ff5d6573" android:layout_width="fill_parent" android:layout_height="120.0dip" android:scaleType="centerCrop" />
+                <View android:background="#ffe6e8ea" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" />
+            </LinearLayout>
+            <LinearLayout android:orientation="vertical" android:id="@id/list_description_container" android:background="#ffffffff" android:paddingLeft="@dimen/_13.3dp" android:paddingRight="@dimen/_13.3dp" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <com.thefancy.app.widgets.MultiLineEllipsizableTextView android:textSize="@dimen/xxhdpi_42pt" android:textColor="#ff494c53" android:id="@id/list_description" android:background="@drawable/flat_clickable_background_tp" android:paddingTop="@dimen/_13.3dp" android:paddingBottom="@dimen/_13.3dp" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="There is a harmony in autumn, and a luster in its sky, which through the summer is not heard..." android:maxLines="3" android:singleLine="false" android:lineSpacingExtra="0.6600001dip" />
+                <View android:background="#ffe6e8ea" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:id="@id/tabview_container" android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <LinearLayout android:orientation="vertical" android:id="@id/list_button_products" android:background="@drawable/flat_clickable_background_tp" android:paddingLeft="@dimen/_10dp" android:paddingTop="@dimen/_10dp" android:paddingRight="@dimen/_10dp" android:paddingBottom="@dimen/_10dp" android:focusable="true" android:clickable="true" android:layout_width="0.0px" android:layout_height="wrap_content" android:layout_weight="1.0">
+                    <com.thefancy.app.widgets.FancyTextView android:textSize="@dimen/xxhdpi_44pt" android:textColor="#ff494c53" android:id="@id/list_text_products_count" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="193" custom:font_name="Roboto-Medium" />
+                    <com.thefancy.app.widgets.FancyTextView android:textSize="@dimen/xxhdpi_38pt" android:textColor="#ff92959a" android:padding="0.0px" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="0.0dip" android:text="@string/store_products" custom:font_name="regular" />
+                </LinearLayout>
+                <View android:background="#ffe6e8ea" android:layout_width="@dimen/divider_height" android:layout_height="fill_parent" />
+                <LinearLayout android:orientation="vertical" android:id="@id/list_button_followers" android:background="@drawable/flat_clickable_background_tp" android:paddingLeft="@dimen/_10dp" android:paddingTop="@dimen/_10dp" android:paddingRight="@dimen/_10dp" android:paddingBottom="@dimen/_10dp" android:focusable="true" android:clickable="true" android:layout_width="0.0px" android:layout_height="wrap_content" android:layout_weight="1.0">
+                    <com.thefancy.app.widgets.FancyTextView android:textSize="@dimen/xxhdpi_44pt" android:textColor="#ff494c53" android:id="@id/list_text_followers_count" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="1.5m" custom:font_name="Roboto-Medium" />
+                    <com.thefancy.app.widgets.FancyTextView android:textSize="@dimen/xxhdpi_38pt" android:textColor="#ff92959a" android:padding="0.0px" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="0.0dip" android:text="@string/profile_member_followers" custom:font_name="regular" />
+                </LinearLayout>
+                <View android:background="#ffe6e8ea" android:layout_width="@dimen/divider_height" android:layout_height="fill_parent" />
+                <com.thefancy.app.widgets.FancyTextView android:textSize="@dimen/xxhdpi_42pt" android:textColor="#ffffffff" android:gravity="center" android:layout_gravity="center" android:id="@id/list_button_follow" android:paddingTop="@dimen/_7.3dp" android:paddingBottom="@dimen/_7dp" android:focusable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/_10dp" android:layout_marginTop="@dimen/_9dp" android:layout_marginRight="@dimen/_10dp" android:layout_marginBottom="@dimen/_9dp" android:minWidth="128.29999dip" android:text="@string/profile_button_following" custom:font_name="Roboto-Medium" custom:corner_radius="2.0dip" custom:bg_color="#ff4487c2" custom:bg_color_pressed="#ff4984b8" />
+            </LinearLayout>
+        </LinearLayout>
+        <View android:background="#1a0b2338" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+    </com.thefancy.app.widgets.FancyLinearLayout>
+</FrameLayout>

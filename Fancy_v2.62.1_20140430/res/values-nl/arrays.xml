@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="attach_option">
+        <item>Afbeelding uit Fotoalbum</item>
+        <item>Maak een Foto</item>
+    </string-array>
+    <string-array name="attach_option_nocamera">
+        <item>Afbeelding uit Fotoalbum</item>
+    </string-array>
+    <string-array name="setting_gender_label">
+        <item>Ik zeg dit liever niet</item>
+        <item>Ik ben een jongen</item>
+        <item>Ik ben een meisje</item>
+    </string-array>
+</resources>

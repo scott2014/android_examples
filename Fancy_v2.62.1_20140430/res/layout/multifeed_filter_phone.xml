@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.thefancy.app.widgets.BorderedLinearLayout android:gravity="top|center" android:orientation="vertical" android:background="#ffffffff" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="9.0dip" android:layout_marginTop="12.0dip" android:layout_marginRight="9.0dip" android:layout_marginBottom="12.0dip" custom:border_mask_image="@drawable/rounded_table_border"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:holo="http://schemas.android.com/apk/res-auto"
+  xmlns:custom="http://schemas.android.com/apk/res/com.thefancy.app">
+    <LinearLayout android:orientation="vertical" android:id="@id/sdd_options_table" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="vertical" android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/sdd_option_header" android:background="@drawable/clickable_background" android:paddingLeft="10.0dip" android:paddingRight="12.0dip" android:focusable="true" android:layout_width="fill_parent" android:layout_height="45.0dip">
+                <TextView android:textSize="14.0sp" android:textStyle="bold" android:textColor="#ff494b4f" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="4.0dip" android:text="@string/sameday_map_filter_products" android:singleLine="true" />
+                <TextView android:textSize="14.0sp" android:textStyle="normal" android:textColor="#ff494b4f" android:layout_gravity="center" android:id="@id/sdd_option_summary" android:layout_width="0.0px" android:layout_height="wrap_content" android:text="@string/menu_browse_everything" android:singleLine="true" android:layout_weight="1.0" />
+                <ImageView android:id="@id/sdd_option_header_icon" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/sale_detail_icon_lower" />
+            </LinearLayout>
+            <View android:background="#ffdadbdc" android:layout_width="fill_parent" android:layout_height="1.0px" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:layout_gravity="top" android:orientation="vertical" android:id="@id/sdd_options_layout" android:background="#ffffffff" android:paddingLeft="12.0dip" android:paddingRight="12.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+</com.thefancy.app.widgets.BorderedLinearLayout>

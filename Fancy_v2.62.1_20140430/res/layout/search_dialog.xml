@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:holo="http://schemas.android.com/apk/res-auto"
+  xmlns:custom="http://schemas.android.com/apk/res/com.thefancy.app">
+    <FrameLayout android:orientation="vertical" android:id="@id/search_actionbar" android:paddingBottom="0.0px" android:layout_width="fill_parent" android:layout_height="48.0dip">
+        <View android:id="@id/background" android:background="@drawable/actionbar_bg" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/search_actionbar_content" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <ImageView android:layout_gravity="left|center" android:id="@id/search_icon" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/_13dp" android:layout_marginRight="@dimen/_7dp" android:src="@drawable/ic_actionbar_search" />
+            <com.thefancy.app.widgets.FancyEditText android:textSize="@dimen/xxhdpi_48pt" android:textStyle="normal" android:textColor="#ffffffff" android:textColorHint="#b4ffffff" android:layout_gravity="left|center" android:id="@id/search_edittext" android:background="@color/transparent" android:focusable="true" android:layout_width="0.0px" android:layout_height="wrap_content" android:layout_marginRight="@dimen/_12dp" android:hint="@string/search_text_hint" android:singleLine="true" android:maxLength="32" android:layout_weight="1.0" android:textCursorDrawable="@drawable/bright_cursor" />
+            <ImageView android:layout_gravity="center" android:id="@id/search_voice_btn" android:background="?actionBarItemBackground" android:focusable="true" android:layout_width="48.0dip" android:layout_height="fill_parent" android:src="@drawable/ic_actionbar_microphone" android:scaleType="centerInside" />
+            <ImageView android:layout_gravity="center" android:id="@id/search_close_btn" android:background="?actionBarItemBackground" android:focusable="true" android:layout_width="48.0dip" android:layout_height="fill_parent" android:src="@drawable/ic_actionbar_close" android:scaleType="centerInside" />
+        </LinearLayout>
+    </FrameLayout>
+    <FrameLayout android:id="@id/search_list_root" android:layout_width="fill_parent" android:layout_height="0.0px" android:layout_weight="1.0">
+        <LinearLayout android:layout_gravity="top" android:orientation="vertical" android:id="@id/search_list_content" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <com.thefancy.app.widgets.FancyLinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="0.0px" android:layout_weight="1.0" custom:min_height="100.0dip">
+                <ListView android:id="@id/search_dialog_listview" android:background="#fffcfcfc" android:fadingEdgeLength="0.0dip" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/transparent" android:divider="#ffebebeb" android:dividerHeight="@dimen/divider_height" />
+            </com.thefancy.app.widgets.FancyLinearLayout>
+            <View android:background="#ffebebeb" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" />
+            <com.thefancy.app.widgets.FancyTextView android:textSize="@dimen/xxhdpi_44pt" android:textColor="#ff4d535d" android:gravity="center" android:id="@id/search_list_btn_clear" android:background="@drawable/flat_clickable_background" android:paddingLeft="@dimen/_17dp" android:paddingTop="@dimen/_17dp" android:paddingRight="@dimen/_17dp" android:paddingBottom="@dimen/_17dp" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/search_clear_button" custom:font_name="Roboto-Medium" />
+            <View android:background="#ffebebeb" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" />
+        </LinearLayout>
+    </FrameLayout>
+</LinearLayout>

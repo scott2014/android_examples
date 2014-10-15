@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="top|center" android:orientation="vertical" android:padding="@dimen/_13dp" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:custom="http://schemas.android.com/apk/res/com.thefancy.app">
+    <com.thefancy.app.widgets.BorderedLinearLayout android:gravity="center" android:orientation="vertical" android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="wrap_content" custom:border_mask_image="@drawable/rounded_table_border" custom:max_width="500.0dip">
+        <com.thefancy.app.widgets.FancyTextView android:textSize="@dimen/xxhdpi_50pt" android:textColor="#ff333333" android:paddingLeft="@dimen/_16dp" android:paddingTop="@dimen/_16dp" android:paddingRight="@dimen/_16dp" android:paddingBottom="@dimen/_16dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/sale_confirm_thankyou" custom:font_name="Roboto-Medium" />
+        <com.thefancy.app.widgets.FancyTextView android:textSize="@dimen/xxhdpi_38pt" android:textColor="#ff585d66" android:paddingLeft="@dimen/_16dp" android:paddingRight="@dimen/_16dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/sale_bitcoin_waiting" custom:font_name="Roboto-Medium" />
+        <com.thefancy.app.widgets.ProgressSpinner android:id="@id/spinner" android:layout_width="@dimen/_30dp" android:layout_height="@dimen/_30dp" android:layout_margin="@dimen/_25dp" custom:color_style="gray" />
+        <TextView android:textSize="@dimen/xxhdpi_36pt" android:textColor="#ff585d66" android:gravity="start" android:paddingLeft="@dimen/_16dp" android:paddingRight="@dimen/_16dp" android:paddingBottom="@dimen/_16dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/sale_bitcoin_message" />
+    </com.thefancy.app.widgets.BorderedLinearLayout>
+</LinearLayout>

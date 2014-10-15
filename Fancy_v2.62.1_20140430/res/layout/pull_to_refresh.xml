@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:orientation="vertical" android:paddingBottom="0.0px" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/background" android:background="@drawable/actionbar_bg" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.thefancy.app.widgets.GlowingTextView android:textSize="15.399994sp" android:textColor="#ffbdbebf" android:gravity="center" android:layout_gravity="center" android:id="@id/title" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="Swipe down to refresh" android:fontFamily="sans-serif" />
+    <com.thefancy.app.widgets.ProgressIndicator android:layout_gravity="bottom" android:id="@id/progress" android:layout_width="fill_parent" android:layout_height="3.0dip" />
+</FrameLayout>

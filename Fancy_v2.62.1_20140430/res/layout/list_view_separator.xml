@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.thefancy.app.widgets.FancyTextView android:textSize="@dimen/xxhdpi_34pt" android:textStyle="normal" android:textColor="#80585d66" android:orientation="horizontal" android:id="@android:id/text1" android:background="#fff3f3f3" android:paddingLeft="@dimen/_17dp" android:paddingTop="@dimen/_12dp" android:paddingRight="@dimen/_17dp" android:paddingBottom="@dimen/_12dp" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="Item" custom:font_name="Roboto-Medium"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:custom="http://schemas.android.com/apk/res/com.thefancy.app" />

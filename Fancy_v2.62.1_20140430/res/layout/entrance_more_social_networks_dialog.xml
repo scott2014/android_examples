@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:background="#00ffffff" android:paddingLeft="16.0dip" android:paddingTop="20.0dip" android:paddingRight="16.0dip" android:paddingBottom="20.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="vertical" android:id="@id/entrance_dialog_sns_row_vk" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:gravity="center" android:orientation="horizontal" android:tag="button" android:background="@drawable/clickable_background" android:paddingLeft="10.0dip" android:paddingTop="10.0dip" android:paddingRight="10.0dip" android:paddingBottom="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <ImageView android:layout_gravity="center_vertical" android:layout_width="30.0dip" android:layout_height="fill_parent" android:src="@drawable/entrance_button_small_vk" android:scaleType="fitCenter" />
+                <TextView android:textSize="14.0sp" android:textStyle="bold" android:textColor="#ff353535" android:gravity="left|center" android:layout_gravity="left" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="10.0dip" android:text="@string/entrance_signin_vk" android:singleLine="false" />
+            </LinearLayout>
+            <View android:tag="divider" android:background="#ffededed" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:id="@id/entrance_dialog_sns_row_qzone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:gravity="center" android:orientation="horizontal" android:tag="button" android:background="@drawable/clickable_background" android:paddingLeft="10.0dip" android:paddingTop="10.0dip" android:paddingRight="10.0dip" android:paddingBottom="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <ImageView android:layout_gravity="center_vertical" android:layout_width="30.0dip" android:layout_height="fill_parent" android:layout_marginLeft="0.0dip" android:src="@drawable/entrance_button_small_qzone" android:scaleType="fitCenter" />
+                <TextView android:textSize="14.0sp" android:textStyle="bold" android:textColor="#ff353535" android:gravity="left|center" android:layout_gravity="left" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="10.0dip" android:text="@string/entrance_signin_qzone" android:singleLine="false" />
+            </LinearLayout>
+            <View android:tag="divider" android:background="#ffededed" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:id="@id/entrance_dialog_sns_row_renren" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:gravity="center" android:orientation="horizontal" android:tag="button" android:background="@drawable/clickable_background" android:paddingLeft="10.0dip" android:paddingTop="10.0dip" android:paddingRight="10.0dip" android:paddingBottom="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <ImageView android:layout_gravity="center_vertical" android:layout_width="30.0dip" android:layout_height="fill_parent" android:layout_marginLeft="0.0dip" android:src="@drawable/entrance_button_small_renren" android:scaleType="fitCenter" />
+                <TextView android:textSize="14.0sp" android:textStyle="bold" android:textColor="#ff353535" android:gravity="left|center" android:layout_gravity="left" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="10.0dip" android:text="@string/find_friends_renren" android:singleLine="false" />
+            </LinearLayout>
+            <View android:tag="divider" android:background="#ffededed" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:id="@id/entrance_dialog_sns_row_weibo" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:gravity="center" android:orientation="horizontal" android:tag="button" android:background="@drawable/clickable_background" android:paddingLeft="10.0dip" android:paddingTop="10.0dip" android:paddingRight="10.0dip" android:paddingBottom="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <ImageView android:layout_gravity="center_vertical" android:layout_width="30.0dip" android:layout_height="fill_parent" android:layout_marginLeft="0.0dip" android:src="@drawable/entrance_button_small_weibo" android:scaleType="fitCenter" />
+                <TextView android:textSize="14.0sp" android:textStyle="bold" android:textColor="#ff353535" android:gravity="left|center" android:layout_gravity="left" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="10.0dip" android:text="@string/find_friends_weibo" android:singleLine="false" />
+            </LinearLayout>
+            <View android:tag="divider" android:background="#ffededed" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:id="@id/entrance_dialog_sns_row_facebook" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:gravity="center" android:orientation="horizontal" android:tag="button" android:background="@drawable/clickable_background" android:paddingLeft="10.0dip" android:paddingTop="10.0dip" android:paddingRight="10.0dip" android:paddingBottom="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <ImageView android:layout_gravity="center_vertical" android:layout_width="30.0dip" android:layout_height="fill_parent" android:layout_marginLeft="0.0dip" android:src="@drawable/entrance_button_small_facebook" android:scaleType="fitCenter" />
+                <TextView android:textSize="14.0sp" android:textStyle="bold" android:textColor="#ff353535" android:gravity="left|center" android:layout_gravity="left" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="10.0dip" android:text="@string/find_friends_facebook" android:singleLine="false" />
+            </LinearLayout>
+            <View android:tag="divider" android:background="#ffededed" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:id="@id/entrance_dialog_sns_row_twitter" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:gravity="center" android:orientation="horizontal" android:tag="button" android:background="@drawable/clickable_background" android:paddingLeft="10.0dip" android:paddingTop="10.0dip" android:paddingRight="10.0dip" android:paddingBottom="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <ImageView android:layout_gravity="center_vertical" android:layout_width="30.0dip" android:layout_height="fill_parent" android:layout_marginLeft="0.0dip" android:src="@drawable/entrance_button_small_twitter" android:scaleType="fitCenter" />
+                <TextView android:textSize="14.0sp" android:textStyle="bold" android:textColor="#ff353535" android:gravity="left|center" android:layout_gravity="left" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="10.0dip" android:text="@string/find_friends_twitter" android:singleLine="false" />
+            </LinearLayout>
+            <View android:tag="divider" android:background="#ffededed" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:id="@id/entrance_dialog_sns_row_gplus" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:gravity="center" android:orientation="horizontal" android:tag="button" android:background="@drawable/clickable_background" android:paddingLeft="10.0dip" android:paddingTop="10.0dip" android:paddingRight="10.0dip" android:paddingBottom="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <ImageView android:layout_gravity="center_vertical" android:layout_width="30.0dip" android:layout_height="fill_parent" android:layout_marginLeft="0.0dip" android:src="@drawable/entrance_button_small_gplus" android:scaleType="fitCenter" />
+                <TextView android:textSize="14.0sp" android:textStyle="bold" android:textColor="#ff353535" android:gravity="left|center" android:layout_gravity="left" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="10.0dip" android:text="@string/find_friends_google" android:singleLine="false" />
+            </LinearLayout>
+            <View android:tag="divider" android:background="#ffededed" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

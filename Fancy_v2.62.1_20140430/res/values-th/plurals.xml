@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="hotel_adults">
+        <item quantity="other">ผู้ใหญ่ %d คน</item>
+    </plurals>
+    <plurals name="hotel_children">
+        <item quantity="other">เด็ก %d คน</item>
+    </plurals>
+    <plurals name="hotel_night">
+        <item quantity="other">%d คืน</item>
+    </plurals>
+    <plurals name="sale_time_day">
+        <item quantity="other">%d วัน</item>
+    </plurals>
+    <plurals name="sale_time_hour">
+        <item quantity="other">%d ชม.</item>
+    </plurals>
+    <plurals name="sale_time_minute">
+        <item quantity="other">%d นาที</item>
+    </plurals>
+    <plurals name="sale_time_second">
+        <item quantity="other">%d วินาที</item>
+    </plurals>
+    <plurals name="timeline_new_things">
+        <item quantity="other">สินค้าใหม่ %d ตัว - กดเพื่อรีเฟรช!</item>
+    </plurals>
+</resources>

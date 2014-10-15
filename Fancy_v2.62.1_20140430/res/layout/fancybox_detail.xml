@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:id="@id/sale_scroller" android:background="@color/fancy_background" android:fadingEdgeLength="0.0px" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:custom="http://schemas.android.com/apk/res/com.thefancy.app">
+    <LinearLayout android:gravity="top|center" android:orientation="vertical" android:padding="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:gravity="top|center" android:orientation="vertical" android:background="@drawable/multifeed_back_off" android:padding="1.0px" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:gravity="center" android:id="@id/fancybox_price_click" android:background="@drawable/clickable_background" android:paddingLeft="20.0dip" android:paddingTop="16.0dip" android:paddingRight="16.0dip" android:paddingBottom="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <TextView android:textSize="18.0sp" android:textColor="#ff1f1f1f" android:gravity="top|left|center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/fancybox_subscription" />
+                <TextView android:textSize="18.0sp" android:textStyle="bold" android:textColor="#ff1f1f1f" android:gravity="top|right|center" android:id="@id/fancybox_price" android:layout_width="0.0px" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" android:layout_weight="1.0" />
+                <ImageView android:id="@id/fancybox_price_more" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:src="@drawable/phone_hotel_arrow_right" android:contentDescription="see more" />
+            </LinearLayout>
+            <View android:background="#ffe1e1e1" android:layout_width="fill_parent" android:layout_height="1.0px" />
+            <android.support.v4.view.ViewPager android:id="@id/sale_images_pager" android:layout_width="fill_parent" android:layout_height="320.0dip" android:layout_marginTop="16.0dip" android:layout_marginBottom="16.0dip" android:layout_weight="1.0" />
+            <LinearLayout android:gravity="top|center" android:orientation="horizontal" android:id="@id/sale_images_dots" android:layout_width="fill_parent" android:layout_height="36.0dip" />
+            <View android:background="#ffe1e1e1" android:layout_width="fill_parent" android:layout_height="1.0px" />
+            <LinearLayout android:gravity="center" android:id="@id/sale_description_click" android:background="@drawable/clickable_background" android:padding="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <TextView android:textSize="16.0sp" android:textColor="#ff373d48" android:gravity="top|left|center" android:id="@id/sale_description" android:layout_width="0.0px" android:layout_height="wrap_content" android:layout_weight="1.0" />
+                <ImageView android:id="@id/sale_desc_more" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:src="@drawable/phone_hotel_arrow_right" android:contentDescription="see more" />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout android:gravity="top|center" android:orientation="vertical" android:background="@drawable/multifeed_back_off" android:padding="1.0px" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="16.0dip">
+            <LinearLayout android:gravity="center" android:id="@id/fancybox_category_click" android:background="@drawable/clickable_background" android:paddingLeft="16.0dip" android:paddingTop="16.0dip" android:paddingRight="16.0dip" android:paddingBottom="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <TextView android:textSize="17.0sp" android:textColor="#ff373d48" android:gravity="top|left|center" android:id="@id/fancybox_category" android:layout_width="0.0px" android:layout_height="wrap_content" android:text="@string/fancybox_select_categories" android:layout_weight="1.0" />
+                <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:src="@drawable/phone_hotel_arrow_right" android:contentDescription="see more" />
+            </LinearLayout>
+            <View android:background="#ffe1e1e1" android:layout_width="fill_parent" android:layout_height="1.0px" />
+            <EditText android:textSize="15.0sp" android:textColor="#ff373d48" android:textColorHint="#ff676767" android:gravity="left|center" android:id="@id/fancybox_note" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="12.0dip" android:hint="@string/fancybox_note_hint" android:lines="2" />
+            <View android:background="#ffe1e1e1" android:layout_width="fill_parent" android:layout_height="1.0px" />
+            <TextView android:textSize="18.0sp" android:textStyle="bold" android:textColor="#ffffffff" android:gravity="center" android:id="@id/fancybox_subscribe_button" android:background="@drawable/button_normal_blue" android:padding="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="8.0dip" android:text="@string/fancybox_subscribe_button" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

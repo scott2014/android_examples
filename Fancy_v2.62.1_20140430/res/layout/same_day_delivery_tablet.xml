@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:focusableInTouchMode="true" android:descendantFocusability="beforeDescendants" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:holo="http://schemas.android.com/apk/res-auto"
+  xmlns:custom="http://schemas.android.com/apk/res/com.thefancy.app">
+    <LinearLayout android:layout_gravity="top" android:orientation="horizontal" android:background="@color/fancy_background" android:focusableInTouchMode="true" android:descendantFocusability="beforeDescendants" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <FrameLayout android:id="@id/sdd_container_horizontal_map" android:visibility="visible" android:layout_width="420.0dip" android:layout_height="fill_parent" android:layout_weight="0.0">
+            <com.thefancy.app.widgets.FancyFrameLayout android:layout_gravity="top|left|center" android:id="@id/sdd_container_horizontal_address" android:layout_width="fill_parent" android:layout_height="48.0dip" android:layout_marginLeft="12.0dip" android:layout_marginTop="14.0dip" android:layout_marginRight="12.0dip" custom:max_width="380.0dip" />
+            <com.thefancy.app.widgets.FancyFrameLayout android:layout_gravity="top|left|center" android:id="@id/sdd_container_horizontal_zip_list" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginTop="60.0dip" android:layout_marginRight="12.0dip" custom:max_width="380.0dip" />
+        </FrameLayout>
+        <View android:layout_gravity="right" android:id="@id/sdd_horizontal_divider" android:background="@drawable/sdd_map_shadow_right" android:layout_width="2.5dip" android:layout_height="fill_parent" />
+        <FrameLayout android:layout_width="0.0px" android:layout_height="fill_parent" android:layout_weight="1.0">
+            <LinearLayout android:layout_gravity="top" android:orientation="vertical" android:background="@color/fancy_background" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <FrameLayout android:id="@id/sdd_container_vertical_map" android:layout_width="fill_parent" android:layout_height="320.0dip">
+                    <FrameLayout android:id="@id/sdd_map_layout" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+                </FrameLayout>
+                <View android:id="@id/sdd_vertical_divider" android:background="@drawable/sdd_map_shadow" android:layout_width="fill_parent" android:layout_height="2.5dip" />
+                <View android:layout_width="fill_parent" android:layout_height="2.0dip" />
+                <include android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="9.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="9.0dip" android:layout_marginBottom="12.0dip" layout="@layout/multifeed_filter_tablet" />
+                <View android:background="#ffb9bbbd" android:layout_width="fill_parent" android:layout_height="1.0px" />
+                <FrameLayout android:id="@id/sdd_feed_layout" android:layout_width="fill_parent" android:layout_height="0.0px" android:layout_weight="1.0" />
+            </LinearLayout>
+            <com.thefancy.app.widgets.FancyFrameLayout android:layout_gravity="top|left|center" android:id="@id/sdd_container_vertical_address" android:layout_width="fill_parent" android:layout_height="48.0dip" android:layout_marginLeft="12.0dip" android:layout_marginTop="14.0dip" android:layout_marginRight="12.0dip" custom:max_width="420.0dip" />
+            <com.thefancy.app.widgets.FancyFrameLayout android:layout_gravity="top|left|center" android:id="@id/sdd_container_vertical_zip_list" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginTop="60.0dip" android:layout_marginRight="12.0dip" custom:max_width="420.0dip" />
+        </FrameLayout>
+    </LinearLayout>
+    <LinearLayout android:gravity="top|center" android:layout_gravity="top" android:orientation="vertical" android:id="@id/sdd_initial_screen" android:background="@drawable/sdd_initial_bg" android:paddingLeft="9.0dip" android:paddingRight="9.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="25.0dip" android:layout_marginBottom="22.0dip" android:src="@drawable/sdd_logo_large" />
+        <TextView android:textSize="17.0sp" android:textStyle="bold" android:textColor="#ff2c3038" android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="8.0dip" android:text="@string/sameday_banner_title" />
+        <TextView android:textSize="14.0sp" android:textStyle="normal" android:textColor="#ff71767a" android:gravity="center" android:layout_width="250.0dip" android:layout_height="wrap_content" android:layout_marginBottom="16.0dip" android:text="@string/sameday_map_find_descr" />
+        <com.thefancy.app.widgets.ProgressSpinner android:layout_gravity="center" android:id="@id/sdd_initial_spinner" android:layout_width="@dimen/_30dp" android:layout_height="@dimen/_30dp" custom:color_style="gray" />
+        <com.thefancy.app.widgets.FancyFrameLayout android:layout_gravity="center" android:id="@id/sdd_container_initial_address" android:layout_width="fill_parent" android:layout_height="48.0dip" custom:max_width="420.0dip">
+            <com.thefancy.app.widgets.RoundedCornerLinearLayout android:gravity="left|center" android:layout_gravity="top" android:orientation="horizontal" android:id="@id/sdd_address_box" android:background="#ffffffff" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:baselineAligned="true" custom:corner_radius="1.0dip" custom:border_image="@drawable/overlay_border_bg">
+                <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginRight="10.0dip" android:src="@drawable/sdd_icon_map_pin" android:layout_weight="0.0" />
+                <org.holoeverywhere.widget.EditText android:textSize="15.0sp" android:textColor="#ff36383c" android:id="@id/sdd_map_zip_input" android:background="@null" android:layout_width="0.0px" android:layout_height="wrap_content" android:layout_marginRight="15.0dip" android:hint="@string/sameday_map_zip_hint" android:singleLine="true" android:layout_weight="1.0" android:imeOptions="actionGo" />
+                <com.thefancy.app.widgets.ProgressSpinner android:id="@id/sdd_map_zip_input_spinner" android:visibility="gone" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginRight="15.0dip" />
+            </com.thefancy.app.widgets.RoundedCornerLinearLayout>
+        </com.thefancy.app.widgets.FancyFrameLayout>
+        <FrameLayout android:layout_width="fill_parent" android:layout_height="0.0px" android:layout_weight="1.0">
+            <TextView android:textSize="12.0sp" android:textStyle="normal" android:textColor="#ff71767a" android:gravity="center" android:layout_gravity="bottom" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="16.0dip" android:text="@string/sameday_map_countries_text" />
+            <com.thefancy.app.widgets.FancyFrameLayout android:layout_gravity="center" android:id="@id/sdd_container_initial_zip_list" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="1.0dip" android:layout_marginBottom="6.0dip" custom:max_width="420.0dip">
+                <com.thefancy.app.widgets.RoundedCornerLinearLayout android:gravity="left|center" android:layout_gravity="top" android:orientation="horizontal" android:id="@id/sdd_map_zip_list_popup" android:background="#ffffffff" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" custom:corner_radius="1.0dip" custom:border_image="@drawable/overlay_border_bg">
+                    <ListView android:id="@id/sdd_map_zip_list" android:paddingLeft="12.0dip" android:paddingTop="2.0dip" android:paddingRight="12.0dip" android:paddingBottom="2.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+                </com.thefancy.app.widgets.RoundedCornerLinearLayout>
+            </com.thefancy.app.widgets.FancyFrameLayout>
+        </FrameLayout>
+    </LinearLayout>
+</FrameLayout>

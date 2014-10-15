@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:background="@color/fancy_background" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:custom="http://schemas.android.com/apk/res/com.thefancy.app">
+    <LinearLayout android:orientation="vertical" android:padding="15.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="vertical" android:background="@drawable/multifeed_back_off" android:padding="1.0px" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <RelativeLayout android:padding="20.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <com.thefancy.app.widgets.FancyImageView android:id="@id/gift_itemimage" android:layout_width="100.0dip" android:layout_height="100.0dip" android:layout_marginRight="15.0dip" android:scaleType="centerCrop" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+                <TextView android:textSize="17.0sp" android:textColor="#ff333333" android:id="@id/gift_title" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" android:layout_marginBottom="3.0dip" android:layout_toRightOf="@id/gift_itemimage" android:layout_alignParentTop="true" />
+                <TextView android:textSize="15.0sp" android:textColor="#ff999999" android:id="@id/gift_itemname" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="3.0dip" android:layout_toRightOf="@id/gift_itemimage" android:layout_below="@id/gift_title" />
+                <TextView android:textSize="15.0sp" android:textColor="#ff999999" android:id="@id/gift_starter" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_toRightOf="@id/gift_itemimage" android:layout_below="@id/gift_itemname" />
+                <TextView android:textSize="17.0sp" android:textColor="#ff333333" android:id="@id/gift_description_title" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:layout_marginBottom="7.0dip" android:text="@string/groupgift_form_desc" android:layout_below="@id/gift_itemimage" />
+                <TextView android:textSize="14.0sp" android:textColor="#ff666666" android:id="@id/gift_description" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/gift_description_title" />
+            </RelativeLayout>
+            <View android:background="#fff1f1f1" android:layout_width="fill_parent" android:layout_height="1.0px" />
+            <TextView android:textSize="17.0sp" android:textColor="#ff333333" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="20.0dip" android:layout_marginBottom="3.0dip" android:text="@string/groupgift_destination" />
+            <TextView android:textSize="15.0sp" android:textColor="#ff333333" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginRight="20.0dip" android:layout_marginBottom="7.0dip" android:text="@string/groupgift_shippedto" />
+            <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/gift_recipient_layout" android:paddingLeft="20.0dip" android:paddingRight="20.0dip" android:paddingBottom="20.0dip" android:layout_width="fill_parent" android:layout_height="100.0dip">
+                <com.thefancy.app.widgets.FancyImageView android:id="@id/gift_recipient_image" android:layout_width="60.0dip" android:layout_height="60.0dip" android:layout_marginRight="10.0dip" android:scaleType="centerCrop" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" custom:corner_radius="3.0dip" />
+                <TextView android:textSize="15.0sp" android:textColor="#ff333333" android:gravity="left" android:id="@id/gift_recipient" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+            </LinearLayout>
+            <View android:background="#fff1f1f1" android:layout_width="fill_parent" android:layout_height="1.0px" />
+            <TextView android:textSize="18.0sp" android:textStyle="bold" android:textColor="#ff333333" android:id="@id/gift_contributed" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="20.0dip" android:layout_marginBottom="3.0dip" />
+            <TextView android:textSize="15.0sp" android:textColor="#ff333333" android:id="@id/gift_goal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginRight="20.0dip" />
+            <LinearLayout android:gravity="left" android:orientation="horizontal" android:background="@drawable/progressbar_background" android:padding="3.0dip" android:layout_width="fill_parent" android:layout_height="16.0dip" android:layout_marginLeft="22.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="22.0dip" android:layout_marginBottom="10.0dip" android:weightSum="1.0">
+                <View android:id="@id/gift_progress" android:background="#ff69b049" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="0.3" />
+            </LinearLayout>
+            <TextView android:textSize="15.0sp" android:textColor="#ff333333" android:id="@id/gift_num_contributors" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginRight="20.0dip" android:layout_marginBottom="10.0dip" />
+            <TextView android:textSize="15.0sp" android:textColor="#ff666666" android:id="@id/gift_my_contribution" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginRight="20.0dip" android:layout_marginBottom="10.0dip" />
+            <TextView android:textSize="17.0sp" android:textColor="#ff333333" android:id="@id/gift_remaining" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginRight="20.0dip" android:layout_marginBottom="3.0dip" />
+            <TextView android:textSize="15.0sp" android:textColor="#ff333333" android:id="@id/gift_deadline" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginRight="20.0dip" android:layout_marginBottom="20.0dip" />
+            <View android:background="#fff1f1f1" android:layout_width="fill_parent" android:layout_height="1.0px" />
+            <TextView android:textSize="17.0sp" android:textStyle="bold" android:textColor="#ff333333" android:gravity="center" android:id="@id/gift_button" android:padding="20.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

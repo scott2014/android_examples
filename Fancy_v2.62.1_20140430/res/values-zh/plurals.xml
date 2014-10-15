@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="hotel_adults">
+        <item quantity="other">%d 位成年人</item>
+    </plurals>
+    <plurals name="hotel_children">
+        <item quantity="other">%d位儿童</item>
+    </plurals>
+    <plurals name="hotel_night">
+        <item quantity="other">%d晚</item>
+    </plurals>
+    <plurals name="sale_time_day">
+        <item quantity="other">%d天</item>
+    </plurals>
+    <plurals name="sale_time_hour">
+        <item quantity="other">%d小时</item>
+    </plurals>
+    <plurals name="sale_time_minute">
+        <item quantity="other">%d分钟</item>
+    </plurals>
+    <plurals name="sale_time_second">
+        <item quantity="other">%d秒</item>
+    </plurals>
+    <plurals name="timeline_new_things">
+        <item quantity="other">%d件新物品-点击刷新！</item>
+    </plurals>
+</resources>

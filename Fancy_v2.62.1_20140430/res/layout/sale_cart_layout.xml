@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.thefancy.app.widgets.ExtendedScrollEventScrollView android:id="@id/scroller" android:fadingEdgeLength="0.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:custom="http://schemas.android.com/apk/res/com.thefancy.app">
+    <LinearLayout android:gravity="top|center" android:orientation="vertical" android:id="@id/content" android:background="@color/fancy_background" android:padding="@dimen/_10dp" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+</com.thefancy.app.widgets.ExtendedScrollEventScrollView>

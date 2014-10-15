@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:holo="http://schemas.android.com/apk/res-auto">
+    <PreferenceCategory android:title="@string/setting_noti_push_header" android:key="push">
+        <CheckBoxPreference android:persistent="false" android:layout="@layout/setting_option_layout" android:title="@string/setting_noti_push_use" android:key="push_active" android:summary="@string/setting_noti_push_inactive" android:defaultValue="false" />
+        <RingtonePreference android:persistent="true" android:title="@string/setting_noti_push_ringtone" android:key="push_ringtone" android:defaultValue="content://settings/system/notification_sound" android:ringtoneType="notification" android:showDefault="true" android:showSilent="true" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/setting_noti_header" android:key="group">
+        <CheckBoxPreference android:persistent="false" android:layout="@layout/setting_option_layout" android:title="@string/setting_noti_follow" android:key="follow" />
+        <CheckBoxPreference android:persistent="false" android:layout="@layout/setting_option_layout" android:title="@string/setting_noti_join" android:key="join" />
+        <CheckBoxPreference android:persistent="false" android:layout="@layout/setting_option_layout" android:title="@string/setting_noti_show" android:key="shown_to_me" />
+        <CheckBoxPreference android:persistent="false" android:layout="@layout/setting_option_layout" android:title="@string/setting_noti_comment" android:key="comments_on_fancyd" />
+        <CheckBoxPreference android:persistent="false" android:layout="@layout/setting_option_layout" android:title="@string/setting_noti_featured" android:key="featured" />
+        <CheckBoxPreference android:persistent="false" android:layout="@layout/setting_option_layout" android:title="@string/setting_noti_mention" android:key="mentioned_in_comment" />
+        <CheckBoxPreference android:persistent="false" android:layout="@layout/setting_option_layout" android:title="@string/setting_noti_friend_follow" android:key="followed_add_person" />
+        <CheckBoxPreference android:persistent="false" android:layout="@layout/setting_option_layout" android:title="@string/setting_noti_friend_store" android:key="followed_add_store" />
+        <CheckBoxPreference android:persistent="false" android:layout="@layout/setting_option_layout" android:title="@string/setting_noti_fancyd" android:key="fancyd" />
+        <CheckBoxPreference android:persistent="false" android:layout="@layout/setting_option_layout" android:title="@string/setting_noti_friend_comment" android:key="followed_commented" />
+        <CheckBoxPreference android:persistent="false" android:layout="@layout/setting_option_layout" android:title="@string/setting_noti_deal" android:key="deal" />
+        <CheckBoxPreference android:persistent="false" android:layout="@layout/setting_option_layout" android:title="@string/setting_noti_friend_deal" android:key="followed_earned_deal" />
+        <CheckBoxPreference android:persistent="false" android:layout="@layout/setting_option_layout" android:title="@string/setting_noti_promotion" android:key="promotion" />
+        <CheckBoxPreference android:persistent="false" android:layout="@layout/setting_option_layout" android:title="@string/setting_noti_friend_promotion" android:key="followed_promoted" />
+        <CheckBoxPreference android:persistent="false" android:layout="@layout/setting_option_layout" android:title="@string/setting_email_news" android:key="news" />
+    </PreferenceCategory>
+</PreferenceScreen>

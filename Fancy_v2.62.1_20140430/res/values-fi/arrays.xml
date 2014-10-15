@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="attach_option">
+        <item>Kuva Kirjastosta</item>
+        <item>Ota Kuva</item>
+    </string-array>
+    <string-array name="attach_option_nocamera">
+        <item>Kuva Galleriasta</item>
+    </string-array>
+    <string-array name="setting_gender_label">
+        <item>Jätän kertomatta</item>
+        <item>Olen mies</item>
+        <item>Olen nainen</item>
+    </string-array>
+</resources>

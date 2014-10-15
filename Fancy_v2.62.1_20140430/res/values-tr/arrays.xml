@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="attach_option">
+        <item>Galeriden seç</item>
+        <item>Fotoğraf çek</item>
+    </string-array>
+    <string-array name="attach_option_nocamera">
+        <item>Galeriden seç</item>
+    </string-array>
+    <string-array name="setting_gender_label">
+        <item>Belirtmemeyi tercih ederim</item>
+        <item>Erkeğim</item>
+        <item>Kızım</item>
+    </string-array>
+</resources>

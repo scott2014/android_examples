@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="hotel_adults">
+        <item quantity="other">%d Adults</item>
+        <item quantity="zero">0 Adults</item>
+        <item quantity="one">%d Adult</item>
+    </plurals>
+    <plurals name="hotel_children">
+        <item quantity="other">%d Children</item>
+        <item quantity="zero">0 Children</item>
+        <item quantity="one">1 Child</item>
+    </plurals>
+    <plurals name="hotel_night">
+        <item quantity="other">%d Nights</item>
+        <item quantity="zero">%d Nights</item>
+        <item quantity="one">1 Night</item>
+    </plurals>
+    <plurals name="sale_time_day">
+        <item quantity="other">%d days</item>
+        <item quantity="one">1 day</item>
+    </plurals>
+    <plurals name="sale_time_hour">
+        <item quantity="other">%d hours</item>
+        <item quantity="one">1 hour</item>
+    </plurals>
+    <plurals name="sale_time_minute">
+        <item quantity="other">%d minutes</item>
+        <item quantity="one">1 minute</item>
+    </plurals>
+    <plurals name="sale_time_second">
+        <item quantity="other">%d seconds</item>
+        <item quantity="one">1 second</item>
+    </plurals>
+    <plurals name="timeline_new_things">
+        <item quantity="other">%d new things - tap to refresh!</item>
+        <item quantity="one">%d new thing - tap to refresh!</item>
+    </plurals>
+</resources>

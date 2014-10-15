@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="hotel_adults">
+        <item quantity="other"></item>
+        <item quantity="one">%d dorosły</item>
+        <item quantity="few">%d dorosłych</item>
+    </plurals>
+    <plurals name="hotel_children">
+        <item quantity="other"></item>
+        <item quantity="one">1 dziecko</item>
+        <item quantity="few">%d dzieci</item>
+    </plurals>
+    <plurals name="hotel_night">
+        <item quantity="other"></item>
+        <item quantity="one">1 noc</item>
+        <item quantity="few">%d nocy</item>
+    </plurals>
+    <plurals name="sale_time_day">
+        <item quantity="other"></item>
+        <item quantity="one">1 dzień</item>
+        <item quantity="few">%d dni</item>
+    </plurals>
+    <plurals name="sale_time_hour">
+        <item quantity="other"></item>
+        <item quantity="one">1 godzina</item>
+        <item quantity="few">%d godzin</item>
+    </plurals>
+    <plurals name="sale_time_minute">
+        <item quantity="other"></item>
+        <item quantity="one">1 minuta</item>
+        <item quantity="few">%d minut</item>
+    </plurals>
+    <plurals name="sale_time_second">
+        <item quantity="other"></item>
+        <item quantity="one">1 sekunda</item>
+        <item quantity="few">%d sekund</item>
+    </plurals>
+    <plurals name="timeline_new_things">
+        <item quantity="other"></item>
+        <item quantity="one">%d nowa zawartość - dotknij by odświeżyć!</item>
+        <item quantity="few">%d nowe zawartości - dotknij by odświeżyć!</item>
+    </plurals>
+</resources>

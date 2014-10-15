@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:holo="http://schemas.android.com/apk/res-auto"
+  xmlns:custom="http://schemas.android.com/apk/res/com.thefancy.app">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="vertical" android:background="@drawable/flat_bg_feed_topbar" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <com.thefancy.app.widgets.FancyTextView android:textSize="@dimen/xxhdpi_44pt" android:textStyle="normal" android:textColor="@color/button_text_585d66" android:gravity="left|center" android:layout_gravity="center" android:id="@id/notice_bar_text" android:background="@drawable/flat_bg_spinner_tp" android:paddingLeft="@dimen/_12dp" android:paddingTop="@dimen/_12dp" android:paddingRight="@dimen/_12dp" android:paddingBottom="@dimen/_12dp" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="0.0px" custom:font_name="Roboto-Medium" />
+        </LinearLayout>
+        <View android:layout_gravity="top" android:background="@drawable/shadow_2dp" android:layout_width="fill_parent" android:layout_height="2.0dip" />
+    </LinearLayout>
+</merge>

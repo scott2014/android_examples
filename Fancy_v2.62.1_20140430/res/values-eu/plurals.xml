@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="hotel_adults">
+        <item quantity="other">%d Heldu</item>
+        <item quantity="one">%d Heldu</item>
+    </plurals>
+    <plurals name="hotel_children">
+        <item quantity="other">%d Ume</item>
+        <item quantity="one">Ume 1</item>
+    </plurals>
+    <plurals name="hotel_night">
+        <item quantity="other">%d Gau</item>
+        <item quantity="one">Gau 1</item>
+    </plurals>
+    <plurals name="sale_time_day">
+        <item quantity="other">%d egun</item>
+        <item quantity="one">Egun bat</item>
+    </plurals>
+    <plurals name="sale_time_hour">
+        <item quantity="other">%d ordu</item>
+        <item quantity="one">Ordu bat</item>
+    </plurals>
+    <plurals name="sale_time_minute">
+        <item quantity="other">%d minutu</item>
+        <item quantity="one">Minutu 1</item>
+    </plurals>
+    <plurals name="sale_time_second">
+        <item quantity="other">%d segundu</item>
+        <item quantity="one">Segundu 1</item>
+    </plurals>
+    <plurals name="timeline_new_things">
+        <item quantity="other">%d gauza berri-eguneratzeko sakatu!</item>
+        <item quantity="one">%d gauza berria-eguneratzeko sakatu!</item>
+    </plurals>
+</resources>

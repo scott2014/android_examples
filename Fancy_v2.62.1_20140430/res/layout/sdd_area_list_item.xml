@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:paddingLeft="@dimen/_17dp" android:paddingTop="@dimen/_2dp" android:paddingRight="17.0dip" android:paddingBottom="@dimen/_2dp" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:holo="http://schemas.android.com/apk/res-auto"
+  xmlns:custom="http://schemas.android.com/apk/res/com.thefancy.app">
+    <com.thefancy.app.widgets.FancyTextView android:textSize="@dimen/xxhdpi_42pt" android:textColor="#ff4d535d" android:id="@id/sale_sdd_area_list_city" android:layout_width="0.0px" android:layout_height="wrap_content" android:text="New York" android:layout_weight="1.0" />
+    <com.thefancy.app.widgets.FancyTextView android:textSize="@dimen/xxhdpi_42pt" android:textColor="#ff4d535d" android:id="@id/sale_sdd_area_list_orderby" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="12 PM" />
+</LinearLayout>

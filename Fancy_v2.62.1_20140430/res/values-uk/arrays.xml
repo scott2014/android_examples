@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="attach_option">
+        <item>Картинка з Галереї</item>
+        <item>Захоплення Зображень</item>
+    </string-array>
+    <string-array name="attach_option_nocamera">
+        <item>Зображення з Галереї</item>
+    </string-array>
+    <string-array name="setting_gender_label">
+        <item>Я б не сказав</item>
+        <item>Я хлопець</item>
+        <item>Я дівчина</item>
+    </string-array>
+</resources>

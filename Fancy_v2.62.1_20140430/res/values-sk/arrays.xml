@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="attach_option">
+        <item>Obrázok z galérie</item>
+        <item>Odfotiť obrázok</item>
+    </string-array>
+    <string-array name="attach_option_nocamera">
+        <item>Obrázok z galérie</item>
+    </string-array>
+    <string-array name="setting_gender_label">
+        <item>Radšej nepoviem</item>
+        <item>Som chlapec</item>
+        <item>Som žena</item>
+    </string-array>
+</resources>

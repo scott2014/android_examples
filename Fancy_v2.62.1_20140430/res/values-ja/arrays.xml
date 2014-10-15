@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="attach_option">
+        <item>ギャラリーの写真</item>
+        <item>カメラで撮る</item>
+    </string-array>
+    <string-array name="attach_option_nocamera">
+        <item>ギャラリーから選択</item>
+    </string-array>
+    <string-array name="setting_gender_label">
+        <item>非公開</item>
+        <item>男性</item>
+        <item>女性</item>
+    </string-array>
+</resources>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="-3.0dip" android:layout_weight="0.0"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:custom="http://schemas.android.com/apk/res/com.thefancy.app">
+    <View android:background="@drawable/thing_bg_top_comment_box" android:layout_width="fill_parent" android:layout_height="3.0dip" />
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:background="#ffffffff" android:paddingLeft="12.0dip" android:paddingTop="10.0dip" android:paddingRight="0.0dip" android:paddingBottom="10.0dip" android:layout_width="fill_parent" android:layout_height="48.0dip">
+        <EditText android:textSize="12.0sp" android:textColor="#ff6e7177" android:textColorHint="#ffafb0b1" android:id="@id/thing_commentbar_edittext" android:background="#00ffffff" android:layout_width="0.0px" android:layout_height="fill_parent" android:hint="@string/comment_dialog_title" android:singleLine="false" android:layout_weight="1.0" android:inputType="text" android:imeOptions="actionSend" />
+        <View android:background="#ffd9dadb" android:layout_width="1.0px" android:layout_height="fill_parent" android:layout_marginLeft="5.0dip" android:layout_weight="0.0" />
+        <TextView android:textSize="13.0sp" android:textStyle="normal" android:textColor="@color/entrance_clickable_text_gray" android:gravity="center" android:id="@id/thing_commentbar_button" android:background="@drawable/tab_item_background" android:paddingLeft="12.0dip" android:paddingRight="12.0dip" android:focusable="true" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/comment_send_button" />
+    </LinearLayout>
+</LinearLayout>

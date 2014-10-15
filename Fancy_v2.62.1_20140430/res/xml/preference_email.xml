@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:holo="http://schemas.android.com/apk/res-auto">
+    <PreferenceCategory android:title="@string/setting_email_header" android:key="group">
+        <CheckBoxPreference android:persistent="false" android:layout="@layout/setting_option_layout" android:title="@string/setting_email_follow" android:key="follow" />
+        <CheckBoxPreference android:persistent="false" android:layout="@layout/setting_option_layout" android:title="@string/setting_email_join" android:key="join" />
+        <CheckBoxPreference android:persistent="false" android:layout="@layout/setting_option_layout" android:title="@string/setting_email_shown" android:key="shown_to_me" />
+        <CheckBoxPreference android:persistent="false" android:layout="@layout/setting_option_layout" android:title="@string/setting_email_comment" android:key="comments_on_fancyd" />
+        <CheckBoxPreference android:persistent="false" android:layout="@layout/setting_option_layout" android:title="@string/setting_email_featured" android:key="featured" />
+        <CheckBoxPreference android:persistent="false" android:layout="@layout/setting_option_layout" android:title="@string/setting_email_news" android:key="news" />
+        <CheckBoxPreference android:persistent="false" android:layout="@layout/setting_option_layout" android:title="@string/setting_email_mentioned" android:key="mentioned_in_comment" />
+    </PreferenceCategory>
+</PreferenceScreen>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:holo="http://schemas.android.com/apk/res-auto">
+    <PreferenceCategory android:title="Your Profile" android:key="group_profile">
+        <com.thefancy.app.widgets.ProfilePreference android:persistent="false" android:layout="@layout/settings_profile" android:layout_width="fill_parent" android:title="@string/setting_edit_profile" android:key="picture" />
+        <EditTextPreference android:persistent="false" android:singleLine="true" android:title="@string/setting_profile_fullname" android:key="fullname" />
+        <EditTextPreference android:persistent="false" android:singleLine="true" android:title="@string/setting_profile_email" android:key="email" android:inputType="textEmailAddress" />
+        <com.thefancy.app.widgets.EmailConfirmPreference android:persistent="false" android:layout="@layout/setting_email_confirm" android:layout_width="fill_parent" android:selectable="false" android:key="emailConfirm" />
+        <EditTextPreference android:persistent="false" android:title="@string/setting_profile_bio" android:key="bio" />
+        <EditTextPreference android:persistent="false" android:singleLine="true" android:title="@string/setting_profile_twitter" android:key="twitter" />
+        <EditTextPreference android:persistent="false" android:singleLine="true" android:title="@string/setting_profile_website" android:key="web" android:inputType="textUri" />
+        <EditTextPreference android:persistent="false" android:singleLine="true" android:title="@string/setting_profile_location" android:key="location" />
+        <ListPreference android:persistent="false" android:entries="@array/setting_gender_label" android:title="@string/setting_profile_gender" android:key="gender" android:entryValues="@array/gender_value" />
+    </PreferenceCategory>
+</PreferenceScreen>

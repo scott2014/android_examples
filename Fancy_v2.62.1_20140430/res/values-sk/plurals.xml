@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="hotel_adults">
+        <item quantity="other">%d dospelí</item>
+        <item quantity="one">%d dospelí</item>
+        <item quantity="few">%d dospelí</item>
+    </plurals>
+    <plurals name="hotel_children">
+        <item quantity="other">%d deti</item>
+        <item quantity="one">1 dieťa</item>
+        <item quantity="few">%d deti</item>
+    </plurals>
+    <plurals name="hotel_night">
+        <item quantity="other">%d nocí</item>
+        <item quantity="one">1 noc</item>
+        <item quantity="few">%d noci</item>
+    </plurals>
+    <plurals name="sale_time_day">
+        <item quantity="other">%d dní</item>
+        <item quantity="one">1 deň</item>
+        <item quantity="few">%d dni</item>
+    </plurals>
+    <plurals name="sale_time_hour">
+        <item quantity="other">%d hodín</item>
+        <item quantity="one">1 hodina</item>
+        <item quantity="few">%d hodiny</item>
+    </plurals>
+    <plurals name="sale_time_minute">
+        <item quantity="other">%d minút</item>
+        <item quantity="one">1 minúta</item>
+        <item quantity="few">%d minúty</item>
+    </plurals>
+    <plurals name="sale_time_second">
+        <item quantity="other">%d sekúnd</item>
+        <item quantity="one">1 sekunda</item>
+        <item quantity="few">%d sekundy</item>
+    </plurals>
+    <plurals name="timeline_new_things">
+        <item quantity="other">%d nových vecí - kliknite pre aktualizáciu!</item>
+        <item quantity="one">%d nová vec - kliknite pre aktualizáciu!</item>
+        <item quantity="few">%d nových vecí - kliknite pre aktualizáciu!</item>
+    </plurals>
+</resources>

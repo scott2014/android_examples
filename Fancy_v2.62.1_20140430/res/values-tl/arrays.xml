@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="attach_option">
+        <item>Larawan galing sa galerya</item>
+        <item>Kunin ang larawan</item>
+    </string-array>
+    <string-array name="attach_option_nocamera">
+        <item>Larawan galing Galerya</item>
+    </string-array>
+    <string-array name="setting_gender_label">
+        <item>Ayaw kong sabihin</item>
+        <item>Lalaki ako</item>
+        <item>Babae ako</item>
+    </string-array>
+</resources>

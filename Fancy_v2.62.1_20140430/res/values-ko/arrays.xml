@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="attach_option">
+        <item>갤러리에서 사진 고르기</item>
+        <item>사진 새로 촬영하기</item>
+    </string-array>
+    <string-array name="attach_option_nocamera">
+        <item>갤러리에서 사진 고르기</item>
+    </string-array>
+    <string-array name="setting_gender_label">
+        <item>안 가르쳐 줄래요</item>
+        <item>남자입니다</item>
+        <item>여자입니다</item>
+    </string-array>
+</resources>

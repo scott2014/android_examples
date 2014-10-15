@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="hotel_adults">
+        <item quantity="other">성인 %d명</item>
+    </plurals>
+    <plurals name="hotel_children">
+        <item quantity="other">어린이 %d명</item>
+    </plurals>
+    <plurals name="hotel_night">
+        <item quantity="other">%d박</item>
+    </plurals>
+    <plurals name="sale_time_day">
+        <item quantity="other">%d일</item>
+    </plurals>
+    <plurals name="sale_time_hour">
+        <item quantity="other">%d시간</item>
+    </plurals>
+    <plurals name="sale_time_minute">
+        <item quantity="other">%d분</item>
+    </plurals>
+    <plurals name="sale_time_second">
+        <item quantity="other">%d초</item>
+    </plurals>
+    <plurals name="timeline_new_things">
+        <item quantity="other">새 아이템 %d개를 보시려면 탭하세요!</item>
+    </plurals>
+</resources>

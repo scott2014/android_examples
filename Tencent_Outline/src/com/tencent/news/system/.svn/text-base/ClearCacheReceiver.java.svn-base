@@ -1,0 +1,25 @@
+package com.tencent.news.system;
+
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+
+import com.tencent.news.config.Constants;
+import com.tencent.news.ui.view.NetTipsBar;
+
+public class ClearCacheReceiver extends BroadcastReceiver {
+	private NetTipsBar mNetTipsBar;
+
+	public ClearCacheReceiver(NetTipsBar mNetTipsBar) {
+		this.mNetTipsBar = mNetTipsBar;
+	}
+
+	@Override
+	public void onReceive(Context context, Intent intent) {
+		if (intent.getAction().equals(Constants.CLEAR_CAHCE_ACTION)) {
+			if (null != mNetTipsBar) {
+				mNetTipsBar.refreshUI();
+			}
+		}
+	}
+}

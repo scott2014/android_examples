@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/parentPanel" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_marginRight="8.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:holo="http://schemas.android.com/apk/res-auto">
+    <ScrollView android:id="@id/scrollView" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="0.0px" android:layout_weight="1.0">
+        <LinearLayout android:gravity="top" android:orientation="vertical" android:id="@id/show_someone_form" android:padding="20.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="17.0sp" android:textColor="#ff333333" android:ellipsize="end" android:id="@id/show_target" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="15.0dip" android:singleLine="true" />
+            <RadioGroup android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="15.0dip">
+                <RadioButton android:textSize="15.0sp" android:textColor="#ff333333" android:gravity="left|center" android:id="@id/show_option_fancy" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="5.0dip" android:text="@string/showsomeone_fancy" android:singleLine="true" />
+                <RadioButton android:textSize="15.0sp" android:textColor="#ff333333" android:gravity="left|center" android:id="@id/show_option_email" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/showsomeone_email" android:singleLine="true" />
+            </RadioGroup>
+            <EditText android:textColor="#ff666666" android:id="@id/show_email" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="15.0dip" android:hint="@string/signup_email_hint" android:singleLine="true" />
+            <LinearLayout android:gravity="top|left|center" android:orientation="vertical" android:id="@id/show_fancy" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <TextView android:textColor="#ff666666" android:id="@id/show_who_label" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="8.0dip" android:text="@string/showsomeone_search_user" />
+                <AutoCompleteTextView android:textColor="#ff666666" android:id="@id/show_searchuser" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="15.0dip" android:singleLine="true" android:drawableLeft="@drawable/drawer_icon_home" android:drawablePadding="10.0dip" android:dropDownHeight="245.0dip" />
+                <LinearLayout android:gravity="left|center" android:orientation="horizontal" android:id="@id/show_selected" android:paddingLeft="3.0dip" android:paddingTop="0.0px" android:paddingRight="3.0dip" android:paddingBottom="15.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <com.thefancy.app.widgets.FancyImageView android:id="@id/show_selected_avatar" android:layout_width="50.0dip" android:layout_height="50.0dip" android:scaleType="centerCrop" />
+                    <TextView android:textSize="17.0sp" android:textColor="#ff333333" android:id="@id/show_selected_name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:singleLine="false" android:layout_weight="1.0" />
+                    <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ic_input_delete" />
+                </LinearLayout>
+            </LinearLayout>
+            <TextView android:textColor="#ffed1c24" android:id="@id/show_result_label" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="8.0dip" android:text="" />
+            <TextView android:textColor="#ff666666" android:id="@id/show_message_label" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="10.0dip" android:text="@string/showsomeone_note" />
+            <EditText android:id="@id/show_message" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="15.0dip" android:lines="3" android:singleLine="false" />
+        </LinearLayout>
+    </ScrollView>
+    <LinearLayout android:orientation="vertical" android:id="@id/buttonPanel" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/alert_dialog_button_bar_height">
+        <View android:id="@id/buttonPanelTopDivivder" android:background="?dividerHorizontal" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:measureWithLargestChild="true" style="?buttonBarStyle">
+            <Button android:textSize="14.0sp" android:layout_gravity="left" android:id="@id/button2" android:layout_width="wrap_content" android:layout_height="fill_parent" android:minHeight="@dimen/alert_dialog_button_bar_height" android:text="@string/button_cancel" android:maxLines="2" android:layout_weight="1.0" style="?buttonBarButtonStyle" />
+            <Button android:textSize="14.0sp" android:layout_gravity="right" android:id="@id/button1" android:layout_width="wrap_content" android:layout_height="fill_parent" android:minHeight="@dimen/alert_dialog_button_bar_height" android:text="@string/showsomeone_send_button" android:maxLines="2" android:layout_weight="1.0" style="?buttonBarButtonStyle" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.thefancy.app.widgets.BorderedLinearLayout android:gravity="center" android:orientation="vertical" android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="wrap_content" custom:border_mask_image="@drawable/rounded_table_border" custom:max_width="640.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:custom="http://schemas.android.com/apk/res/com.thefancy.app">
+    <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/_72dp" android:layout_marginBottom="@dimen/_16dp" android:src="@drawable/cart_empty_icon" />
+    <TextView android:textSize="@dimen/xxhdpi_42pt" android:textColor="#ff777d85" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/_72dp" android:text="@string/sale_cart_emtpy" />
+</com.thefancy.app.widgets.BorderedLinearLayout>

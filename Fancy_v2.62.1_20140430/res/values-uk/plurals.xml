@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="hotel_adults">
+        <item quantity="other"></item>
+        <item quantity="one">%d дорослий</item>
+        <item quantity="few">%d дорослих</item>
+        <item quantity="many">%d дорослих</item>
+    </plurals>
+    <plurals name="hotel_children">
+        <item quantity="other"></item>
+        <item quantity="one">1 дитина</item>
+        <item quantity="few">%d дітей</item>
+        <item quantity="many">%d дітей</item>
+    </plurals>
+    <plurals name="hotel_night">
+        <item quantity="other"></item>
+        <item quantity="one">1 ніч</item>
+        <item quantity="few">%d ночі</item>
+        <item quantity="many">%d ночей</item>
+    </plurals>
+    <plurals name="sale_time_day">
+        <item quantity="other"></item>
+        <item quantity="one">1 день</item>
+        <item quantity="few">%d дні</item>
+        <item quantity="many">%d днів</item>
+    </plurals>
+    <plurals name="sale_time_hour">
+        <item quantity="other"></item>
+        <item quantity="one">1 година</item>
+        <item quantity="few">%d години</item>
+        <item quantity="many">%d годин</item>
+    </plurals>
+    <plurals name="sale_time_minute">
+        <item quantity="other"></item>
+        <item quantity="one">1 хвилина</item>
+        <item quantity="few">%d хвилини</item>
+        <item quantity="many">%d хвилин</item>
+    </plurals>
+    <plurals name="sale_time_second">
+        <item quantity="other"></item>
+        <item quantity="one">1 секунда</item>
+        <item quantity="few">%d секунди</item>
+        <item quantity="many">%d секунд</item>
+    </plurals>
+    <plurals name="timeline_new_things">
+        <item quantity="other"></item>
+        <item quantity="one">%d нову річ - натисни щоб оновити!</item>
+        <item quantity="few">%d нові речі - натисни щоб оновити!</item>
+        <item quantity="many">%d нові речі - натисни щоб оновити!</item>
+    </plurals>
+</resources>

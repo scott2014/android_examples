@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="attach_option">
+        <item>صورة من معرض الصور</item>
+        <item>التقاط صورة</item>
+    </string-array>
+    <string-array name="attach_option_nocamera">
+        <item>صورة من معرض الصور</item>
+    </string-array>
+    <string-array name="setting_gender_label">
+        <item>اود بدلا من ذلك قول لا</item>
+        <item>انا ولد</item>
+        <item>انا بنت</item>
+    </string-array>
+</resources>

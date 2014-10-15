@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/flat_clickable_background" android:paddingLeft="@dimen/_13.3dp" android:paddingTop="@dimen/_11.6dp" android:paddingRight="@dimen/_13.3dp" android:paddingBottom="@dimen/_11.6dp" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:custom="http://schemas.android.com/apk/res/com.thefancy.app">
+    <com.thefancy.app.widgets.FancyImageView android:id="@id/user_image" android:background="@drawable/flat_image_thing_default" android:padding="0.0px" android:layout_width="@dimen/_40dp" android:layout_height="@dimen/_40dp" android:layout_marginRight="@dimen/_10dp" android:scaleType="centerCrop" custom:border_is_circle="true" />
+    <LinearLayout android:orientation="vertical" android:layout_width="0.0px" android:layout_height="wrap_content" android:layout_weight="1.0">
+        <com.thefancy.app.widgets.FancyTextView android:textSize="@dimen/xxhdpi_40pt" android:textColor="#ff494c53" android:id="@android:id/text1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="UserName" android:singleLine="true" custom:font_name="medium" />
+        <com.thefancy.app.widgets.FancyTextView android:textSize="@dimen/xxhdpi_38pt" android:textColor="#ffb4b8bf" android:id="@android:id/text2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="Name" android:singleLine="true" />
+    </LinearLayout>
+    <com.thefancy.app.widgets.FancyTextView android:textSize="@dimen/xxhdpi_40pt" android:textColor="#ffffffff" android:gravity="center" android:id="@id/user_button" android:paddingLeft="@dimen/_13.3dp" android:paddingTop="@dimen/_7.3dp" android:paddingRight="@dimen/_13.3dp" android:paddingBottom="@dimen/_7dp" android:focusable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/_10dp" android:text="@string/profile_button_following" custom:font_name="Roboto-Medium" custom:corner_radius="2.0dip" custom:bg_color="#ff4487c2" custom:bg_color_pressed="#ff4984b8" />
+</LinearLayout>

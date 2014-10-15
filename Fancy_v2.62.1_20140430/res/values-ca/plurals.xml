@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="hotel_adults">
+        <item quantity="other">%d Adults</item>
+        <item quantity="one">%d Adult</item>
+    </plurals>
+    <plurals name="hotel_children">
+        <item quantity="other">%d Nens</item>
+        <item quantity="one">1 Nen</item>
+    </plurals>
+    <plurals name="hotel_night">
+        <item quantity="other">%d Nits</item>
+        <item quantity="one">1 Nit</item>
+    </plurals>
+    <plurals name="sale_time_day">
+        <item quantity="other">%d dies</item>
+        <item quantity="one">1 dia</item>
+    </plurals>
+    <plurals name="sale_time_hour">
+        <item quantity="other">%d hores</item>
+        <item quantity="one">1 hora</item>
+    </plurals>
+    <plurals name="sale_time_minute">
+        <item quantity="other">%d minuts</item>
+        <item quantity="one">1 minut</item>
+    </plurals>
+    <plurals name="sale_time_second">
+        <item quantity="other">%d segons</item>
+        <item quantity="one">1 segon</item>
+    </plurals>
+    <plurals name="timeline_new_things">
+        <item quantity="other">%d novetats-fés un toc per refrescar!</item>
+        <item quantity="one">%d novetat-fés un toc per refrescar!</item>
+    </plurals>
+</resources>

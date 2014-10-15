@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="attach_option">
+        <item>Galeriako Argazkia</item>
+        <item>Argazkia Harrapatu</item>
+    </string-array>
+    <string-array name="attach_option_nocamera">
+        <item>Galeriako Argazkia</item>
+    </string-array>
+    <string-array name="setting_gender_label">
+        <item>Ez esatea nahiago nuke</item>
+        <item>Mutil bat naiz</item>
+        <item>Neska bat naiz</item>
+    </string-array>
+</resources>

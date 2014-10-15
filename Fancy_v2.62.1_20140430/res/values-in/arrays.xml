@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="attach_option">
+        <item>Gambar Dari Galeri</item>
+        <item>Ambil Foto</item>
+    </string-array>
+    <string-array name="attach_option_nocamera">
+        <item>Gambar Dari Galeri</item>
+    </string-array>
+    <string-array name="setting_gender_label">
+        <item>Saya lebih suka tidak mengatakannya</item>
+        <item>Saya seorang anak laki-laki</item>
+        <item>Saya seorang anak perempuan</item>
+    </string-array>
+</resources>

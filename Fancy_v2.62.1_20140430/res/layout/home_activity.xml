@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<org.holoeverywhere.widget.DrawerLayout android:layout_gravity="top|left|center" android:id="@id/drawer_layout" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:id="@id/frame" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <FrameLayout android:layout_gravity="top" android:id="@id/content_frame" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <ImageView android:layout_gravity="bottom|left|center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/page_border_bottom_left" />
+        <ImageView android:layout_gravity="bottom|right|center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/page_border_bottom_right" />
+    </FrameLayout>
+    <FrameLayout android:layout_gravity="start" android:id="@id/left_drawer" android:layout_width="@dimen/_266dp" android:layout_height="fill_parent" />
+</org.holoeverywhere.widget.DrawerLayout>

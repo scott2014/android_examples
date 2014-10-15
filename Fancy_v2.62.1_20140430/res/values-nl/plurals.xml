@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="hotel_adults">
+        <item quantity="other">%d volwassenen</item>
+        <item quantity="one">%d volwassene</item>
+    </plurals>
+    <plurals name="hotel_children">
+        <item quantity="other">%d kinderen</item>
+        <item quantity="one">1 kind</item>
+    </plurals>
+    <plurals name="hotel_night">
+        <item quantity="other">%d nachten</item>
+        <item quantity="one">1 nacht</item>
+    </plurals>
+    <plurals name="sale_time_day">
+        <item quantity="other">%d dagen</item>
+        <item quantity="one">1 dag</item>
+    </plurals>
+    <plurals name="sale_time_hour">
+        <item quantity="other">%d uren</item>
+        <item quantity="one">1 uur</item>
+    </plurals>
+    <plurals name="sale_time_minute">
+        <item quantity="other">%d minuten</item>
+        <item quantity="one">1 minuut</item>
+    </plurals>
+    <plurals name="sale_time_second">
+        <item quantity="other">%d seconden</item>
+        <item quantity="one">1 seconde</item>
+    </plurals>
+    <plurals name="timeline_new_things">
+        <item quantity="other">"%d  nieuwe dingen - Tik om te vernieuwen!"</item>
+        <item quantity="one">%d nieuw ding - Tik om te vernieuwen!</item>
+    </plurals>
+</resources>

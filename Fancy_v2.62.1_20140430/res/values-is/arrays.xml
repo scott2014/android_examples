@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="attach_option">
+        <item>Mynd úr Safni</item>
+        <item>Taka Mynd</item>
+    </string-array>
+    <string-array name="attach_option_nocamera">
+        <item>Mynd úr Safni</item>
+    </string-array>
+    <string-array name="setting_gender_label">
+        <item>Vil helst ekki segja frá</item>
+        <item>Ég er strákur</item>
+        <item>Ég er stelpa</item>
+    </string-array>
+</resources>

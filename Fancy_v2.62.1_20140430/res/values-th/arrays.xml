@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="attach_option">
+        <item>ภาพจากแกลเลอรี่</item>
+        <item>จับภาพ</item>
+    </string-array>
+    <string-array name="attach_option_nocamera">
+        <item>ภาพจากแกลเลอรี่</item>
+    </string-array>
+    <string-array name="setting_gender_label">
+        <item>ไม่ยินดีที่จะให้ข้อมูล</item>
+        <item>ผมเป็นผู้ชาย</item>
+        <item>ฉันเป็นผู้หญิง</item>
+    </string-array>
+</resources>
